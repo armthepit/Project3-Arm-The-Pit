@@ -1,18 +1,15 @@
 var mongoose = require("mongoose");
 
 var commentsSchema = new mongoose.Schema({
-	title: {
+	artist: {
 		type: String, 
 	},
-	imgLink: {
+	fan: {
 		type: String, 
 	},	
-	storyLink: {
+	comment: {
 		type: String, 
 	},
-	summary: {
-		type: String, 
-	},		
 	createdAt: {
 		type: Date, 
 		default: Date.now
