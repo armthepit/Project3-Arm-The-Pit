@@ -1,22 +1,28 @@
 var mongoose = require("mongoose");
 
 var fansSchema = new mongoose.Schema({
-	title: {
+	name: {
 		type: String, 
 	},
-	imgLink: {
+	hometown: {
 		type: String, 
 	},	
-	storyLink: {
+	state: {
 		type: String, 
 	},
-	summary: {
+	country: {
 		type: String, 
 	},		
+	picture: {
+		type: String, 
+	},
+	artists: {
+		type: Array, 
+	},
 	createdAt: {
 		type: Date, 
 		default: Date.now
-	}
+	}		
 });
 
 var Fans = mongoose.model("Fans", fansSchema);
