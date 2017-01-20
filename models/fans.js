@@ -1,6 +1,12 @@
 var mongoose = require("mongoose");
 
 var fansSchema = new mongoose.Schema({
+	email: {
+		type: String, 
+	},
+	password: {
+		type: String, 
+	},	
 	name: {
 		type: String, 
 	},
