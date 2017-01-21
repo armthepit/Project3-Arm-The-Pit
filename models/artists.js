@@ -88,6 +88,6 @@ var artistsSchema = new mongoose.Schema({
 	}
 });
 
-var Artists = mongoose.model("Arists", artistsSchema);
+var Artists = mongoose.model("Artists", artistsSchema);
 
 module.exports = Artists;
