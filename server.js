@@ -1,19 +1,30 @@
-var express = require(`express`);
-var path = require(`path`);
+// Required NPM Packages
+var express = require('express');
+var path = require('path');
+var bodyParser = require('body-parser');
+var app = express();
+var mongoose = require('mongoose');
 
-// Express Port/App Declaration
-var PORT = process.env.PORT || 3000;
 var app = express();
 
-// Middleware
-app.use(express.static(path.join(__dirname, 'public')));
+// Public Settings
+app.use(express.static(__dirname + '/public'));
+var port = process.env.PORT || 3000;
 
-// Routes
-app.get(`*`, function(req, res) {
-  res.sendFile('public/index.html', { root: __dirname });
-});
+// Database
+require("./config/connection");
 
-// Connection to PORT
-app.listen(PORT, function() {
-  console.log(`Listening On Port: ${PORT}`);
+// BodyParser Settings
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+	extended: false
+}));
+
+//Routes
+var routes = require('./controllers/news.js');
+app.use('/',routes);
+
+//Port
+app.listen(port, function() {
+    console.log("Listening on port:" + port);
 });
