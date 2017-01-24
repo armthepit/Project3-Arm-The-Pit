@@ -1,4 +1,5 @@
 .DS_Store
 node_modules
 .git
-config/connection.js
+server/config/connection.js
+server/config/config.js
