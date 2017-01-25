@@ -7,8 +7,12 @@ var mongoose = require('mongoose');
 
 var app = express();
 
+
+var publicpath = path.resolve(__dirname, '../public');
+console.log(publicpath);
+
 // Public Settings
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(publicpath));
 var port = process.env.PORT || 3000;
 
 // Database
@@ -21,8 +25,12 @@ app.use(bodyParser.urlencoded({
 }));
 
 //Routes
-var routes = require('./controllers/news.js');
-app.use('/',routes);
+// var routes = require('../controllers/news.js');
+// app.use('/',routes);
+app.get('/*', (req, res) => {
+	res.sendFile(path.join(__dirname, '../public/index.html'));
+
+});
 
 //Port
 app.listen(port, function() {
