@@ -25,6 +25,7 @@
     "draft-js": "^0.9.1",
     "express": "^4.14.0",
     "keyword-extractor": "0.0.13",
+    "lodash": "^4.17.4",
     "material-ui": "^0.16.7",
     "mongoose": "^4.7.7",
     "nodemon": "^1.11.0",

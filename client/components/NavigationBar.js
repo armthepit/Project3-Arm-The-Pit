@@ -1,5 +1,5 @@
 import React from 'react';
- import { Link } from 'react-router';
+import { Link } from 'react-router';
  
  export default () => {
    return (
@@ -11,7 +11,8 @@ import React from 'react';
  
          <div className="collapse navbar-collapse">
            <ul className="nav navbar-nav navbar-right">
-             <li><Link to="/signup">Sign up</Link></li>
+             <li><Link to="/artistsignup">Artist Sign up</Link></li>
+             <li><Link to="/fansignup">Fan Sign up</Link></li>
            </ul>
          </div>
        </div>
