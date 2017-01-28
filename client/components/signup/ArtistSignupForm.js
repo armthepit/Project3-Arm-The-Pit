@@ -23,6 +23,7 @@ import React from 'react';
    onSubmit(e) {
      e.preventDefault();
      console.log(this.state);
+     this.props.artistSignupRequest(this.state);
    }
  
    render() {
@@ -88,5 +89,9 @@ import React from 'react';
      );
    }
  }
+
+ ArtistSignupForm.propTypes = {
+   artistSignupRequest: React.PropTypes.func.isRequired
+ } 
  
  export default ArtistSignupForm;
