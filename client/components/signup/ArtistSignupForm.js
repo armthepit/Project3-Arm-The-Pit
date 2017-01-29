@@ -1,97 +1,111 @@
-import React from 'react';
- import genres from '../../data/genres';
- import map from 'lodash/map';
-
- class ArtistSignupForm extends React.Component {
-   constructor(props) {
+ import React from 'react';
+  import genre from '../../data/genres';
+  import map from 'lodash/map';
+ import classnames from 'classnames';
+  
+  class ArtistSignupForm extends React.Component {
+    constructor(props) {
      super(props);
      this.state = {
-       email: '',
-       password: '',
-       passwordConfirmation: '',
-       genre: ''
-     }
-
-     this.onChange = this.onChange.bind(this);
+       username: '',
+        email: '',
+        password: '',
+        passwordConfirmation: '',
+       genre: '',
+       errors: {},
+       isLoading: false
+      }
+  
+      this.onChange = this.onChange.bind(this);
      this.onSubmit = this.onSubmit.bind(this);
    }
-
+ 
    onChange(e) {
      this.setState({ [e.target.name]: e.target.value });
    }
-
-   onSubmit(e) {
-     e.preventDefault();
-     console.log(this.state);
-     this.props.artistSignupRequest(this.state);
-   }
-
-   render() {
-     const options = map(genres, (val, key) =>
-       <option key={val} value={val}>{key}</option>
+  
+    onSubmit(e) {
+      e.preventDefault();
+     this.setState({ errors: {}, isLoading: true });
+     this.props.artistSignupRequest(this.state).then(
+       () => {},
+       ({ data }) => this.setState({ errors: data, isLoading: false })
      );
-     return (
-       <form onSubmit={this.onSubmit}>
-         <h1>Artist Sign Up</h1>
-
-         <div className="form-group">
-           <label className="control-label">Email</label>
-           <input
-             onChange={this.onChange}
+    }
+  
+    render() {
+     const { errors } = this.state;
+      const options = map(genre, (val, key) =>
+        <option key={val} value={val}>{key}</option>
+      );
+      return (
+        <form onSubmit={this.onSubmit}>
+          <h1>Artist Signup</h1>
+  
+ 
+         <div className={classnames("form-group", { 'has-error': errors.email })}>
+            <label className="control-label">Email</label>
+            <input
+              onChange={this.onChange}
              value={this.state.email}
              type="text"
-             name="email"
-             className="form-control"
-           />
-         </div>
-
-         <div className="form-group">
-           <label className="control-label">Password</label>
-           <input
-             onChange={this.onChange}
+              name="email"
+              className="form-control"
+            />
+           {errors.email && <span className="help-block">{errors.email}</span>}
+          </div>
+  
+         <div className={classnames("form-group", { 'has-error': errors.password })}>
+            <label className="control-label">Password</label>
+            <input
+              onChange={this.onChange}
              value={this.state.password}
              type="password"
-             name="password"
-             className="form-control"
-           />
-         </div>
-
-         <div className="form-group">
-           <label className="control-label">Password Confirmation</label>
-           <input
-             onChange={this.onChange}
+              name="password"
+              className="form-control"
+            />
+           {errors.password && <span className="help-block">{errors.password}</span>}
+          </div>
+  
+         <div className={classnames("form-group", { 'has-error': errors.passwordConfirmation })}>
+            <label className="control-label">Password Confirmation</label>
+            <input
+              onChange={this.onChange}
              value={this.state.passwordConfirmation}
              type="password"
-             name="passwordConfirmation"
-             className="form-control"
-           />
-         </div>
+              name="passwordConfirmation"
+              className="form-control"
+            />
+           {errors.passwordConfirmation && <span className="help-block">{errors.passwordConfirmation}</span>}
+          </div>
+  
 
-         <div className="form-group">
-           <label className="control-label">Genre</label>
-           <select
-             className="form-control"
+         <div className={classnames("form-group", { 'has-error': errors.genre })}>
+            <label className="control-label">Genre</label>
+            <select
+              className="form-control"
              name="genre"
              onChange={this.onChange}
              value={this.state.genre}
            >
-             <option value="" disabled>Choose Your Genre</option>
-             {options}
-           </select>
-         </div>
-
-         <div className="form-group">
-           <button className="btn btn-primary btn-lg">
-             Sign up
-           </button>
-         </div>
+              <option value="" disabled>Choose Your Genre</option>
+              {options}
+            </select>
+           {errors.genre && <span className="help-block">{errors.genre}</span>}
+          </div>
+  
+          <div className="form-group">
+           <button disabled={this.state.isLoading} className="btn btn-danger btn-lg">
+              Sign up
+            </button>
+          </div>
        </form>
      );
    }
  }
-
+ 
  ArtistSignupForm.propTypes = {
    artistSignupRequest: React.PropTypes.func.isRequired
  }
-
+ 
  export default ArtistSignupForm;
