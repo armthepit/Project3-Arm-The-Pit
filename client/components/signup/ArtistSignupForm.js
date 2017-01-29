@@ -1,6 +1,11 @@
 import React from 'react';
  import genres from '../../data/genres';
  import map from 'lodash/map';
+ import draftjs from 'draft-js';
+ import { Editor } from 'react-draft-wysiwyg';
+ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
+
 
  class ArtistSignupForm extends React.Component {
    constructor(props) {
@@ -79,6 +84,18 @@ import React from 'react';
              {options}
            </select>
          </div>
+
+         <div className="form-group" >
+           <Editor
+            //  wrapperClassName="wrapper-class"
+            //  editorClassName="editor-class"
+            //  toolbarClassName="toolbar-class"
+            //  wrap perStyle={wrapperStyle}
+            //  editorStyle={editorStyle}
+            //  toolbarStyle={toolbarStyle}
+           />
+         </div>
+
 
          <div className="form-group">
            <button className="btn btn-primary btn-lg">

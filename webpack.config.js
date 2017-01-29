@@ -13,9 +13,23 @@ module.exports = {
           presets: ["react", "es2015", "stage-0"],
           plugins: ["transform-decorators-legacy"],
         }
-      }
+      },
+      {
+        test: /\.css$/,
+       loaders: [
+      'style', 'css'
+    ]
+    }
     ]
   },
+//   module: {
+//   loaders: [{
+//     test: /\.css$/,
+//     loaders: [
+//       'style', 'css'
+//     ]
+//   }]
+// },
   // This lets us debug our react code in chrome dev tools. Errors will have lines and file names
   // Without this the console says all errors are coming from just coming from bundle.js
   devtool: "eval-source-map"
