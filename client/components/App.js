@@ -1,6 +1,7 @@
  import React from 'react';
 
  import NavigationBar from './NavigationBar';
+ import FlashMessagesList from './flash/FlashMessagesList';
  import Footer from './Footer';
   
   class App extends React.Component {
@@ -8,6 +9,7 @@
       return (
        <div className="container">
          <NavigationBar />
+         <FlashMessagesList />
          {this.props.children}
          <Footer />
        </div>
