@@ -6,6 +6,7 @@
   import draftjs from 'draft-js';
   import { Editor } from 'react-draft-wysiwyg';
   import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+  import TextFieldGroup from '../common/TextFieldGroup';
   
   class ArtistSignupForm extends React.Component {
     constructor(props) {
@@ -60,41 +61,31 @@
           <h1>Artist Signup</h1>
   
  
-         <div className={classnames("form-group", { 'has-error': errors.email })}>
-            <label className="control-label">Email</label>
-            <input
-              onChange={this.onChange}
-             value={this.state.email}
-             type="text"
-              name="email"
-              className="form-control"
-            />
-           {errors.email && <span className="help-block">{errors.email}</span>}
-          </div>
+        <TextFieldGroup
+           error={errors.email}
+           label="Email"
+           onChange={this.onChange}
+           value={this.state.email}
+           field="email"
+         />
   
-         <div className={classnames("form-group", { 'has-error': errors.password })}>
-            <label className="control-label">Password</label>
-            <input
-              onChange={this.onChange}
-             value={this.state.password}
-             type="password"
-              name="password"
-              className="form-control"
-            />
-           {errors.password && <span className="help-block">{errors.password}</span>}
-          </div>
+        <TextFieldGroup
+           error={errors.password}
+           label="Password"
+           onChange={this.onChange}
+           value={this.state.password}
+           field="password"
+           type="password"
+         />
   
-         <div className={classnames("form-group", { 'has-error': errors.passwordConfirmation })}>
-            <label className="control-label">Password Confirmation</label>
-            <input
-              onChange={this.onChange}
-             value={this.state.passwordConfirmation}
-             type="password"
-              name="passwordConfirmation"
-              className="form-control"
-            />
-           {errors.passwordConfirmation && <span className="help-block">{errors.passwordConfirmation}</span>}
-          </div>
+        <TextFieldGroup
+           error={errors.passwordConfirmation}
+           label="Password Confirmation"
+           onChange={this.onChange}
+           value={this.state.passwordConfirmation}
+           field="passwordConfirmation"
+           type="password"
+         />
   
 
          <div className={classnames("form-group", { 'has-error': errors.genre })}>
