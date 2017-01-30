@@ -1,10 +1,10 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-var fansSchema = new mongoose.Schema({
+let fansSchema = new mongoose.Schema({
 	email: {
 		type: String, 
 	},
-	password: {
+	password_encrypt: {
 		type: String, 
 	},	
 	name: {
@@ -31,6 +31,6 @@ var fansSchema = new mongoose.Schema({
 	}		
 });
 
-var Fans = mongoose.model("Fans", fansSchema);
+let Fans = mongoose.model("Fans", fansSchema);
 
 module.exports = Fans;

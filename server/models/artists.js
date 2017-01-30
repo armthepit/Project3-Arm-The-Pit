@@ -1,10 +1,10 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-var artistsSchema = new mongoose.Schema({
+let artistsSchema = new mongoose.Schema({
 	email: {
 		type: String, 
 	},
-	password: {
+	password_encrypt: {
 		type: String, 
 	},	
 	name: {
@@ -88,6 +88,6 @@ var artistsSchema = new mongoose.Schema({
 	}
 });
 
-var Artists = mongoose.model("Artists", artistsSchema);
+let Artists = mongoose.model("Artists", artistsSchema);
 
 module.exports = Artists;
