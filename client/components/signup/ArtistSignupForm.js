@@ -1,4 +1,5 @@
  import React from 'react';
+ import { browserHistory } from 'react-router';
   import genre from '../../data/genres';
   import map from 'lodash/map';
  import classnames from 'classnames';
@@ -31,7 +32,7 @@
 
   isValid() {
      const { errors, isValid } = validateInput(this.state);
- 
+
      if (!isValid) {
        this.setState({ errors });
      }
@@ -40,16 +41,23 @@
    }
 
    onSubmit(e) {
-      e.preventDefault();
+     e.preventDefault();
  
      if (this.isValid()) {
-       this.setState({ errors: {}, isLoading: true });
-       this.props.artistSignupRequest(this.state).then(
-         () => {},
-         ({ data }) => this.setState({ errors: data, isLoading: false })
+        this.setState({ errors: {}, isLoading: true });
+        this.props.artistSignupRequest(this.state).then(
+          () => {
+           this.props.addFlashMessage({
+             type: 'success',
+             text: 'Artist, you signed up successfully. Welcome To Arm The Pit!'
+           });
+           browserHistory.push('/');
+          },
+          ({ data }) => this.setState({ errors: data, isLoading: false })
        );
+
      }
-    }
+   }
   
     render() {
      const { errors } = this.state;
@@ -126,7 +134,8 @@
  }
  
  ArtistSignupForm.propTypes = {
-   artistSignupRequest: React.PropTypes.func.isRequired
+   artistSignupRequest: React.PropTypes.func.isRequired,
+   addFlashMessage: React.PropTypes.func.isRequired
  }
  
  export default ArtistSignupForm;

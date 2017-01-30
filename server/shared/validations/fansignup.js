@@ -2,7 +2,7 @@
  const isEmpty = require('lodash/isEmpty');
 
 var validateInput = function(data) {
-	
+
    let errors = {};
  
    if (Validator.isEmpty(data.email)) {

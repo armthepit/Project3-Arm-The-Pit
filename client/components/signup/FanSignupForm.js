@@ -1,4 +1,5 @@
  import React from 'react';
+ import { browserHistory } from 'react-router';
   import states from '../../data/states';
   import map from 'lodash/map';
  import classnames from 'classnames';
@@ -36,17 +37,23 @@
       return isValid;
     }
     
-    onSubmit(e) {
+   onSubmit(e) {
      e.preventDefault();
-     
+ 
      if (this.isValid()) {
-     this.setState({ errors: {}, isLoading: true });
-     this.props.fanSignupRequest(this.state).then(
-       () => {},
-       ({ data }) => this.setState({ errors: data, isLoading: false })
-     );
+        this.setState({ errors: {}, isLoading: true });
+        this.props.fanSignupRequest(this.state).then(
+          () => {
+           this.props.addFlashMessage({
+             type: 'success',
+             text: 'Music Fan, you signed up successfully. Welcome to Arm The Pit!'
+           });
+            browserHistory.push('/');
+          },
+          ({ data }) => this.setState({ errors: data, isLoading: false })
+       );
      }
-    }
+   }
   
     render() {
      const { errors } = this.state;
@@ -110,7 +117,8 @@
  }
  
  FanSignupForm.propTypes = {
-   fanSignupRequest: React.PropTypes.func.isRequired
+   fanSignupRequest: React.PropTypes.func.isRequired,
+   addFlashMessage: React.PropTypes.func.isRequired
  }
  
  export default FanSignupForm;

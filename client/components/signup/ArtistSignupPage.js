@@ -2,14 +2,15 @@
  import ArtistSignupForm from './ArtistSignupForm';
  import { connect } from 'react-redux';
  import { artistSignupRequest } from '../../actions/artistSignupActions'; 
+ import { addFlashMessage } from '../../actions/flashMessages.js';
 
   class ArtistSignupPage extends React.Component {
     render() {
-      const { artistSignupRequest } = this.props;
+      const { artistSignupRequest, addFlashMessage } = this.props;
       return (
        <div className="row">
          <div className="col-md-4 col-md-offset-4">
-           <ArtistSignupForm artistSignupRequest={artistSignupRequest} />
+           <ArtistSignupForm artistSignupRequest={artistSignupRequest} addFlashMessage={addFlashMessage}/>
          </div>
        </div>
       );
@@ -17,8 +18,9 @@
   }
  
 ArtistSignupPage.propTypes = {
-   artistSignupRequest: React.PropTypes.func.isRequired
+   artistSignupRequest: React.PropTypes.func.isRequired,
+   addFlashMessage: React.PropTypes.func.isRequired
  }
  
  
- export default connect(null, { artistSignupRequest })(ArtistSignupPage);
+ export default connect(null, { artistSignupRequest, addFlashMessage })(ArtistSignupPage);
