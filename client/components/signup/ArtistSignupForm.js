@@ -2,6 +2,10 @@
   import genre from '../../data/genres';
   import map from 'lodash/map';
  import classnames from 'classnames';
+ import validateInput from '../../../server/shared/validations/artistsignup';
+  import draftjs from 'draft-js';
+  import { Editor } from 'react-draft-wysiwyg';
+  import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
   
   class ArtistSignupForm extends React.Component {
     constructor(props) {
@@ -19,18 +23,31 @@
       this.onChange = this.onChange.bind(this);
      this.onSubmit = this.onSubmit.bind(this);
    }
- 
+
    onChange(e) {
      this.setState({ [e.target.name]: e.target.value });
    }
-  
-    onSubmit(e) {
+
+  isValid() {
+     const { errors, isValid } = validateInput(this.state);
+ 
+     if (!isValid) {
+       this.setState({ errors });
+     }
+ 
+     return isValid;
+   }
+
+   onSubmit(e) {
       e.preventDefault();
-     this.setState({ errors: {}, isLoading: true });
-     this.props.artistSignupRequest(this.state).then(
-       () => {},
-       ({ data }) => this.setState({ errors: data, isLoading: false })
-     );
+ 
+     if (this.isValid()) {
+       this.setState({ errors: {}, isLoading: true });
+       this.props.artistSignupRequest(this.state).then(
+         () => {},
+         ({ data }) => this.setState({ errors: data, isLoading: false })
+       );
+     }
     }
   
     render() {
@@ -93,6 +110,19 @@
             </select>
            {errors.genre && <span className="help-block">{errors.genre}</span>}
           </div>
+
+          <div className="form-group" >
+            <Editor
+             //  wrapperClassName="wrapper-class"
+             //  editorClassName="editor-class"
+             //  toolbarClassName="toolbar-class"
+             //  wrap perStyle={wrapperStyle}
+             //  editorStyle={editorStyle}
+             //  toolbarStyle={toolbarStyle}
+            />
+          </div>
+ 
+ 
   
           <div className="form-group">
            <button disabled={this.state.isLoading} className="btn btn-danger btn-lg">

@@ -2,6 +2,7 @@
   import states from '../../data/states';
   import map from 'lodash/map';
  import classnames from 'classnames';
+  import validateInput from '../../../server/shared/validations/fansignup';
   
   class FanSignupForm extends React.Component {
     constructor(props) {
@@ -23,14 +24,27 @@
    onChange(e) {
      this.setState({ [e.target.name]: e.target.value });
    }
-  
+
+    isValid() {
+      const { errors, isValid } = validateInput(this.state);
+
+      if (!isValid) {
+        this.setState({ errors });
+      }
+
+      return isValid;
+    }
+    
     onSubmit(e) {
-      e.preventDefault();
+     e.preventDefault();
+     
+     if (this.isValid()) {
      this.setState({ errors: {}, isLoading: true });
      this.props.fanSignupRequest(this.state).then(
        () => {},
        ({ data }) => this.setState({ errors: data, isLoading: false })
      );
+     }
     }
   
     render() {
