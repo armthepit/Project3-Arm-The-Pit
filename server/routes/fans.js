@@ -1,31 +1,49 @@
  const express = require('express');
- const validateInput = require('../shared/validations/fansignup');
+ const commonValidations = require('../shared/validations/fansignup');
+ const mongoose = require('mongoose');
+ const Promise = require('bluebird');
  const bcrypt = require('bcryptjs');
+ const isEmpty = require('lodash/isEmpty')
 
- let Fans = require('../models/fans');
+ let Fan = require('../models/fans');
+ let router = express.Router();
 
-let router = express.Router();
- 
+ mongoose.Promise = Promise;
+
+ function validateInput(data, otherValidations) {
+     let { errors } = otherValidations(data);
+     return Fan.find({ email: data.email })
+         .then(Fan => {
+             if (Fan.length) {
+                 if (Fan[0].email === data.email) {
+                     errors.email = 'Email is already registered';
+                 }
+             }
+             return {
+                 errors,
+                 isValid: isEmpty(errors)
+             }
+         });
+ }
+
  router.post('/', (req, res) => {
-   const { errors, isValid } = validateInput(req.body);
- 
-   if (isValid) {
-     const { email, password, usa } = req.body;
-     const password_encrypt = bcrypt.hashSync(password, 10);
-	Fans.create({
-		email: email,
-		password_encrypt: password_encrypt,
-		state: usa
-	}, function(err, docs){    
-		if(err){
-			res.status(400).json(err);			
-		} else {
-			res.json({ success: true });
-		}
-	});
-   } else {
-      res.status(400).json(errors);
-    }
+     validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
+         if (isValid) {
+             const { email, password, usa } = req.body;
+             const password_encrypt = bcrypt.hashSync(password, 10);
+             const newFan = new Fan({
+                 email: email,
+                 password: password_encrypt,
+                 state: usa
+             });
+
+             newFan.save()
+                 .then(newFan => res.json({ success: true }))
+                 .catch(err => res.status(500).json({ error: err }));
+         } else {
+             res.status(400).json(errors);
+         }
+     })﻿
  });
- 
+
  module.exports = router;

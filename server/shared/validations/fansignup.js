@@ -7,9 +7,11 @@ var validateInput = function(data) {
  
    if (Validator.isEmpty(data.email)) {
      errors.email = 'This field is required';
+     emailError = true;
    }
    if (!Validator.isEmail(data.email)) {
      errors.email = 'Email is invalid';
+     emailError = true;
    }
    if (Validator.isEmpty(data.password)) {
      errors.password = 'This field is required';
