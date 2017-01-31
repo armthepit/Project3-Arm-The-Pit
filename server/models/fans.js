@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 let fansSchema = new mongoose.Schema({
 	email: {
 		type: String, 
+		unique : true
 	},
 	password_encrypt: {
 		type: String, 

@@ -4,15 +4,17 @@
 var validateInput = function(data) {
 
    let errors = {};
-
+ 
    if (Validator.isEmpty(data.email)) {
      errors.email = 'This field is required';
+     emailError = true;
    }
    if (!Validator.isEmail(data.email)) {
      errors.email = 'Email is invalid';
+     emailError = true;
    }
    if (Validator.isEmpty(data.password)) {
-     errors.password = 'This field is required';
+     errors.password = 'This field is required. Why';
    }
    if (Validator.isEmpty(data.passwordConfirmation)) {
      errors.passwordConfirmation = 'This field is required';
@@ -28,6 +30,6 @@ var validateInput = function(data) {
      errors,
      isValid: isEmpty(errors)
    }
- };
+ }
 
- module.exports = validateInput;
+  module.exports = validateInput;
