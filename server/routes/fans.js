@@ -26,6 +26,14 @@
          });
  }
 
+ router.get('/:fan', function(req, res){
+    Fan.findOne({'email': req.params.fan})
+        .then(Fan => {
+                console.log(Fan);
+                res.json( Fan );
+        })
+});
+
  router.post('/', (req, res) => {
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {

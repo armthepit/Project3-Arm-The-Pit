@@ -16,11 +16,13 @@
         passwordConfirmation: '',
        usa: '',
        errors: {},
-       isLoading: false
+       isLoading: false,
+       invalid: false
       }
   
       this.onChange = this.onChange.bind(this);
      this.onSubmit = this.onSubmit.bind(this);
+     this.checkExists = this.checkExists.bind(this);
    }
  
    onChange(e) {
@@ -36,6 +38,26 @@
 
       return isValid;
     }
+
+  checkExists(e) {
+     const field = e.target.name;
+     const val = e.target.value;
+     if (val !== '') {
+       this.props.isFanExists(val).then(res => {
+         let errors = this.state.errors;
+         let invalid;
+         if (res.data != null) {
+           errors[field] = 'There is a a fan with that ' + field;
+           invalid = true;
+         } else {
+           errors[field] = '';
+           invalid = false;
+         }
+         this.setState({ errors, invalid });
+       });
+     }
+   }
+ 
     
    onSubmit(e) {
      e.preventDefault();
@@ -69,6 +91,7 @@
            error={errors.email}
            label="Email"
            onChange={this.onChange}
+           checkExists={this.checkExists}
            value={this.state.email}
            field="email"
          />
@@ -107,7 +130,7 @@
           </div>
   
           <div className="form-group">
-           <button disabled={this.state.isLoading} className="btn btn-danger btn-lg">
+           <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-danger btn-lg">
               Sign up
             </button>
           </div>
@@ -118,7 +141,12 @@
  
  FanSignupForm.propTypes = {
    fanSignupRequest: React.PropTypes.func.isRequired,
-   addFlashMessage: React.PropTypes.func.isRequired
+   addFlashMessage: React.PropTypes.func.isRequired,
+   isFanExists: React.PropTypes.func.isRequired
+ }
+
+  FanSignupForm.contextTypes = {
+  router: React.PropTypes.object.isRequired
  }
  
  export default FanSignupForm;
