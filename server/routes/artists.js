@@ -26,6 +26,14 @@
          });
  }
 
+router.get('/:artist', function(req, res){
+    Artist.findOne({'email': req.params.artist})
+        .then(Artist => {
+                console.log(Artist);
+                res.json( Artist );
+        })
+});
+
  router.post('/', (req, res) => {
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {
