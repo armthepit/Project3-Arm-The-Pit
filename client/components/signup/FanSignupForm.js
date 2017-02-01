@@ -34,7 +34,7 @@ class FanSignupForm extends React.Component {
             <option key = { val }
             value = { val } > { key } </option>
         );
-        const countryOptions = map(countries, (val, key) =>
+        const countryOptions = map(country, (val, key) =>
             <option key = { val }
             value = { val } > { key } </option>
         );
