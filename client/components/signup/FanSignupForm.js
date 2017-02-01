@@ -1,7 +1,7 @@
 import React from 'react';
 import states from '../../data/states';
 import map from 'lodash/map';
-import countries from '../../data/countries'
+import country from '../../data/countries'
 
 class FanSignupForm extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class FanSignupForm extends React.Component {
             password: '',
             passwordConfirmation: '',
             usa: '',
-            countries: ''
+            country: ''
         }
 
         this.onChange = this.onChange.bind(this);
@@ -71,9 +71,9 @@ class FanSignupForm extends React.Component {
 
             <div className = "form-group">
             <label className = "control-label" > Country </label> <select className = "form-control"
-            name = "countries"
+            name = "country"
             onChange = { this.onChange }
-            value = { this.state.countries } >
+            value = { this.state.country } >
             <option value = ""
             disabled> Choose Your Country </option> { options } </select> </div>
 
