@@ -12,7 +12,9 @@ import { Link } from 'react-router';
          <div className="collapse navbar-collapse">
            <ul className="nav navbar-nav navbar-right">
              <li><Link to="/artistsignup">Artist Sign up</Link></li>
+             <li><Link to="/artistlogin">Artist Login</Link></li>
              <li><Link to="/fansignup">Fan Sign up</Link></li>
+             <li><Link to="/fanlogin">Fan Login</Link></li>
            </ul>
          </div>
        </div>

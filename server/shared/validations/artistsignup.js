@@ -12,7 +12,7 @@ var validateInput = function(data) {
      errors.email = 'Email is invalid';
    }
    if (Validator.isEmpty(data.password)) {
-     errors.password = 'This field is required. Why';
+     errors.password = 'This field is required.';
    }
    if (Validator.isEmpty(data.passwordConfirmation)) {
      errors.passwordConfirmation = 'This field is required';
