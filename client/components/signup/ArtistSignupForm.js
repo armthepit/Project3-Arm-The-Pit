@@ -8,7 +8,7 @@
   import { Editor } from 'react-draft-wysiwyg';
   import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
   import TextFieldGroup from '../common/TextFieldGroup';
-  
+
   class ArtistSignupForm extends React.Component {
     constructor(props) {
      super(props);
@@ -22,7 +22,7 @@
        isLoading: false,
        invalid: false
       }
-  
+
     this.onChange = this.onChange.bind(this);
      this.onSubmit = this.onSubmit.bind(this);
      this.checkExists = this.checkExists.bind(this);
@@ -38,7 +38,7 @@
      if (!isValid) {
        this.setState({ errors });
      }
- 
+
      return isValid;
    }
 
@@ -60,12 +60,12 @@
        });
      }
    }
- 
- 
+
+
 
    onSubmit(e) {
      e.preventDefault();
- 
+
      if (this.isValid()) {
         this.setState({ errors: {}, isLoading: true });
         this.props.artistSignupRequest(this.state).then(
@@ -81,7 +81,7 @@
 
      }
    }
-  
+
     render() {
      const { errors } = this.state;
       const options = map(genre, (val, key) =>
@@ -90,8 +90,8 @@
       return (
         <form onSubmit={this.onSubmit}>
           <h1>Artist Signup</h1>
-  
- 
+
+
         <TextFieldGroup
            error={errors.email}
            label="Email"
@@ -100,7 +100,7 @@
            value={this.state.email}
            field="email"
          />
-  
+
         <TextFieldGroup
            error={errors.password}
            label="Password"
@@ -109,7 +109,7 @@
            field="password"
            type="password"
          />
-  
+
         <TextFieldGroup
            error={errors.passwordConfirmation}
            label="Password Confirmation"
@@ -118,7 +118,7 @@
            field="passwordConfirmation"
            type="password"
          />
-  
+
 
          <div className={classnames("form-group", { 'has-error': errors.genre })}>
             <label className="control-label">Genre</label>
@@ -136,17 +136,17 @@
 
           <div className="form-group" >
             <Editor
-             //  wrapperClassName="wrapper-class"
-             //  editorClassName="editor-class"
-             //  toolbarClassName="toolbar-class"
-             //  wrap perStyle={wrapperStyle}
-             //  editorStyle={editorStyle}
-             //  toolbarStyle={toolbarStyle}
+              // wrapperClassName="wrapper-class"
+              // editorClassName="editor-class"
+              // toolbarClassName="toolbar-class"
+              // wrap perStyle={wrapperStyle}
+              // editorStyle={editorStyle}
+              // toolbarStyle={toolbarStyle}
             />
           </div>
- 
- 
-  
+
+
+
           <div className="form-group">
            <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-danger btn-lg">
               Sign up
@@ -156,7 +156,7 @@
      );
    }
  }
- 
+
  ArtistSignupForm.propTypes = {
    artistSignupRequest: React.PropTypes.func.isRequired,
    addFlashMessage: React.PropTypes.func.isRequired,
@@ -166,5 +166,5 @@
  ArtistSignupForm.contextTypes = {
   router: React.PropTypes.object.isRequired
  }
- 
+
  export default ArtistSignupForm;

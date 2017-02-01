@@ -1,5 +1,5 @@
  import React from 'react';
-  
+
  class Greetings extends React.Component {
    render() {
      return (
@@ -9,5 +9,5 @@
      );
    }
   }
- 
+
  export default Greetings;
