@@ -9,7 +9,8 @@ class FanSignupForm extends React.Component {
             email: '',
             password: '',
             passwordConfirmation: '',
-            usa: ''
+            usa: '',
+            country: ''
         }
 
         this.onChange = this.onChange.bind(this);
@@ -29,47 +30,55 @@ class FanSignupForm extends React.Component {
 
     render() {
         const options = map(states, (val, key) =>
-            < option key = { val }
-            value = { val } > { key } < /option>
+            <option key = { val }
+            value = { val } > { key } </option>
         );
-        return ( < form onSubmit = { this.onSubmit } >
-            < h1 > Fan Sign Up < /h1>
+        return ( <form onSubmit = { this.onSubmit } >
+            <h1> Fan Sign Up </h1>
 
-            < div className = "form-group" >
-            < label className = "control-label" > Email < /label> < input onChange = { this.onChange }
+            <div className = "form-group">
+            <label className = "control-label"> Email </label><input onChange = { this.onChange }
             value = { this.state.email }
             type = "text"
             name = "email"
-            className = "form-control" / >
-            < /div>
+            className = "form-control"/>
+            </div>
 
-            < div className = "form-group" >
-            < label className = "control-label" > Password < /label> < input onChange = { this.onChange }
+            <div className = "form-group">
+            <label className = "control-label" > Password </label> <input onChange = { this.onChange }
             value = { this.state.password }
             type = "password"
             name = "password"
-            className = "form-control" / >
-            < /div>
+            className = "form-control"/>
+            </div>
 
-            < div className = "form-group" >
-            < label className = "control-label" > Password Confirmation < /label> < input onChange = { this.onChange }
+            <div className = "form-group">
+            <label className = "control-label"> Password Confirmation </label> <input onChange = { this.onChange }
             value = { this.state.passwordConfirmation }
             type = "password"
             name = "passwordConfirmation"
-            className = "form-control" / >
-            < /div>
+            className = "form-control" />
+            </div>
 
-            < div className = "form-group" >
-            < label className = "control-label" > State < /label> < select className = "form-control"
+            <div className = "form-group">
+            <label className = "control-label" > State </label> <select className = "form-control"
             name = "usa"
             onChange = { this.onChange }
             value = { this.state.usa } >
-            < option value = ""
-            disabled > Choose Your State < /option> { options } < /select> < /div>
+            <option value = ""
+            disabled> Choose Your State </option> { options } </select> </div>
 
-            < div className = "form-group" >
-            < button className = "btn btn-primary btn-lg" >
-            Sign up < /button> < /div> < /form>
+            <div className = "form-group">
+            <label className = "control-label" > Country </label> <select className = "form-control"
+            name = "country"
+            onChange = { this.onChange }
+            value = { this.state.usa } >
+            <option value = ""
+            disabled> Choose Your Country </option> { options } </select> </div>
+
+            <div className = "form-group">
+            <button className = "btn btn-primary btn-lg">
+            Sign up </button> </div></form>
         );
     }
 }
