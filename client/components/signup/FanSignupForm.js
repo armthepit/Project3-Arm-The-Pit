@@ -1,7 +1,7 @@
 import React from 'react';
 import states from '../../data/states';
 import map from 'lodash/map';
-import countries from '../../data/states'
+import countries from '../../data/countries'
 
 class FanSignupForm extends React.Component {
     constructor(props) {
