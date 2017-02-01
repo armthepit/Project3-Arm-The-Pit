@@ -30,7 +30,11 @@ class FanSignupForm extends React.Component {
     }
 
     render() {
-        const options = map(states, (val, key) =>
+        const stateOptions = map(states, (val, key) =>
+            <option key = { val }
+            value = { val } > { key } </option>
+        );
+        const countryOptions = map(countries, (val, key) =>
             <option key = { val }
             value = { val } > { key } </option>
         );
@@ -67,7 +71,7 @@ class FanSignupForm extends React.Component {
             onChange = { this.onChange }
             value = { this.state.usa } >
             <option value = ""
-            disabled> Choose Your State </option> { options } </select> </div>
+            disabled> Choose Your State </option> { stateOptions } </select> </div>
 
             <div className = "form-group">
             <label className = "control-label" > Country </label> <select className = "form-control"
@@ -75,7 +79,7 @@ class FanSignupForm extends React.Component {
             onChange = { this.onChange }
             value = { this.state.country } >
             <option value = ""
-            disabled> Choose Your Country </option> { options } </select> </div>
+            disabled> Choose Your Country </option> { countryOptions } </select> </div>
 
             <div className = "form-group">
             <button className = "btn btn-primary btn-lg">
