@@ -5,7 +5,7 @@
 
      let errors = {};
 
-     if (!Validator.isEmail(data.email)) {
+     if (Validator.isEmpty(data.email)) {
          errors.email = 'This field is required.';
      }
      if (Validator.isEmpty(data.password)) {
