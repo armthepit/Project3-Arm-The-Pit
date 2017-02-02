@@ -12,19 +12,20 @@
 
  function validateInput(data, otherValidations) {
      let { errors } = otherValidations(data);
-     return Fan.find({ email: data.email })
+     return Fan.findOne({ email: data.email })
          .then(Fan => {
-             if (Fan.length) {
-                 if (Fan[0].email === data.email) {
+            if (Fan != null) {
+                 if (Fan.email === data.email) {
                      errors.email = 'Email is already registered';
                  }
-             }
+            }     
+
              return {
                  errors,
                  isValid: isEmpty(errors)
              }
          });
- }
+ } 
 
  router.get('/:fan', function(req, res){
     Fan.findOne({'email': req.params.fan})

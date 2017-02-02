@@ -7,6 +7,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import draftjs from 'draft-js';
 import reactdraftwysiwyg from 'react-draft-wysiwyg';
 import rootReducer from './rootreducer';
+import setAuthorizationToken from './utils/setAuthorizationToken';
 
 import routes from './routes';
 
@@ -17,6 +18,8 @@ import routes from './routes';
      window.devToolsExtension ? window.devToolsExtension() : f => f
    )
   );
+
+setAuthorizationToken(localStorage.jwtToken); 
 
 render(
   <Provider store={store}>

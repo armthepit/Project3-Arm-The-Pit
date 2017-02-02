@@ -12,19 +12,20 @@
 
  function validateInput(data, otherValidations) {
      let { errors } = otherValidations(data);
-     return Artist.find({ email: data.email })
+     return Artist.findOne({ email: data.email })
          .then(Artist => {
-             if (Artist.length) {
-                 if (Artist[0].email === data.email) {
+            if (Artist != null) {
+                 if (Artist.email === data.email) {
                      errors.email = 'Email is already registered';
                  }
-             }
+            }     
+
              return {
                  errors,
                  isValid: isEmpty(errors)
              }
          });
- }
+ } 
 
 router.get('/:artist', function(req, res){
     Artist.findOne({'email': req.params.artist})
@@ -41,7 +42,7 @@ router.get('/:artist', function(req, res){
              const password_encrypt = bcrypt.hashSync(password, 10);
              const newArtist = new Artist({
                  email: email,
-                 password: password_encrypt,
+                 password_encrypt: password_encrypt,
                  genre: genre
              });
 
