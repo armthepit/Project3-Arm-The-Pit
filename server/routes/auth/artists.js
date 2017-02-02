@@ -35,6 +35,7 @@
  router.post('/', (req, res) => {
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {
+                console.log(Artist.email);
              const token = jwt.sign({
                  id: Artist._id,
                  email: Artist.email
