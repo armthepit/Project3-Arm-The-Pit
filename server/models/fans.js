@@ -8,7 +8,7 @@ let fansSchema = new mongoose.Schema({
 	password_encrypt: {
 		type: String, 
 	},	
-	name: {
+	username: {
 		type: String, 
 	},
 	hometown: {

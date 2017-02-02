@@ -37,12 +37,15 @@
  router.post('/', (req, res) => {
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {
-             const { email, password, usa } = req.body;
+             const { username, email, password, hometown, usa, country } = req.body;
              const password_encrypt = bcrypt.hashSync(password, 10);
              const newFan = new Fan({
+                 username: username,
                  email: email,
                  password: password_encrypt,
-                 state: usa
+                 hometown: hometown,
+                 state: usa,
+                 country: country
              });
 
              newFan.save()
