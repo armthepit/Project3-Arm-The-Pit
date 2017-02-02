@@ -1,4 +1,4 @@
- import React from 'react';
+import React from 'react';
  import { browserHistory } from 'react-router';
   import genre from '../../data/genres';
   import states from '../../data/states.js'
