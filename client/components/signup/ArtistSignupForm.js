@@ -1,6 +1,7 @@
  import React from 'react';
  import { browserHistory } from 'react-router';
   import genre from '../../data/genres';
+  import states from '../../data/states.js'
   import map from 'lodash/map';
  import classnames from 'classnames';
  import validateInput from '../../../server/shared/validations/artistsignup';
@@ -8,21 +9,40 @@
   import { Editor } from 'react-draft-wysiwyg';
   import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
   import TextFieldGroup from '../common/TextFieldGroup';
-  
+
   class ArtistSignupForm extends React.Component {
     constructor(props) {
      super(props);
      this.state = {
+
        username: '',
-        email: '',
-        password: '',
-        passwordConfirmation: '',
+       email: '',
+       password: '',
+       passwordConfirmation: '',
+       name:'',
+       hometown:'',
+       country:'',
+       state:'',
        genre: '',
+       recordLabel:'',
+       bio:'',
+       bandMembers:'',
+       artistWebsite:'',
+       facebook:'',
+       reverbnation:'',
+       soundCloud:'',
+       twitter:'',
+       youtubeChannel:'',
+       otherWebsite1:'',
+       otherWebsite2:'',
+       representative:'',
+       repEmail:'',
+       repPhone:'',
        errors: {},
        isLoading: false,
        invalid: false
       }
-  
+
     this.onChange = this.onChange.bind(this);
      this.onSubmit = this.onSubmit.bind(this);
      this.checkExists = this.checkExists.bind(this);
@@ -38,7 +58,7 @@
      if (!isValid) {
        this.setState({ errors });
      }
- 
+
      return isValid;
    }
 
@@ -60,12 +80,12 @@
        });
      }
    }
- 
- 
+
+
 
    onSubmit(e) {
      e.preventDefault();
- 
+
      if (this.isValid()) {
         this.setState({ errors: {}, isLoading: true });
         this.props.artistSignupRequest(this.state).then(
@@ -81,17 +101,23 @@
 
      }
    }
-  
+
     render() {
      const { errors } = this.state;
-      const options = map(genre, (val, key) =>
+      const genreOptions = map(genre, (val, key) =>
         <option key={val} value={val}>{key}</option>
       );
+
+       const stateOptions = map(states, (val, key) =>
+       <option key={val} value={val}>{key}</option>
+     );
+
       return (
         <form onSubmit={this.onSubmit}>
           <h1>Artist Signup</h1>
-  
- 
+
+
+
         <TextFieldGroup
            error={errors.email}
            label="Email"
@@ -100,7 +126,7 @@
            value={this.state.email}
            field="email"
          />
-  
+
         <TextFieldGroup
            error={errors.password}
            label="Password"
@@ -109,7 +135,7 @@
            field="password"
            type="password"
          />
-  
+
         <TextFieldGroup
            error={errors.passwordConfirmation}
            label="Password Confirmation"
@@ -118,7 +144,36 @@
            field="passwordConfirmation"
            type="password"
          />
-  
+         <TextFieldGroup
+            error={errors.text}
+            label="Band Name"
+            onChange={this.onChange}
+            checkExists={this.checkExists}
+            value={this.state.text}
+            field="name"
+          />
+          <TextFieldGroup
+             error={errors.text}
+             label="Hometown"
+             onChange={this.onChange}
+             checkExists={this.checkExists}
+             value={this.state.text}
+             field="hometown"
+           />
+
+          <div className={classnames("form-group", { 'has-error': errors.states })}>
+             <label className="control-label">State</label>
+             <select
+               className="form-control"
+              name="State"
+              onChange={this.onChange}
+              value={this.state.states}
+            >
+               <option value="" disabled>What State are you from?</option>
+               {stateOptions}
+             </select>
+            {errors.states && <span className="help-block">{errors.states}</span>}
+           </div>
 
          <div className={classnames("form-group", { 'has-error': errors.genre })}>
             <label className="control-label">Genre</label>
@@ -129,10 +184,19 @@
              value={this.state.genre}
            >
               <option value="" disabled>Choose Your Genre</option>
-              {options}
+              {genreOptions}
             </select>
            {errors.genre && <span className="help-block">{errors.genre}</span>}
           </div>
+          <TextFieldGroup
+             error={errors.text}
+             label="Record Label"
+             onChange={this.onChange}
+             checkExists={this.checkExists}
+             value={this.state.text}
+             field="recordLabel"
+           />
+
 
           <div className="form-group" >
             <Editor
@@ -144,9 +208,12 @@
              //  toolbarStyle={toolbarStyle}
             />
           </div>
- 
- 
-  
+          <div>
+
+
+          </div>
+
+
           <div className="form-group">
            <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-danger btn-lg">
               Sign up
@@ -156,7 +223,7 @@
      );
    }
  }
- 
+
  ArtistSignupForm.propTypes = {
    artistSignupRequest: React.PropTypes.func.isRequired,
    addFlashMessage: React.PropTypes.func.isRequired,
@@ -166,5 +233,5 @@
  ArtistSignupForm.contextTypes = {
   router: React.PropTypes.object.isRequired
  }
- 
+
  export default ArtistSignupForm;
