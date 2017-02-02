@@ -1,8 +1,7 @@
 import React from 'react';
-import TextFieldGroup from '../common/TextFieldGroup';
+import { browserHistory } from 'react-router';
 import validateInput from '../../../server/shared/validations/artistlogin';
-import { connect } from 'react-redux';
-import { login } from '../../actions/artistlogin';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class ArtistLoginForm extends React.Component {
   constructor(props) {
@@ -14,9 +13,13 @@ class ArtistLoginForm extends React.Component {
       isLoading: false
     };
 
+    this.onChange = this.onChange.bind(this);    
     this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
   }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }  
 
   isValid() {
     const { errors, isValid } = validateInput(this.state);
@@ -30,55 +33,59 @@ class ArtistLoginForm extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    if (this.isValid()) {
-      this.setState({ errors: {}, isLoading: true });
-      this.props.login(this.state).then(
-        (res) => this.context.router.push('/'),
-        (err) => this.setState({ errors: err.data.errors, isLoading: false })
-      );
-    }
-  }
+     if (this.isValid()) {
+        this.setState({ errors: {}, isLoading: true });
+        this.props.login(this.state).then(
+          () => {
+           this.props.addFlashMessage({
+             type: 'success',
+             text: 'Artist, you have logged in successfully.'
+           });
+           browserHistory.push('/');
+          },
+          ({ data }) => this.setState({ errors: data, isLoading: false })
+       );
+     }
+   } 
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
+
 
   render() {
-    const { errors, email, password, isLoading } = this.state;
-
+    const { errors } = this.state;
     return (
       <form onSubmit={this.onSubmit}>
         <h1>Artist Login</h1>
 
         <TextFieldGroup
-          field="email"
-          label="Email"
-          value={email}
-          error={errors.email}
-          onChange={this.onChange}
-        />
+           error={errors.email}
+           label="Email"
+           onChange={this.onChange}
+           value={this.state.email}
+           field="email"
+        />     
 
         <TextFieldGroup
-          field="password"
-          label="Password"
-          value={password}
-          error={errors.password}
-          onChange={this.onChange}
-          type="password"
-        />
+           error={errors.password}
+           label="Password"
+           onChange={this.onChange}
+           value={this.state.password}
+           field="password"
+           type="password"
+         />   
 
-        <div className="form-group"><button className="btn btn-danger btn-lg" disabled={isLoading}>Login</button></div>
+       <div className="form-group"><button className="btn btn-danger btn-lg" disabled={this.state.isLoading}>Login</button></div>
       </form>
     );
   }
 }
 
 ArtistLoginForm.propTypes = {
-  login: React.PropTypes.func.isRequired
+  login: React.PropTypes.func.isRequired,
+  addFlashMessage: React.PropTypes.func.isRequired,
 }
 
 ArtistLoginForm.contextTypes = {
   router: React.PropTypes.object.isRequired
 }
 
-export default connect(null, { login })(ArtistLoginForm);
+export default ArtistLoginForm;

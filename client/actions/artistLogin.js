@@ -2,6 +2,6 @@ import axios from 'axios';
  
  export function login(data) {
    return dispatch => {
-     return axios.post('/api/artists/auth', data);
+     return axios.post('/api/auth/artists', data);
    }
  }
