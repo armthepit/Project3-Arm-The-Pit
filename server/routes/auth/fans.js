@@ -3,7 +3,9 @@
  const mongoose = require('mongoose');
  const Promise = require('bluebird');
  const bcrypt = require('bcryptjs');
- const isEmpty = require('lodash/isEmpty')
+ const isEmpty = require('lodash/isEmpty');
+ const jwt = require('jsonwebtoken');
+ const config = require('../../../server/config/jwt')
 
  let Fan = require('../../models/fans');
  let router = express.Router();
@@ -14,7 +16,7 @@
      let { errors } = otherValidations(data);
      return Fan.findOne({ email: data.email })
          .then(Fan => {
-             if ( Fan == null) {
+             if (Fan == null) {
                  errors.email = 'Invalid email/password';
              } else {
                  if (bcrypt.compareSync(data.password, Fan.password_encrypt)) {
@@ -33,7 +35,11 @@
  router.post('/', (req, res) => {
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {
-             res.json({ success: true })
+             const token = jwt.sign({
+                 id: Fan._id,
+                 email: Fan.email
+             }, config.jwtSecret);
+             res.status(200).json({token});
          } else {
              res.status(400).json(errors);
          }

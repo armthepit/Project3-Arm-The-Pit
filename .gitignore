@@ -3,3 +3,4 @@ node_modules
 .git
 server/config/connection.js
 server/config/config.js
+server/config/jwt.js
