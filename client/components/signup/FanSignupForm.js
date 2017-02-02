@@ -1,6 +1,7 @@
  import React from 'react';
  import { browserHistory } from 'react-router';
   import states from '../../data/states';
+  import country from '../../data/countries';
   import map from 'lodash/map';
  import classnames from 'classnames';
   import validateInput from '../../../server/shared/validations/fansignup';
@@ -14,10 +15,12 @@
         email: '',
         password: '',
         passwordConfirmation: '',
-       usa: '',
-       errors: {},
-       isLoading: false,
-       invalid: false
+        hometown: "",
+        usa: '',
+        country: '',
+        errors: {},
+        isLoading: false,
+        invalid: false
       }
   
       this.onChange = this.onChange.bind(this);
@@ -57,7 +60,6 @@
        });
      }
    }
- 
     
    onSubmit(e) {
      e.preventDefault();
@@ -79,14 +81,24 @@
   
     render() {
      const { errors } = this.state;
-      const options = map(states, (val, key) =>
+      const stateOptions = map(states, (val, key) =>
+        <option key={val} value={val}>{key}</option>
+      );
+      const countryOptions = map(country, (val, key) =>
         <option key={val} value={val}>{key}</option>
       );
       return (
         <form onSubmit={this.onSubmit}>
           <h1>Fan Signup</h1>
   
- 
+        <TextFieldGroup
+           error={errors.username}
+           label="Username"
+           onChange={this.onChange}
+           value={this.state.username}
+           field="username"
+         />
+
         <TextFieldGroup
            error={errors.email}
            label="Email"
@@ -113,7 +125,28 @@
            field="passwordConfirmation"
            type="password"
          />
-  
+
+         <TextFieldGroup
+           error={errors.hometown}
+           label="City"
+           onChange={this.onChange}
+           value={this.state.hometown}
+           field="hometown"
+         />
+
+          <div className={classnames("form-group", { 'has-error': errors.country })}>
+            <label className="control-label">Country</label>
+            <select
+              className="form-control"
+             name="country"
+             onChange={this.onChange}
+             value={this.state.country}
+           >
+              <option value="" disabled>Choose Your Country</option>
+              {countryOptions}
+            </select>
+           {errors.country && <span className="help-block">{errors.country}</span>}
+          </div>
 
          <div className={classnames("form-group", { 'has-error': errors.usa })}>
             <label className="control-label">State</label>
@@ -124,11 +157,21 @@
              value={this.state.usa}
            >
               <option value="" disabled>Choose Your State</option>
-              {options}
+              {stateOptions}
             </select>
            {errors.usa && <span className="help-block">{errors.usa}</span>}
           </div>
-  
+          
+          <div className="form-group">
+          <label className="control-label">Add A Profile Pic</label>
+          <input 
+            type="file" 
+            name="file" 
+            ref="file" 
+            />
+            </div>
+            <br />
+          
           <div className="form-group">
            <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-danger btn-lg">
               Sign up
