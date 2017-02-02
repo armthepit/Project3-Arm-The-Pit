@@ -4,6 +4,8 @@
  const Promise = require('bluebird');
  const bcrypt = require('bcryptjs');
  const isEmpty = require('lodash/isEmpty')
+ const jwt = require('jsonwebtoken');
+ const config = require('../../../server/config/jwt')
 
  let Artist = require('../../models/artists');
  let router = express.Router();
@@ -14,7 +16,7 @@
      let { errors } = otherValidations(data);
      return Artist.findOne({ email: data.email })
          .then(Artist => {
-             if ( Artist == null) {
+             if (Artist == null) {
                  errors.email = 'Invalid email/password';
              } else {
                  if (bcrypt.compareSync(data.password, Artist.password_encrypt)) {
@@ -33,7 +35,11 @@
  router.post('/', (req, res) => {
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {
-             res.json({ success: true })
+             const token = jwt.sign({
+                 id: Artist._id,
+                 email: Artist.email
+             }, config.jwtSecret);
+             res.status(200).json({token});
          } else {
              res.status(400).json(errors);
          }

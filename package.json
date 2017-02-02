@@ -26,6 +26,7 @@
     "classnames": "^2.2.5",
     "draft-js": "^0.9.1",
     "express": "^4.14.0",
+    "jsonwebtoken": "^7.2.1",
     "keyword-extractor": "0.0.13",
     "lodash": "^4.17.4",
     "material-ui": "^0.16.7",
