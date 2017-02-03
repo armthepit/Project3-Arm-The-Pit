@@ -17,3 +17,10 @@ body {
 .navbar-default .navbar-nav > li > a {
   color: #ff0000;
 }
+.row {
+	background-color: #000000;
+}
+
+.navbar-fixed-bottom {
+	position: fixed;
+}
