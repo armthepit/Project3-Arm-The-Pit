@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/armthepit/armthepit#readme",
   "dependencies": {
-    "axios": "0.12.0",
+    "axios": "0.13.1",
     "bcryptjs": "^2.4.0",
     "body-parser": "^1.16.0",
     "classnames": "^2.2.5",
