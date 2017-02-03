@@ -9,6 +9,9 @@
 
  let Fan = require('../../models/fans');
  let router = express.Router();
+ let jwtId = '';
+ let jwtEmail = '';
+ let jwtAccount = 'fan';
 
  mongoose.Promise = Promise;
 
@@ -21,6 +24,8 @@
              } else {
                  if (bcrypt.compareSync(data.password, Fan.password_encrypt)) {
                      console.log('password match');
+                     jwtId = Fan._id;
+                     jwtEmail = Fan.email;
                  } else {
                      errors.email = 'Invalid email/password';
                  }
@@ -36,8 +41,9 @@
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {
              const token = jwt.sign({
-                 id: Fan._id,
-                 email: Fan.email
+                 id: jwtId,
+                 email: jwtEmail,
+                 account: jwtAccount
              }, config.jwtSecret);
              res.status(200).json({token});
          } else {
