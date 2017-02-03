@@ -5,8 +5,28 @@ body {
 	background-size: cover;
 	background-attachment: fixed;
 	color: #ff0000;
-	font-family: 'Righteous', cursive;
 }
+
+/*Arm the Pit Welcome Font*/
+h1 {
+	font-family: 'New Rocker', cursive;
+	text-align: center;
+}
+
+/*Font for navbar and forms*/
+a, .navbar-brand, .control-label {
+	font-family: 'Lato', sans-serif;
+}
+/*Font weight for the navbar*/
+a, .navbar-brand {
+	font-weight: bolder;
+}
+
+/*Color for the form*/
+.control-label, input {
+	color: white;
+}
+
 /*This makes the navbar, jumbo and footer */
 .jumbotron, .navbar, .navbar-default, .navbar-fixed-bottom, .navbar-header, .navbar-brand {
    background: rgba(200, 54, 54, 0.0);
