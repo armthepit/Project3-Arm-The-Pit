@@ -1,5 +1,26 @@
 body {
-	background-color: #000000;
+	/*background-color: #000000;*/
+	background-image: url("../images/rock-wallpapers9.jpg");
 	color: #ff0000;
 	font-family: 'Righteous', cursive;
+}
+/*This makes the navbar, jumbo and footer */
+.jumbotron, .navbar, .navbar-default, .navbar-fixed-bottom, .navbar-header, .navbar-brand {
+   background: rgba(200, 54, 54, 0.0);
+	 border: 0;
+}
+
+.navbar-default .navbar-brand {
+	color: #ff0000;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #ff0000;
+}
+.row {
+	background-color: #000000;
+}
+
+.navbar-fixed-bottom {
+	position: fixed;
 }
