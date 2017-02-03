@@ -1,6 +1,9 @@
 body {
 	/*background-color: #000000;*/
 	background-image: url("../images/rock-wallpapers9.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
 	color: #ff0000;
 	font-family: 'Righteous', cursive;
 }
