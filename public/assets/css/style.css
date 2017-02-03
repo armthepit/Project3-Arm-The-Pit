@@ -18,9 +18,13 @@ body {
   color: #ff0000;
 }
 .row {
-	background-color: #000000;
+	background: rgba(5, 4, 4, 0.31);
 }
 
-.navbar-fixed-bottom {
+/*.navbar-fixed-bottom {
 	position: fixed;
-}
+}*/
+
+/*.rdw-editor-main {
+	border-style: solid;
+}*/
