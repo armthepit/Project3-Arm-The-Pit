@@ -1,20 +1,21 @@
- import React from 'react';
+import React from 'react';
  import { browserHistory } from 'react-router';
   import genre from '../../data/genres';
   import states from '../../data/states.js';
  import country from '../../data/countries';
   import map from 'lodash/map';
  import classnames from 'classnames';
-  import validateInput from '../../../server/shared/validations/artistsignup';
+ import validateInput from '../../../server/shared/validations/artistsignup';
   import draftjs from 'draft-js';
   import { Editor } from 'react-draft-wysiwyg';
-  import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';  
+  import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
   import TextFieldGroup from '../common/TextFieldGroup';
-  
+
   class ArtistSignupForm extends React.Component {
     constructor(props) {
      super(props);
      this.state = {
+
        username: '',
        email: '',
        password: '',
@@ -42,25 +43,25 @@
        isLoading: false,
        invalid: false
       }
-  
-      this.onChange = this.onChange.bind(this);
+
+    this.onChange = this.onChange.bind(this);
      this.onSubmit = this.onSubmit.bind(this);
      this.checkExists = this.checkExists.bind(this);
    }
- 
+
    onChange(e) {
      this.setState({ [e.target.name]: e.target.value });
    }
 
-    isValid() {
-      const { errors, isValid } = validateInput(this.state);
+  isValid() {
+     const { errors, isValid } = validateInput(this.state);
 
-      if (!isValid) {
-        this.setState({ errors });
-      }
+     if (!isValid) {
+       this.setState({ errors });
+     }
 
-      return isValid;
-    }
+     return isValid;
+   }
 
   checkExists(e) {
      const field = e.target.name;
@@ -70,7 +71,7 @@
          let errors = this.state.errors;
          let invalid;
          if (res.data != null) {
-           errors[field] = 'There is a a artist with that ' + field;
+           errors[field] = 'There is an artist with that ' + field;
            invalid = true;
          } else {
            errors[field] = '';
@@ -80,25 +81,28 @@
        });
      }
    }
-    
+
+
+
    onSubmit(e) {
      e.preventDefault();
- 
+
      if (this.isValid()) {
         this.setState({ errors: {}, isLoading: true });
         this.props.artistSignupRequest(this.state).then(
           () => {
            this.props.addFlashMessage({
              type: 'success',
-             text: 'Music Artist, you signed up successfully. Welcome to Arm The Pit!'
+             text: 'Artist, you signed up successfully. Welcome To Arm The Pit!'
            });
-            browserHistory.push('/');
+           browserHistory.push('/');
           },
           ({ data }) => this.setState({ errors: data, isLoading: false })
        );
+
      }
    }
-  
+
     render() {
      const { errors } = this.state;
       const genreOptions = map(genre, (val, key) =>
@@ -111,10 +115,13 @@
      const countryOptions = map(country, (val, key) =>
        <option key={val} value={val}>{key}</option>
      );
+
       return (
         <form onSubmit={this.onSubmit}>
           <h1>Artist Signup</h1>
-  
+
+
+
         <TextFieldGroup
            error={errors.email}
            label="Email"
@@ -328,7 +335,10 @@
                         field="repPhone"
                       />
 
-          
+
+
+
+
           <div className="form-group">
            <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-danger btn-lg">
               Sign up
@@ -338,15 +348,15 @@
      );
    }
  }
- 
+
  ArtistSignupForm.propTypes = {
    artistSignupRequest: React.PropTypes.func.isRequired,
    addFlashMessage: React.PropTypes.func.isRequired,
    isArtistExists: React.PropTypes.func.isRequired
  }
 
-  ArtistSignupForm.contextTypes = {
+ ArtistSignupForm.contextTypes = {
   router: React.PropTypes.object.isRequired
  }
- 
+
  export default ArtistSignupForm;
