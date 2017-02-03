@@ -1,7 +1,8 @@
 import React from 'react';
  import { browserHistory } from 'react-router';
   import genre from '../../data/genres';
-  import states from '../../data/states.js'
+  import states from '../../data/states.js';
+ import country from '../../data/countries';
   import map from 'lodash/map';
  import classnames from 'classnames';
  import validateInput from '../../../server/shared/validations/artistsignup';
@@ -111,6 +112,9 @@ import React from 'react';
        const stateOptions = map(states, (val, key) =>
        <option key={val} value={val}>{key}</option>
      );
+     const countryOptions = map(country, (val, key) =>
+       <option key={val} value={val}>{key}</option>
+     );
 
       return (
         <form onSubmit={this.onSubmit}>
@@ -175,6 +179,20 @@ import React from 'react';
             {errors.states && <span className="help-block">{errors.states}</span>}
            </div>
 
+           <div className={classnames("form-group", { 'has-error': errors.country })}>
+             <label className="control-label">Country</label>
+             <select
+               className="form-control"
+              name="country"
+              onChange={this.onChange}
+              value={this.state.country}
+            >
+               <option value="" disabled>Choose Your Country</option>
+               {countryOptions}
+             </select>
+            {errors.country && <span className="help-block">{errors.country}</span>}
+           </div>
+
          <div className={classnames("form-group", { 'has-error': errors.genre })}>
             <label className="control-label">Genre</label>
             <select
@@ -188,6 +206,7 @@ import React from 'react';
             </select>
            {errors.genre && <span className="help-block">{errors.genre}</span>}
           </div>
+
           <TextFieldGroup
              error={errors.text}
              label="Record Label"
@@ -200,6 +219,7 @@ import React from 'react';
 
           <div className="form-group" >
             <Editor
+              label="Band Bio"
              //  wrapperClassName="wrapper-class"
              //  editorClassName="editor-class"
              //  toolbarClassName="toolbar-class"
@@ -208,10 +228,115 @@ import React from 'react';
              //  toolbarStyle={toolbarStyle}
             />
           </div>
-          <div>
+          <div className="form-group">
+          <label className="control-label">Add A Profile Pic</label>
+          <input
+            type="file"
+            name="file"
+            ref="file"
+            />
+            </div>
+
+          <TextFieldGroup
+             error={errors.text}
+             label="Band Members"
+             onChange={this.onChange}
+             checkExists={this.checkExists}
+             value={this.state.text}
+             field="bandMembers"
+           />
+
+           <TextFieldGroup
+              error={errors.text}
+              label="Your Website"
+              onChange={this.onChange}
+              checkExists={this.checkExists}
+              value={this.state.text}
+              field="artistWebsite"
+            />
+            <TextFieldGroup
+               error={errors.text}
+               label="Facebook"
+               onChange={this.onChange}
+               checkExists={this.checkExists}
+               value={this.state.text}
+               field="facebook"
+             />
+             <TextFieldGroup
+                error={errors.text}
+                label="ReverbNation"
+                onChange={this.onChange}
+                checkExists={this.checkExists}
+                value={this.state.text}
+                field="reverbnation"
+              />
+              <TextFieldGroup
+                 error={errors.text}
+                 label="SoundCloud"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.text}
+                 field="soundCloud"
+               />
+               <TextFieldGroup
+                  error={errors.text}
+                  label="Twitter"
+                  onChange={this.onChange}
+                  checkExists={this.checkExists}
+                  value={this.state.text}
+                  field="twitter"
+                />
+                <TextFieldGroup
+                   error={errors.text}
+                   label="YouTube Channel"
+                   onChange={this.onChange}
+                   checkExists={this.checkExists}
+                   value={this.state.text}
+                   field="youtubeChannel"
+                 />
+                 <TextFieldGroup
+                    error={errors.text}
+                    label="Additional Website"
+                    onChange={this.onChange}
+                    checkExists={this.checkExists}
+                    value={this.state.text}
+                    field="otherWebsite1"
+                  />
+                  <TextFieldGroup
+                     error={errors.text}
+                     label="Additional Website"
+                     onChange={this.onChange}
+                     checkExists={this.checkExists}
+                     value={this.state.text}
+                     field="otherWebsite2"
+                   />
+                   <TextFieldGroup
+                      error={errors.text}
+                      label="Representative"
+                      onChange={this.onChange}
+                      checkExists={this.checkExists}
+                      value={this.state.text}
+                      field="representative"
+                    />
+                    <TextFieldGroup
+                       error={errors.text}
+                       label="Representative's Email"
+                       onChange={this.onChange}
+                       checkExists={this.checkExists}
+                       value={this.state.text}
+                       field="repEmail"
+                     />
+                     <TextFieldGroup
+                        error={errors.text}
+                        label="Representative's Phone"
+                        onChange={this.onChange}
+                        checkExists={this.checkExists}
+                        value={this.state.text}
+                        field="repPhone"
+                      />
 
 
-          </div>
+
 
 
           <div className="form-group">
