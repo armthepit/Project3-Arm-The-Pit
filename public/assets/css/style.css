@@ -9,12 +9,22 @@ body {
 
 /*Arm the Pit Welcome Font*/
 h1 {
-font-family: 'New Rocker', cursive;
-text-align: center;
+	font-family: 'New Rocker', cursive;
+	text-align: center;
 }
 
-a .navbar-brand .control-label {
-	font-family:
+/*Font for navbar and forms*/
+a, .navbar-brand, .control-label {
+	font-family: 'Lato', sans-serif;
+}
+/*Font weight for the navbar*/
+a, .navbar-brand {
+	font-weight: bolder;
+}
+
+/*Color for the form*/
+.control-label, input {
+	color: white;
 }
 
 /*This makes the navbar, jumbo and footer */
