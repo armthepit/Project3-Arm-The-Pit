@@ -35,7 +35,7 @@ class ArtistLoginForm extends React.Component {
     e.preventDefault();
      if (this.isValid()) {
         this.setState({ errors: {}, isLoading: true });
-        this.props.login(this.state).then(
+        this.props.artistLogin(this.state).then(
           () => {
            this.props.addFlashMessage({
              type: 'success',
@@ -80,7 +80,7 @@ class ArtistLoginForm extends React.Component {
 }
 
 ArtistLoginForm.propTypes = {
-  login: React.PropTypes.func.isRequired,
+  artistLogin: React.PropTypes.func.isRequired,
   addFlashMessage: React.PropTypes.func.isRequired,
 }
 

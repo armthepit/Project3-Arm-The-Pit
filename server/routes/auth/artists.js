@@ -9,6 +9,9 @@
 
  let Artist = require('../../models/artists');
  let router = express.Router();
+ let jwtId = '';
+ let jwtEmail = '';
+ let jwtAccount = 'artist';
 
  mongoose.Promise = Promise;
 
@@ -21,6 +24,8 @@
              } else {
                  if (bcrypt.compareSync(data.password, Artist.password_encrypt)) {
                      console.log('password match');
+                     jwtId = Artist._id;
+                     jwtEmail = Artist.email;
                  } else {
                      errors.email = 'Invalid email/password';
                  }
@@ -35,10 +40,10 @@
  router.post('/', (req, res) => {
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {
-                console.log(Artist.email);
              const token = jwt.sign({
-                 id: Artist._id,
-                 email: Artist.email
+                 id: jwtId,
+                 email: jwtEmail,
+                 account: jwtAccount
              }, config.jwtSecret);
              res.status(200).json({token});
          } else {

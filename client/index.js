@@ -8,6 +8,8 @@ import draftjs from 'draft-js';
 import reactdraftwysiwyg from 'react-draft-wysiwyg';
 import rootReducer from './rootreducer';
 import setAuthorizationToken from './utils/setAuthorizationToken';
+import jwt from 'jsonwebtoken';
+import { setCurrentUser } from './actions/login';
 
 import routes from './routes';
 
@@ -19,7 +21,11 @@ import routes from './routes';
    )
   );
 
-setAuthorizationToken(localStorage.jwtToken); 
+if (localStorage.jwtToken) {
+   setAuthorizationToken(localStorage.jwtToken);
+   store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));
+ }
+ 
 
 render(
   <Provider store={store}>
