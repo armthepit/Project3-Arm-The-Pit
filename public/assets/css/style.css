@@ -5,8 +5,18 @@ body {
 	background-size: cover;
 	background-attachment: fixed;
 	color: #ff0000;
-	font-family: 'Righteous', cursive;
 }
+
+/*Arm the Pit Welcome Font*/
+h1 {
+font-family: 'New Rocker', cursive;
+text-align: center;
+}
+
+a .navbar-brand .control-label {
+	font-family:
+}
+
 /*This makes the navbar, jumbo and footer */
 .jumbotron, .navbar, .navbar-default, .navbar-fixed-bottom, .navbar-header, .navbar-brand {
    background: rgba(200, 54, 54, 0.0);
