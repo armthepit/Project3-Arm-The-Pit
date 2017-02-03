@@ -4,3 +4,4 @@ node_modules
 server/config/connection.js
 server/config/config.js
 server/config/jwt.js
+public/bundle.js
