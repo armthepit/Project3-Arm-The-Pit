@@ -18,14 +18,14 @@
                  if (Artist.email === data.email) {
                      errors.email = 'Email is already registered';
                  }
-            }     
+            }
 
              return {
                  errors,
                  isValid: isEmpty(errors)
              }
          });
- } 
+ }
 
 router.get('/:artist', function(req, res){
     Artist.findOne({'email': req.params.artist})
@@ -38,12 +38,30 @@ router.get('/:artist', function(req, res){
  router.post('/', (req, res) => {
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {
-             const { email, password, genre } = req.body;
+             const { email, password, genre, name, hometown, state,country, recordLabel,bandMembers, artistWebsite, facebook, reverbnation, soundCloud, twitter, youtubeChannel, otherWebsite1, otherWebsite2, representative, repEmail, repPhone } = req.body;
              const password_encrypt = bcrypt.hashSync(password, 10);
              const newArtist = new Artist({
                  email: email,
-                 password_encrypt: password_encrypt,
-                 genre: genre
+                 password: password_encrypt,
+                 genre: genre,
+                 name: name,
+                 hometown:hometown,
+                 state: state,
+                 country: country,
+                 recordLabel:recordLabel,
+                 bandMembers:bandMembers,
+                 artistWebsite: artistWebsite,
+                 facebook: facebook,
+                 reverbnation: reverbnation,
+                 soundCloud: soundCloud,
+                 twitter: twitter,
+                 youtubeChannel: youtubeChannel,
+                 otherWebsite1: otherWebsite1,
+                 otherWebsite2: otherWebsite2,
+                 representative: representative,
+                 repEmail: repEmail,
+                 repPhone: repPhone
+
              });
 
              newArtist.save()

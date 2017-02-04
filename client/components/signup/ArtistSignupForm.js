@@ -8,14 +8,14 @@
   import validateInput from '../../../server/shared/validations/artistsignup';
   import draftjs from 'draft-js';
   import { Editor } from 'react-draft-wysiwyg';
-  import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';  
+  import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
   import TextFieldGroup from '../common/TextFieldGroup';
-  
+
   class ArtistSignupForm extends React.Component {
     constructor(props) {
      super(props);
      this.state = {
-       username: '',
+      //  username: '',
        email: '',
        password: '',
        passwordConfirmation: '',
@@ -42,12 +42,12 @@
        isLoading: false,
        invalid: false
       }
-  
+
       this.onChange = this.onChange.bind(this);
      this.onSubmit = this.onSubmit.bind(this);
      this.checkExists = this.checkExists.bind(this);
    }
- 
+
    onChange(e) {
      this.setState({ [e.target.name]: e.target.value });
    }
@@ -80,10 +80,10 @@
        });
      }
    }
-    
+
    onSubmit(e) {
      e.preventDefault();
- 
+
      if (this.isValid()) {
         this.setState({ errors: {}, isLoading: true });
         this.props.artistSignupRequest(this.state).then(
@@ -98,7 +98,7 @@
        );
      }
    }
-  
+
     render() {
      const { errors } = this.state;
       const genreOptions = map(genre, (val, key) =>
@@ -114,7 +114,7 @@
       return (
         <form onSubmit={this.onSubmit}>
           <h1>Artist Signup</h1>
-  
+
         <TextFieldGroup
            error={errors.email}
            label="Email"
@@ -162,7 +162,7 @@
              <label className="control-label">State</label>
              <select
                className="form-control"
-              name="State"
+              name="state"
               onChange={this.onChange}
               value={this.state.states}
             >
@@ -212,7 +212,7 @@
 
           <div className="form-group" >
             <Editor
-              label="Band Bio"
+
              //  wrapperClassName="wrapper-class"
              //  editorClassName="editor-class"
              //  toolbarClassName="toolbar-class"
@@ -328,7 +328,7 @@
                         field="repPhone"
                       />
 
-          
+
           <div className="form-group">
            <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-danger btn-lg">
               Sign up
@@ -338,7 +338,7 @@
      );
    }
  }
- 
+
  ArtistSignupForm.propTypes = {
    artistSignupRequest: React.PropTypes.func.isRequired,
    addFlashMessage: React.PropTypes.func.isRequired,
@@ -348,5 +348,5 @@
   ArtistSignupForm.contextTypes = {
   router: React.PropTypes.object.isRequired
  }
- 
+
  export default ArtistSignupForm;
