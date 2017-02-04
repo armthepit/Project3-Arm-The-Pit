@@ -7,6 +7,7 @@ import React from 'react';
  import ArtistLoginPage from './components/login/ArtistLoginPage';
  import FanSignupPage from './components/signup/FanSignupPage';
  import FanLoginPage from './components/login/FanLoginPage';
+ import BrowseByCountry from '.components/browseby/BrowseByCountry';
  
  
  export default (
@@ -16,6 +17,7 @@ import React from 'react';
      <Route path="artistlogin" component={ArtistLoginPage} />
      <Route path="fansignup" component={FanSignupPage} />
      <Route path="fanlogin" component={FanLoginPage} />
+     <Route path="browseby/country" component={FanLoginPage} />
      
    </Route>
  )
