@@ -44,6 +44,14 @@ a, .navbar-brand {
 	background: rgba(5, 4, 4, 0.31);
 }
 
+/*White textbox field in the artist signup form*/
+.rdw-editor-main {
+	background-color: white;
+}
+/*Black font in textbox field in the artist signup form*/
+.DraftEditor-editorContainer {
+	color: black;
+}
 /*.navbar-fixed-bottom {
 	position: fixed;
 }*/
