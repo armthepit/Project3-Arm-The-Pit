@@ -43,7 +43,7 @@
              const newFan = new Fan({
                  username: username,
                  email: email,
-                 password: password_encrypt,
+                 password_encrypt: password_encrypt,
                  hometown: hometown,
                  state: usa,
                  country: country
