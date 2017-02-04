@@ -1,11 +1,11 @@
-import React from 'react';
+ import React from 'react';
  import { browserHistory } from 'react-router';
   import genre from '../../data/genres';
   import states from '../../data/states.js';
  import country from '../../data/countries';
   import map from 'lodash/map';
  import classnames from 'classnames';
- import validateInput from '../../../server/shared/validations/artistsignup';
+  import validateInput from '../../../server/shared/validations/artistsignup';
   import draftjs from 'draft-js';
   import { Editor } from 'react-draft-wysiwyg';
   import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -15,8 +15,7 @@ import React from 'react';
     constructor(props) {
      super(props);
      this.state = {
-
-       username: '',
+      //  username: '',
        email: '',
        password: '',
        passwordConfirmation: '',
@@ -44,7 +43,7 @@ import React from 'react';
        invalid: false
       }
 
-    this.onChange = this.onChange.bind(this);
+      this.onChange = this.onChange.bind(this);
      this.onSubmit = this.onSubmit.bind(this);
      this.checkExists = this.checkExists.bind(this);
    }
@@ -53,15 +52,15 @@ import React from 'react';
      this.setState({ [e.target.name]: e.target.value });
    }
 
-  isValid() {
-     const { errors, isValid } = validateInput(this.state);
+    isValid() {
+      const { errors, isValid } = validateInput(this.state);
 
-     if (!isValid) {
-       this.setState({ errors });
-     }
+      if (!isValid) {
+        this.setState({ errors });
+      }
 
-     return isValid;
-   }
+      return isValid;
+    }
 
   checkExists(e) {
      const field = e.target.name;
@@ -71,7 +70,7 @@ import React from 'react';
          let errors = this.state.errors;
          let invalid;
          if (res.data != null) {
-           errors[field] = 'There is an artist with that ' + field;
+           errors[field] = 'There is a a artist with that ' + field;
            invalid = true;
          } else {
            errors[field] = '';
@@ -82,8 +81,6 @@ import React from 'react';
      }
    }
 
-
-
    onSubmit(e) {
      e.preventDefault();
 
@@ -93,13 +90,12 @@ import React from 'react';
           () => {
            this.props.addFlashMessage({
              type: 'success',
-             text: 'Artist, you signed up successfully. Welcome To Arm The Pit!'
+             text: 'Music Artist, you signed up successfully. Welcome to Arm The Pit!'
            });
-           browserHistory.push('/');
+            browserHistory.push('/');
           },
           ({ data }) => this.setState({ errors: data, isLoading: false })
        );
-
      }
    }
 
@@ -115,12 +111,9 @@ import React from 'react';
      const countryOptions = map(country, (val, key) =>
        <option key={val} value={val}>{key}</option>
      );
-
       return (
         <form onSubmit={this.onSubmit}>
           <h1>Artist Signup</h1>
-
-
 
         <TextFieldGroup
            error={errors.email}
@@ -153,7 +146,7 @@ import React from 'react';
             label="Band Name"
             onChange={this.onChange}
             checkExists={this.checkExists}
-            value={this.state.text}
+            value={this.state.name}
             field="name"
           />
           <TextFieldGroup
@@ -161,7 +154,7 @@ import React from 'react';
              label="Hometown"
              onChange={this.onChange}
              checkExists={this.checkExists}
-             value={this.state.text}
+             value={this.state.hometown}
              field="hometown"
            />
 
@@ -169,7 +162,7 @@ import React from 'react';
              <label className="control-label">State</label>
              <select
                className="form-control"
-              name="State"
+              name="state"
               onChange={this.onChange}
               value={this.state.states}
             >
@@ -212,14 +205,14 @@ import React from 'react';
              label="Record Label"
              onChange={this.onChange}
              checkExists={this.checkExists}
-             value={this.state.text}
+             value={this.state.recordLabel}
              field="recordLabel"
            />
 
 
           <div className="form-group" >
             <Editor
-              label="Band Bio"
+
              //  wrapperClassName="wrapper-class"
              //  editorClassName="editor-class"
              //  toolbarClassName="toolbar-class"
@@ -242,7 +235,7 @@ import React from 'react';
              label="Band Members"
              onChange={this.onChange}
              checkExists={this.checkExists}
-             value={this.state.text}
+             value={this.state.bandMembers}
              field="bandMembers"
            />
 
@@ -251,7 +244,7 @@ import React from 'react';
               label="Your Website"
               onChange={this.onChange}
               checkExists={this.checkExists}
-              value={this.state.text}
+              value={this.state.artistWebsite}
               field="artistWebsite"
             />
             <TextFieldGroup
@@ -259,7 +252,7 @@ import React from 'react';
                label="Facebook"
                onChange={this.onChange}
                checkExists={this.checkExists}
-               value={this.state.text}
+               value={this.state.facebook}
                field="facebook"
              />
              <TextFieldGroup
@@ -267,7 +260,7 @@ import React from 'react';
                 label="ReverbNation"
                 onChange={this.onChange}
                 checkExists={this.checkExists}
-                value={this.state.text}
+                value={this.state.reverbnation}
                 field="reverbnation"
               />
               <TextFieldGroup
@@ -275,7 +268,7 @@ import React from 'react';
                  label="SoundCloud"
                  onChange={this.onChange}
                  checkExists={this.checkExists}
-                 value={this.state.text}
+                 value={this.state.soundCloud}
                  field="soundCloud"
                />
                <TextFieldGroup
@@ -283,7 +276,7 @@ import React from 'react';
                   label="Twitter"
                   onChange={this.onChange}
                   checkExists={this.checkExists}
-                  value={this.state.text}
+                  value={this.state.twitter}
                   field="twitter"
                 />
                 <TextFieldGroup
@@ -291,7 +284,7 @@ import React from 'react';
                    label="YouTube Channel"
                    onChange={this.onChange}
                    checkExists={this.checkExists}
-                   value={this.state.text}
+                   value={this.state.youtubeChannel}
                    field="youtubeChannel"
                  />
                  <TextFieldGroup
@@ -299,7 +292,7 @@ import React from 'react';
                     label="Additional Website"
                     onChange={this.onChange}
                     checkExists={this.checkExists}
-                    value={this.state.text}
+                    value={this.state.otherWebsite1}
                     field="otherWebsite1"
                   />
                   <TextFieldGroup
@@ -307,7 +300,7 @@ import React from 'react';
                      label="Additional Website"
                      onChange={this.onChange}
                      checkExists={this.checkExists}
-                     value={this.state.text}
+                     value={this.state.otherWebsite2}
                      field="otherWebsite2"
                    />
                    <TextFieldGroup
@@ -315,7 +308,7 @@ import React from 'react';
                       label="Representative"
                       onChange={this.onChange}
                       checkExists={this.checkExists}
-                      value={this.state.text}
+                      value={this.state.representative}
                       field="representative"
                     />
                     <TextFieldGroup
@@ -323,7 +316,7 @@ import React from 'react';
                        label="Representative's Email"
                        onChange={this.onChange}
                        checkExists={this.checkExists}
-                       value={this.state.text}
+                       value={this.state.repEmail}
                        field="repEmail"
                      />
                      <TextFieldGroup
@@ -331,12 +324,9 @@ import React from 'react';
                         label="Representative's Phone"
                         onChange={this.onChange}
                         checkExists={this.checkExists}
-                        value={this.state.text}
+                        value={this.state.repPhone}
                         field="repPhone"
                       />
-
-
-
 
 
           <div className="form-group">
@@ -355,7 +345,7 @@ import React from 'react';
    isArtistExists: React.PropTypes.func.isRequired
  }
 
- ArtistSignupForm.contextTypes = {
+  ArtistSignupForm.contextTypes = {
   router: React.PropTypes.object.isRequired
  }
 

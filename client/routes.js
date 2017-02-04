@@ -17,5 +17,6 @@ import React from 'react';
      <Route path="fansignup" component={FanSignupPage} />
      <Route path="fanlogin" component={FanLoginPage} />
      
+     
    </Route>
  )
