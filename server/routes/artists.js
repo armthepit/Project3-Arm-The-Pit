@@ -42,7 +42,7 @@ router.get('/:artist', function(req, res){
              const password_encrypt = bcrypt.hashSync(password, 10);
              const newArtist = new Artist({
                  email: email,
-                 password: password_encrypt,
+                 password_encrypt: password_encrypt,
                  genre: genre,
                  name: name,
                  hometown:hometown,
