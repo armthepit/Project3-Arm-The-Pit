@@ -3,7 +3,7 @@
  import NavigationBar from './NavigationBar';
  import FlashMessagesList from './flash/FlashMessagesList';
  import Footer from './Footer';
-  
+
   class App extends React.Component {
     render() {
       return (

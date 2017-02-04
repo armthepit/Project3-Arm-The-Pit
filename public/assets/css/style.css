@@ -52,6 +52,21 @@ a, .navbar-brand {
 .DraftEditor-editorContainer {
 	color: black;
 }
+
+/*Alert Message*/
+.alert-success, .alert-danger {
+	font-family: 'New Rocker', sans-serif;
+	text-align: center;
+}
+
+/*.navbar .navbar-default .navbar-fixed-bottom {
+    float:left;*/
+    /*background-color:#bdf;  /* TEST BG Only.  To Be Deleted */*/
+/*}
+.navbar .navbar-default .navbar-fixed-bottom {
+    display:none;
+}*/
+
 /*.navbar-fixed-bottom {
 	position: fixed;
 }*/
