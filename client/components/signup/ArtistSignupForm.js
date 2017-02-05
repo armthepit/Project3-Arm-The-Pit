@@ -26,6 +26,7 @@
        genre: '',
        recordLabel:'',
        bio:'',
+       editorContents: [],
        bandMembers:'',
        artistWebsite:'',
        facebook:'',
@@ -213,14 +214,16 @@
           <div className="form-group" >
             <Editor
 
-             //  wrapperClassName="wrapper-class"
-             //  editorClassName="editor-class"
-             //  toolbarClassName="toolbar-class"
+              wrapperClassName="wrapper-class"
+              editorClassName="editor-class"
+              toolbarClassName="toolbar-class"
              //  wrap perStyle={wrapperStyle}
              //  editorStyle={editorStyle}
              //  toolbarStyle={toolbarStyle}
             />
           </div>
+          
+
           <div className="form-group">
           <label className="control-label">Add A Profile Pic</label>
           <input
@@ -327,6 +330,9 @@
                         value={this.state.repPhone}
                         field="repPhone"
                       />
+                      <div>
+
+                      </div>
 
 
           <div className="form-group">
