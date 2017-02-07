@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
  import { Route, IndexRoute, browserHistory } from 'react-router';
  
  import App from './components/App';
@@ -7,7 +7,8 @@ import React from 'react';
  import ArtistLoginPage from './components/login/ArtistLoginPage';
  import FanSignupPage from './components/signup/FanSignupPage';
  import FanLoginPage from './components/login/FanLoginPage';
- 
+ import ByCountryPage from './components/browse/ByCountryPage';
+
  
  export default (
    <Route path="/" component={App}>
@@ -16,7 +17,6 @@ import React from 'react';
      <Route path="artistlogin" component={ArtistLoginPage} />
      <Route path="fansignup" component={FanSignupPage} />
      <Route path="fanlogin" component={FanLoginPage} />
-     
-     
+     <Route path="country" component={ByCountryPage} />
    </Route>
  )
