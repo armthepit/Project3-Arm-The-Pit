@@ -9,6 +9,7 @@
  import FanLoginPage from './components/login/FanLoginPage';
  import ArtistPage from './components/artist/ArtistPage';
  import ByCountryPage from './components/browse/ByCountryPage';
+ import ByGenrePage from './components/browse/ByGenrePage';
 
  
  export default (
@@ -18,7 +19,8 @@
      <Route path="artistlogin" component={ArtistLoginPage} />
      <Route path="fansignup" component={FanSignupPage} />
      <Route path="fanlogin" component={FanLoginPage} />
-     <Route path="artist" component={ArtistPage} />
+     <Route path="browseby" component={ArtistPage} />
      <Route path="country" component={ByCountryPage} />
+     <Route path="genre" component={ByGenrePage} />
    </Route>
  )

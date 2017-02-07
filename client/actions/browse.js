@@ -19,3 +19,23 @@ export function showCountries() {
 			});
 	}
 }
+
+export const SET_GENRES = "SET_GENRES";
+
+export function setGenres(genres) {
+	return {
+		type: SET_GENRES,
+		genres
+	}
+}
+
+export function showGenres() {
+	return dispatch => {
+		return axios.get('api/browse/bygenre')
+
+			.then(res =>  {
+				console.log(res);
+				dispatch(setGenres(res.data.Genre))		
+			});
+	}
+}
