@@ -6,6 +6,7 @@ import { combineReducers } from 'redux';
  import countries from './reducers/countries';
  import genres from './reducers/genres';
  import names from './reducers/names';
+ import states from './reducers/states';
  
  export default combineReducers({
    flashMessages,
@@ -13,5 +14,6 @@ import { combineReducers } from 'redux';
    artists,
    countries,
    genres,
-   names
+   names,
+   states
  });
