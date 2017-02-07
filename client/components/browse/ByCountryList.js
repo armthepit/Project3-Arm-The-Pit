@@ -1,4 +1,5 @@
 import React from 'react';
+import CountryCard from './CountryCard';
  
  export default function ByCountryList({ countries }) {
    const emptyMessage = (
@@ -6,7 +7,9 @@ import React from 'react';
    );
  
    const countriesList = (
-     <p>countries list</p>
+     <div className="col-md-12">
+        { countries.map(country => <CountryCard country={country} keys={country.title} />)}
+     </div>
    );
  
    return (
