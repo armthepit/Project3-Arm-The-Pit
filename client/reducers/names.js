@@ -1,0 +1,9 @@
+	import { SET_NAMES } from '../actions/browse';
+
+   export default function names(state = [], action = {}) {
+    switch(action.type) {
+      case SET_NAMES: 
+      	return action.names;
+      default: return state;
+    }
+  }
