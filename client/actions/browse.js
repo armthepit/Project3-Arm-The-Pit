@@ -39,3 +39,23 @@ export function showGenres() {
 			});
 	}
 }
+
+export const SET_NAMES = "SET_NAMES";
+
+export function setNames(names) {
+	return {
+		type: SET_NAMES,
+		names
+	}
+}
+
+export function showNames() {
+	return dispatch => {
+		return axios.get('api/browse/byname')
+
+			.then(res =>  {
+				console.log(res);
+				dispatch(setGenres(res.data.Name))		
+			});
+	}
+}
