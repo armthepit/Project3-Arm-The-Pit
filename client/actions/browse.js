@@ -55,7 +55,27 @@ export function showNames() {
 
 			.then(res =>  {
 				console.log(res);
-				dispatch(setGenres(res.data.Name))		
+				dispatch(setNames(res.data.Name))		
+			});
+	}
+}
+
+export const SET_STATES = "SET_STATES";
+
+export function setStates(states) {
+	return {
+		type: SET_STATES,
+		states
+	}
+}
+
+export function showStates() {
+	return dispatch => {
+		return axios.get('api/browse/bystate')
+
+			.then(res =>  {
+				console.log(res);
+				dispatch(setStates(res.data.Usa))		
 			});
 	}
 }

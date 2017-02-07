@@ -13,6 +13,8 @@ const artist = require('./routes/artist/artist');
 const byCountry = require('./routes/browse/bycountry');
 const byGenre = require('./routes/browse/bygenre');
 const byName = require('./routes/browse/byname');
+const byState = require('./routes/browse/bystate');
+
 
 
 // BodyParser Settings
@@ -29,6 +31,7 @@ app.use('/api/artist', artist);
 app.use('/api/browse/bycountry', byCountry);
 app.use('/api/browse/bygenre', byGenre);
 app.use('/api/browse/byname', byName);
+app.use('/api/browse/bystate', byState);
 
 const publicpath = path.resolve(__dirname, '../public');
 console.log(publicpath);

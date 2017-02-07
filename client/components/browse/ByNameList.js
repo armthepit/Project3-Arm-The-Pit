@@ -8,7 +8,7 @@ import NameCard from './NameCard';
  
    const namesList = (
      <div className="col-md-12">
-        { names.map(letter => <NameCard letter={name} key={letter._id} />)}
+        { names.map(name => <NameCard name={name} key={name._id} />)}
      </div>
    );
  

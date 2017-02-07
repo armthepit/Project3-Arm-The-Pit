@@ -11,6 +11,7 @@
  import ByCountryPage from './components/browse/ByCountryPage';
  import ByGenrePage from './components/browse/ByGenrePage';
  import ByNamePage from './components/browse/ByNamePage';
+ import ByStatePage from './components/browse/ByStatePage';
 
  
  export default (
@@ -24,5 +25,6 @@
      <Route path="country" component={ByCountryPage} />
      <Route path="genre" component={ByGenrePage} />
      <Route path="name" component={ByNamePage} />
+     <Route path="state" component={ByStatePage} />
    </Route>
  )

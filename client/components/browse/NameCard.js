@@ -1,14 +1,14 @@
 import React from 'react';
 import { link } from 'react-router';
 
-export default function NameCard({ letter }) {
+export default function NameCard({ name }) {
 	return (
 		<div className="col-md-4">
 			<div className="panel panel-default">
 				<div className="panel-body">	
-					<img src="assets/images/lilgirl.jpg" className="img-rounded" alt="{letter.title}" />				
+					<img src="assets/images/lilgirl.jpg" className="img-rounded" alt="{name.title}" />				
 					<div className="content">
-						{letter.title}
+						{name.title}
 					</div>
 				</div>
 			</div>
@@ -17,5 +17,5 @@ export default function NameCard({ letter }) {
 }
 
 NameCard.propTypes = {
-	letter: React.PropTypes.object.isRequired
+	name: React.PropTypes.object.isRequired
 }
