@@ -8,7 +8,7 @@ import CountryCard from './CountryCard';
  
    const countriesList = (
      <div className="col-md-12">
-        { countries.map(country => <CountryCard country={country} keys={country.title} />)}
+        { countries.map(country => <CountryCard country={country} key={country._id} />)}
      </div>
    );
  
