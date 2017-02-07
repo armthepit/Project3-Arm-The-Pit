@@ -1,5 +1,4 @@
  const express = require('express');
- const commonValidations = require('../../shared/validations/artistlogin');
  const mongoose = require('mongoose');
  const Promise = require('bluebird');
 
