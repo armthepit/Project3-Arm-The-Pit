@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { logout } from '../actions/login';
- 
+
 class NavigationBar extends React.Component {
   logout(e) {
     e.preventDefault();
@@ -32,7 +32,7 @@ class NavigationBar extends React.Component {
          <div className="navbar-header">
            <Link to="/" className="navbar-brand">Arm The Pit</Link>
          </div>
- 
+
          <div className="collapse navbar-collapse">
             { isAuthenticated ? userLinks : guestLinks }
          </div>
