@@ -17,7 +17,7 @@
     constructor(props) {
      super(props);
      this.state = {
-      //  username: '',
+
        email: '',
        password: '',
        passwordConfirmation: '',
@@ -27,9 +27,8 @@
        state:'',
        genre: '',
        recordLabel:'',
-       bandBio:{},
-       editorContents:'',
-      // editorState: EditorState.createEmpty(),
+       bandBio:'',
+       
        bandMembers:'',
        artistWebsite:'',
        facebook:'',
@@ -103,15 +102,7 @@
      }
    }
 
-   onEditorStateChange: Function = (editorContent) => {
-     let editorContents = this.state.editorContents;
-     editorContents  = editorContent;
-     editorContents = [...editorContents];
-     this.setState({
-       editorContents,
-     });
-      bandBio = Draft.convertToRaw(editorState.getCurrentContent())
-   };
+  //
 
     render() {
      const { errors } = this.state;
@@ -223,22 +214,17 @@
              value={this.state.recordLabel}
              field="recordLabel"
            />
+           <textarea
+
+             label="Band's Biography"
+             onChange={this.onChange}
+
+             value={this.state.bandBio}
+              >
+             </textarea>
 
 
 
-          <div className="demo-label">
-            Editor with output generated in JSON.
-          </div>
-          <div className="demo-editorSection">
-            <Editor
-              editorState={{editorContents}}
-              toolbarClassName="demo-toolbar"
-              wrapperClassName="demo-wrapper"
-              editorClassName="demo-editor"
-              onEditorStateChange={this.onEditorStateChange.bind(this)}
-              //toolbar={{image: { uploadCallback: uploadImageCallBack }}}
-            />
-          </div>
 
           <div className="form-group">
           <label className="control-label">Add A Profile Pic</label>
