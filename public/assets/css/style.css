@@ -65,9 +65,11 @@ a, .navbar-brand {
 
 /*font, size alignment within State, artist, genre, country panel*/
 .content {
-	font-family: 'New Rocker', sans-serif;
-	font-size: large;
+	font-family: 'Lota', sans-serif;
+	font-size: x-large;
+	font-weight: bold;
 	text-align: center;
+	background: rgba(200, 54, 54, 0.0);
 }
 
 .btn-info {
@@ -82,6 +84,12 @@ a, .navbar-brand {
     color: #ff0000;
     background-color: #fff;
     border-color: #fff;
+
+/*logo girl panel set-up*/
+.panel-body, .panel, .panel-default {
+	background: rgba(200, 54, 54, 0.0);
+	border: none;
+
 }
 /*.navbar .navbar-default .navbar-fixed-bottom {
     float:left;*/
