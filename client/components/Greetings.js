@@ -6,10 +6,13 @@
      return (
        <div className="jumbotron">
          <h1>Welcome To Arm The Pit</h1>
-         <Link to="/country"><button type="button" className="btn btn-info">Country</button></Link>
-         <Link to="/genre"><button type="button" className="btn btn-info">Genre</button></Link> 
-         <Link to="/name"><button type="button" className="btn btn-info">Name</button></Link> 
-         <Link to="/state"><button type="button" className="btn btn-info">State</button></Link>        
+         <div>
+           <h2>Browse Artist By: </h2>
+           <Link to="/country"><button type="button" className="btn btn-info">COUNTRY</button></Link>
+           <Link to="/genre"><button type="button" className="btn btn-info">GENRE</button></Link> 
+           <Link to="/name"><button type="button" className="btn btn-info">NAME</button></Link> 
+           <Link to="/state"><button type="button" className="btn btn-info">STATE</button></Link>   
+        </div>     
        </div>
      );
    }
