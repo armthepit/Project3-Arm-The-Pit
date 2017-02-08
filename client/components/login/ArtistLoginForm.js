@@ -13,13 +13,13 @@ class ArtistLoginForm extends React.Component {
       isLoading: false
     };
 
-    this.onChange = this.onChange.bind(this);    
+    this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-  }  
+  }
 
   isValid() {
     const { errors, isValid } = validateInput(this.state);
@@ -46,7 +46,7 @@ class ArtistLoginForm extends React.Component {
           ({ data }) => this.setState({ errors: data, isLoading: false })
        );
      }
-   } 
+   }
 
 
 
@@ -62,7 +62,7 @@ class ArtistLoginForm extends React.Component {
            onChange={this.onChange}
            value={this.state.email}
            field="email"
-        />     
+        />
 
         <TextFieldGroup
            error={errors.password}
@@ -71,7 +71,7 @@ class ArtistLoginForm extends React.Component {
            value={this.state.password}
            field="password"
            type="password"
-         />   
+         />
 
        <div className="form-group"><button className="btn btn-danger btn-lg" disabled={this.state.isLoading}>Login</button></div>
       </form>
