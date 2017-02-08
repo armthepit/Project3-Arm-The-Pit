@@ -65,8 +65,14 @@ a, .navbar-brand {
 	font-family: 'New Rocker', sans-serif;
 	font-size: large;
 	text-align: center;
+	background: rgba(200, 54, 54, 0.0);
 }
 
+/*logo girl panel set-up*/
+.panel-body, .panel, .panel-default {
+	background: rgba(200, 54, 54, 0.0);
+	border: none;
+}
 /*.navbar .navbar-default .navbar-fixed-bottom {
     float:left;*/
     /*background-color:#bdf;  /* TEST BG Only.  To Be Deleted */*/
