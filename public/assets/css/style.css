@@ -92,7 +92,7 @@ a, .navbar-brand {
 	border: none;
 
 }
-/*new font for the navbar*/
+/*new font for the navbar...*/
 .navbar-brand, li > a {
 	font-family: 'Metal Mania', cursive;
 	font-weight: bolder;
