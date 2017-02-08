@@ -2,6 +2,7 @@ import axios from 'axios';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwt from 'jsonwebtoken';
 import { SET_CURRENT_USER } from './types';
+import { browserHistory } from 'react-router';
 
 
 export function setCurrentUser(user) {
@@ -16,6 +17,7 @@ export function logout() {
      localStorage.removeItem('jwtToken');
      setAuthorizationToken(false);
      dispatch(setCurrentUser({}));
+     browserHistory.push('/');
    }
  }
  

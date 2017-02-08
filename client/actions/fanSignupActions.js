@@ -8,6 +8,6 @@ import axios from 'axios';
 
 export function isFanExists(fan) {
    return dispatch => {
-     return axios.get(`/api/fans/${fan}`);
+     return axios.get('/api/fans/${fan}');
    }
  }
