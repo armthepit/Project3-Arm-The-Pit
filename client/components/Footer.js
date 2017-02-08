@@ -5,7 +5,7 @@
   	return (
   		<nav className="navbar navbar-default navbar-fixed-bottom">
     			<div className="container">
-     				<h4>&#169;Copyright 2017 Arm The Pit</h4>
+     				<h6>&#169;Copyright 2017 Arm The Pit</h6>
     			</div>
   		</nav>
   	);

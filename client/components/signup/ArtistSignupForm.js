@@ -1,15 +1,17 @@
- import React from 'react';
- import { browserHistory } from 'react-router';
+  import React from 'react';
+  import { browserHistory } from 'react-router';
   import genre from '../../data/genres';
   import states from '../../data/states.js';
- import country from '../../data/countries';
+  import country from '../../data/countries';
   import map from 'lodash/map';
- import classnames from 'classnames';
+  import classnames from 'classnames';
   import validateInput from '../../../server/shared/validations/artistsignup';
   import draftjs from 'draft-js';
-  import { Editor } from 'react-draft-wysiwyg';
+  //import  { editorState } from 'draft-js';
+  import { Editor, } from 'react-draft-wysiwyg';
   import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
   import TextFieldGroup from '../common/TextFieldGroup';
+  import {convertFromRaw, convertToRaw} from 'draft-js';
 
   class ArtistSignupForm extends React.Component {
     constructor(props) {
@@ -25,7 +27,9 @@
        state:'',
        genre: '',
        recordLabel:'',
-       bio:'',
+       bandBio:{},
+       editorContents:'',
+      // editorState: EditorState.createEmpty(),
        bandMembers:'',
        artistWebsite:'',
        facebook:'',
@@ -99,8 +103,19 @@
      }
    }
 
+   onEditorStateChange: Function = (editorContent) => {
+     let editorContents = this.state.editorContents;
+     editorContents  = editorContent;
+     editorContents = [...editorContents];
+     this.setState({
+       editorContents,
+     });
+      bandBio = Draft.convertToRaw(editorState.getCurrentContent())
+   };
+
     render() {
      const { errors } = this.state;
+       const { editorContents } = this.state;
       const genreOptions = map(genre, (val, key) =>
         <option key={val} value={val}>{key}</option>
       );
@@ -210,17 +225,21 @@
            />
 
 
-          <div className="form-group" >
-            <Editor
 
-             //  wrapperClassName="wrapper-class"
-             //  editorClassName="editor-class"
-             //  toolbarClassName="toolbar-class"
-             //  wrap perStyle={wrapperStyle}
-             //  editorStyle={editorStyle}
-             //  toolbarStyle={toolbarStyle}
+          <div className="demo-label">
+            Editor with output generated in JSON.
+          </div>
+          <div className="demo-editorSection">
+            <Editor
+              editorState={{editorContents}}
+              toolbarClassName="demo-toolbar"
+              wrapperClassName="demo-wrapper"
+              editorClassName="demo-editor"
+              onEditorStateChange={this.onEditorStateChange.bind(this)}
+              //toolbar={{image: { uploadCallback: uploadImageCallBack }}}
             />
           </div>
+
           <div className="form-group">
           <label className="control-label">Add A Profile Pic</label>
           <input
@@ -327,6 +346,7 @@
                         value={this.state.repPhone}
                         field="repPhone"
                       />
+
 
 
           <div className="form-group">

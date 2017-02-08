@@ -44,6 +44,37 @@ a, .navbar-brand {
 	background: rgba(5, 4, 4, 0.31);
 }
 
+/*White textbox field in the artist signup form*/
+.rdw-editor-main {
+	background-color: white;
+}
+/*Black font in textbox field in the artist signup form*/
+.DraftEditor-editorContainer {
+	color: black;
+}
+
+/*Alert Message*/
+.alert-success, .alert-danger, .alert {
+	font-family: 'New Rocker', sans-serif;
+	font-size: large;
+	text-align: center;
+}
+
+/*font, size alignment within State, artist, genre, country panel*/
+.content {
+	font-family: 'New Rocker', sans-serif;
+	font-size: large;
+	text-align: center;
+}
+
+/*.navbar .navbar-default .navbar-fixed-bottom {
+    float:left;*/
+    /*background-color:#bdf;  /* TEST BG Only.  To Be Deleted */*/
+/*}
+.navbar .navbar-default .navbar-fixed-bottom {
+    display:none;
+}*/
+
 /*.navbar-fixed-bottom {
 	position: fixed;
 }*/

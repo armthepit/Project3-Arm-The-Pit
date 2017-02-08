@@ -9,6 +9,13 @@ const artists = require('./routes/artists');
 const artistsAuth = require('./routes/auth/artists');
 const fans = require('./routes/fans');
 const fansAuth = require('./routes/auth/fans');
+const artist = require('./routes/artist/artist');
+const byCountry = require('./routes/browse/bycountry');
+const byGenre = require('./routes/browse/bygenre');
+const byName = require('./routes/browse/byname');
+const byState = require('./routes/browse/bystate');
+
+
 
 // BodyParser Settings
 app.use(bodyParser.json());
@@ -20,6 +27,11 @@ app.use('/api/artists', artists);
 app.use('/api/auth/artists', artistsAuth);
 app.use('/api/fans', fans);
 app.use('/api/auth/fans', fansAuth);
+app.use('/api/artist', artist);
+app.use('/api/browse/bycountry', byCountry);
+app.use('/api/browse/bygenre', byGenre);
+app.use('/api/browse/byname', byName);
+app.use('/api/browse/bystate', byState);
 
 const publicpath = path.resolve(__dirname, '../public');
 console.log(publicpath);
