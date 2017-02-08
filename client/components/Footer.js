@@ -3,7 +3,7 @@
 
  export default () => {
   	return (
-  		<nav className="navbar navbar-default navbar-fixed-bottom">
+  		<nav className="navbar navbar-default navbar-static-bottom">
     			<div className="container">
      				<h6>&#169;Copyright 2017 Arm The Pit</h6>
     			</div>

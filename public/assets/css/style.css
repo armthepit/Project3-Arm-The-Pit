@@ -8,11 +8,14 @@ body {
 }
 
 /*Arm the Pit Welcome Font*/
-h1 {
+h1, h2 {
 	font-family: 'New Rocker', cursive;
 	text-align: center;
 }
 
+h6 {
+	text-align: center;
+}
 /*Font for navbar and forms*/
 a, .navbar-brand, .control-label {
 	font-family: 'Lato', sans-serif;
@@ -54,11 +57,40 @@ a, .navbar-brand {
 }
 
 /*Alert Message*/
-.alert-success, .alert-danger {
+.alert-success, .alert-danger, .alert {
 	font-family: 'New Rocker', sans-serif;
+	font-size: large;
 	text-align: center;
 }
 
+/*font, size alignment within State, artist, genre, country panel*/
+.content {
+	font-family: 'Lota', sans-serif;
+	font-size: x-large;
+	font-weight: bold;
+	text-align: center;
+	background: rgba(200, 54, 54, 0.0);
+}
+
+.btn-info {
+	background-color: #ff0000;
+	border-color: #ff0000;
+	margin-left: 20px;
+	position: relative;
+    left: 307px;
+}
+
+.btn-info:hover {
+    color: #ff0000;
+    background-color: #fff;
+    border-color: #fff;
+
+/*logo girl panel set-up*/
+.panel-body, .panel, .panel-default {
+	background: rgba(200, 54, 54, 0.0);
+	border: none;
+
+}
 /*.navbar .navbar-default .navbar-fixed-bottom {
     float:left;*/
     /*background-color:#bdf;  /* TEST BG Only.  To Be Deleted */*/

@@ -5,8 +5,8 @@ export default function CountryCard({ country }) {
 	return (
 		<div className="col-md-4">
 			<div className="panel panel-default">
-				<div className="panel-body">	
-					<img src="assets/images/lilgirl.jpg" className="img-rounded" alt="{country.title}" />				
+				<div className="panel-body">
+					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{country.title}" />				
 					<div className="content">
 						{country.title}
 					</div>
