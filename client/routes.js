@@ -7,7 +7,7 @@
  import ArtistLoginPage from './components/login/ArtistLoginPage';
  import FanSignupPage from './components/signup/FanSignupPage';
  import FanLoginPage from './components/login/FanLoginPage';
- import ArtistPage from './components/artist/ArtistPage';
+ import ByArtistPage from './components/browse/ByArtistPage';
  import ByCountryPage from './components/browse/ByCountryPage';
  import ByGenrePage from './components/browse/ByGenrePage';
  import ByNamePage from './components/browse/ByNamePage';
@@ -21,7 +21,7 @@
      <Route path="artistlogin" component={ArtistLoginPage} />
      <Route path="fansignup" component={FanSignupPage} />
      <Route path="fanlogin" component={FanLoginPage} />
-     <Route path="browseby" component={ArtistPage} />
+     <Route path="artist" component={ByArtistPage} />
      <Route path="country" component={ByCountryPage} />
      <Route path="genre" component={ByGenrePage} />
      <Route path="name" component={ByNamePage} />
