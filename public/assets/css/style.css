@@ -54,8 +54,16 @@ a, .navbar-brand {
 }
 
 /*Alert Message*/
-.alert-success, .alert-danger {
+.alert-success, .alert-danger, .alert {
 	font-family: 'New Rocker', sans-serif;
+	font-size: large;
+	text-align: center;
+}
+
+/*font, size alignment within State, artist, genre, country panel*/
+.content {
+	font-family: 'New Rocker', sans-serif;
+	font-size: large;
 	text-align: center;
 }
 

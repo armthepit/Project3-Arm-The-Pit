@@ -5,8 +5,8 @@ export default function GenreCard({ genre }) {
 	return (
 		<div className="col-md-4">
 			<div className="panel panel-default">
-				<div className="panel-body">	
-					<img src="assets/images/lilgirl.jpg" className="img-rounded" alt="{genre.title}" />				
+				<div className="panel-body">
+					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{genre.title}" />				
 					<div className="content">
 						{genre.title}
 					</div>
