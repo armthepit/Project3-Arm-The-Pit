@@ -92,6 +92,12 @@ a, .navbar-brand {
     border-color: #333;
 }
 
+.btn-info:focus {
+    color: #ff0000;
+    background-color: #333;
+    border-color: #333;
+}
+
 /*logo girl panel set-up*/
 .panel-body, .panel, .panel-default {
 	background: rgba(200, 54, 54, 0.0);
