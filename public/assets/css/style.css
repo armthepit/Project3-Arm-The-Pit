@@ -60,15 +60,13 @@ a, .navbar-brand {
 	text-align: center;
 }
 
+/*font, size alignment within State, artist, genre, country panel*/
 .content {
 	font-family: 'New Rocker', sans-serif;
 	font-size: large;
 	text-align: center;
 }
 
-.panel-body {
-	background: rgba(200, 54, 54, 0.0);
-}
 /*.navbar .navbar-default .navbar-fixed-bottom {
     float:left;*/
     /*background-color:#bdf;  /* TEST BG Only.  To Be Deleted */*/
