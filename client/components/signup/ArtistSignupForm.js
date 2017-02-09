@@ -27,8 +27,7 @@
        state:'',
        genre: '',
        recordLabel:'',
-       bandBio:'',
-       
+       bio:'',
        bandMembers:'',
        artistWebsite:'',
        facebook:'',
@@ -214,14 +213,30 @@
              value={this.state.recordLabel}
              field="recordLabel"
            />
-           <textarea
+           {/* <TextFieldGroup
+              error={errors.text}
+              label="Band's Biography"
+              onChange={this.onChange}
+              checkExists={this.checkExists}
+              value={this.state.bio}
+              type = {<textarea></textarea>}
+              field="bio"
+            /> */}
+           <div className={classnames("form-group", { 'has-error': errors.bio })}>
+              <label className="control-label">Band's Biography</label>
+              <textarea
+              className="form-control"
+               name="bio"
+               onChange={this.onChange}
+               value={this.state.bio}
 
-             label="Band's Biography"
-             onChange={this.onChange}
 
-             value={this.state.bandBio}
-              >
-             </textarea>
+             >
+
+              </textarea>
+             {errors.bio && <span className="help-block">{errors.bio}</span>}
+            </div>
+
 
 
 

@@ -38,7 +38,7 @@ router.get('/:artist', function(req, res){
  router.post('/', (req, res) => {
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {
-             const { email, password, genre, name, hometown, state,country, recordLabel, bandBio, editorContents, bandMembers, artistWebsite, facebook, reverbnation, soundCloud, twitter, youtubeChannel, otherWebsite1, otherWebsite2, representative, repEmail, repPhone } = req.body;
+             const { email, password, genre, name, hometown, state,country, recordLabel, bio,  bandMembers, artistWebsite, facebook, reverbnation, soundCloud, twitter, youtubeChannel, otherWebsite1, otherWebsite2, representative, repEmail, repPhone } = req.body;
              const password_encrypt = bcrypt.hashSync(password, 10);
              const newArtist = new Artist({
                  email: email,
@@ -49,8 +49,7 @@ router.get('/:artist', function(req, res){
                  state: state,
                  country: country,
                  recordLabel:recordLabel,
-                 bandBio:bandBio,
-                 editorContents:editorContents,
+                 bio:bio,
                  bandMembers:bandMembers,
                  artistWebsite: artistWebsite,
                  facebook: facebook,
