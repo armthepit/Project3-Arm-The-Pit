@@ -62,4 +62,3 @@ TextFieldGroup1.propTypes = {
  }
 
  export default TextFieldGroup;
- export default TextFieldGroup1;
