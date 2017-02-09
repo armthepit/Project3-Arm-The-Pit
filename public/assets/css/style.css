@@ -71,7 +71,7 @@ a, .navbar-brand {
 	text-align: center;
 	background: rgba(200, 54, 54, 0.0);
 }
-
+/* button styling for "browse artist by" */
 .btn-info {
 	background-color: #ff0000;
 	border-color: #ff0000;
@@ -84,6 +84,19 @@ a, .navbar-brand {
     color: #ff0000;
     background-color: #fff;
     border-color: #fff;
+}
+
+.btn-info:active {
+    color: #ff0000;
+    background-color: #333;
+    border-color: #333;
+}
+
+.btn-info:focus {
+    color: #ff0000;
+    background-color: #333;
+    border-color: #333;
+}
 
 /*logo girl panel set-up*/
 .panel-body, .panel, .panel-default {
@@ -91,6 +104,14 @@ a, .navbar-brand {
 	border: none;
 
 }
+/*new font for the navbar...*/
+.navbar-brand, li > a {
+	font-family: 'Metal Mania', cursive;
+	font-weight: bolder;
+	font-size: x-large;
+}
+
+
 /*.navbar .navbar-default .navbar-fixed-bottom {
     float:left;*/
     /*background-color:#bdf;  /* TEST BG Only.  To Be Deleted */*/

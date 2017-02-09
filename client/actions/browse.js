@@ -1,5 +1,25 @@
 import axios from 'axios';
 
+export const SET_ARTISTS = "SET_ARTISTS";
+
+export function setArtists(artists) {
+	return {
+		type: SET_ARTISTS,
+		artists
+	}
+}
+
+export function showArtists() {
+	return dispatch => {
+		return axios.get('api/browse/byartist')
+
+			.then(res =>  {
+				console.log(res);
+				dispatch(setArtists(res.data.Artist))		
+			});
+	}
+}
+
 export const SET_COUNTRIES = "SET_COUNTRIES";
 
 export function setCountries(countries) {
