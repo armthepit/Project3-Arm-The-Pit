@@ -90,93 +90,94 @@
       return (
         <form onSubmit={this.onSubmit}>
           <h1>Fan Signup</h1>
-  
-        <TextFieldGroup
-           error={errors.username}
-           label="Username"
-           onChange={this.onChange}
-           value={this.state.username}
-           field="username"
-         />
-
-        <TextFieldGroup
-           error={errors.email}
-           label="Email"
-           onChange={this.onChange}
-           checkExists={this.checkExists}
-           value={this.state.email}
-           field="email"
-         />
-  
-        <TextFieldGroup
-           error={errors.password}
-           label="Password"
-           onChange={this.onChange}
-           value={this.state.password}
-           field="password"
-           type="password"
-         />
-  
-        <TextFieldGroup
-           error={errors.passwordConfirmation}
-           label="Password Confirmation"
-           onChange={this.onChange}
-           value={this.state.passwordConfirmation}
-           field="passwordConfirmation"
-           type="password"
-         />
-
-         <TextFieldGroup
-           error={errors.hometown}
-           label="City"
-           onChange={this.onChange}
-           value={this.state.hometown}
-           field="hometown"
-         />
-
-          <div className={classnames("form-group", { 'has-error': errors.country })}>
-            <label className="control-label">Country</label>
-            <select
-              className="form-control"
-             name="country"
-             onChange={this.onChange}
-             value={this.state.country}
-           >
-              <option value="" disabled>Choose Your Country</option>
-              {countryOptions}
-            </select>
-           {errors.country && <span className="help-block">{errors.country}</span>}
-          </div>
-
-         <div className={classnames("form-group", { 'has-error': errors.usa })}>
-            <label className="control-label">State</label>
-            <select
-              className="form-control"
-             name="usa"
-             onChange={this.onChange}
-             value={this.state.usa}
-           >
-              <option value="" disabled>Choose Your State</option>
-              {stateOptions}
-            </select>
-           {errors.usa && <span className="help-block">{errors.usa}</span>}
-          </div>
+            <div className="row">
+              <div className="col-lg-6">
+                <TextFieldGroup
+                   error={errors.username}
+                   label="Username"
+                   onChange={this.onChange}
+                   value={this.state.username}
+                   field="username"
+                 />
+                <TextFieldGroup
+                   error={errors.email}
+                   label="Email"
+                   onChange={this.onChange}
+                   checkExists={this.checkExists}
+                   value={this.state.email}
+                   field="email"
+                 />
+              
+                <TextFieldGroup
+                   error={errors.password}
+                   label="Password"
+                   onChange={this.onChange}
+                   value={this.state.password}
+                   field="password"
+                   type="password"
+                 />
           
-          <div className="form-group">
-          <label className="control-label">Add A Profile Pic</label>
-          <input 
-            type="file" 
-            name="file" 
-            ref="file" 
-            />
+                <TextFieldGroup
+                   error={errors.passwordConfirmation}
+                   label="Password Confirmation"
+                   onChange={this.onChange}
+                   value={this.state.passwordConfirmation}
+                   field="passwordConfirmation"
+                   type="password"
+                 />
+                 </div>
+              <div className="col-lg-6">
+               <TextFieldGroup
+                 error={errors.hometown}
+                 label="City"
+                 onChange={this.onChange}
+                 value={this.state.hometown}
+                 field="hometown"
+               />
+                <div className={classnames("form-group", { 'has-error': errors.usa })}>
+                  <label className="control-label">State</label>
+                  <select
+                    className="form-control"
+                   name="usa"
+                   onChange={this.onChange}
+                   value={this.state.usa}
+                 >
+                    <option value="" disabled>Choose Your State</option>
+                    {stateOptions}
+                  </select>
+                 {errors.usa && <span className="help-block">{errors.usa}</span>}
+                </div>
+         
+            <div className={classnames("form-group", { 'has-error': errors.country })}>
+              <label className="control-label">Country</label>
+              <select
+                className="form-control"
+               name="country"
+               onChange={this.onChange}
+               value={this.state.country}
+             >
+                <option value="" disabled>Choose Your Country</option>
+                {countryOptions}
+              </select>
+             {errors.country && <span className="help-block">{errors.country}</span>}
             </div>
-            <br />
+             <div className="form-group">
+              <label className="control-label">Add A Profile Pic</label>
+              <input 
+                type="file" 
+                name="file" 
+                ref="file" 
+                />
+              </div>
+            </div>
+          <br />
           
           <div className="form-group">
            <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-danger btn-lg">
               Sign up
             </button>
           </div>
+        </div>
        </form>
      );
    }
