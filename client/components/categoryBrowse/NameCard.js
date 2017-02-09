@@ -1,5 +1,5 @@
 import React from 'react';
-import { link } from 'react-router';
+import { Link } from 'react-router';
 
 export default function NameCard({ name }) {
 	return (
@@ -8,7 +8,9 @@ export default function NameCard({ name }) {
 				<div className="panel-body">
 					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{name.title}" />				
 					<div className="content">
-						{name.title}
+ 						<Link to={`name/${name.title}`}>
+							{name.title}
+						</Link>
 					</div>
 				</div>
 			</div>

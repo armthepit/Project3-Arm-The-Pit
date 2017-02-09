@@ -1,5 +1,5 @@
 import React from 'react';
-import { link } from 'react-router';
+import { Link } from 'react-router';
 
 export default function GenreCard({ genre }) {
 	return (
@@ -8,7 +8,9 @@ export default function GenreCard({ genre }) {
 				<div className="panel-body">
 					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{genre.title}" />				
 					<div className="content">
-						{genre.title}
+ 						<Link to={`genre/${genre.title}`}>
+							{genre.title}
+						</Link>
 					</div>
 				</div>
 			</div>

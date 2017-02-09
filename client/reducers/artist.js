@@ -3,7 +3,7 @@
    export default function artist(state = [], action = {}) {
     switch(action.type) {
       case SET_ARTIST: 
-      	return action.artist;
+      	return action.artist !== undefined ? action.artist : null;;
       default: return state;
     }
   }

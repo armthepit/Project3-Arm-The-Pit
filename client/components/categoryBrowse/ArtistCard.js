@@ -8,7 +8,7 @@ export default function ArtistCard({ artist }) {
 				<div className="panel-body">
 					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{artist.title}" />				
 					<div className="content">
-						{artist.title}
+						{artist.name} {artist.genre}
 					</div>
 				</div>
 			</div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { link } from 'react-router';
+import { Link } from 'react-router';
 
 export default function StateCard({ usa }) {
 	return (
@@ -8,7 +8,9 @@ export default function StateCard({ usa }) {
 				<div className="panel-body">
 					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{usa.title}" />				
 					<div className="content">
-						{usa.title}
+ 						<Link to={`usa/${usa.title}`}>
+							{usa.title}
+						</Link>
 					</div>
 				</div>
 			</div>
