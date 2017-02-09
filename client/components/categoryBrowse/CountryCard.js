@@ -6,7 +6,7 @@ export default function CountryCard({ country }) {
 		<div className="col-md-4">
 			<div className="panel panel-default">
 				<div className="panel-body">
-					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{country.title}" />				
+				<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{country.title}" />
 					<div className="content">
  						<Link to={`/browsecountry/${country.link}`}>
 							{country.title}
