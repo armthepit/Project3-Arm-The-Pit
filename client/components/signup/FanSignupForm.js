@@ -90,24 +90,21 @@
       return (
         <form onSubmit={this.onSubmit}>
           <h1>Fan Signup</h1>
-  
+            <TextFieldGroup
+               error={errors.username}
+               label="Username"
+               onChange={this.onChange}
+               value={this.state.username}
+               field="username"
+             />
         <TextFieldGroup
-           error={errors.username}
-           label="Username"
-           onChange={this.onChange}
-           value={this.state.username}
-           field="username"
-         />
-
-        <TextFieldGroup
-           error={errors.email}
-           label="Email"
-           onChange={this.onChange}
-           checkExists={this.checkExists}
-           value={this.state.email}
-           field="email"
-         />
-  
+               error={errors.email}
+               label="Email"
+               onChange={this.onChange}
+               checkExists={this.checkExists}
+               value={this.state.email}
+               field="email"
+             />
         <TextFieldGroup
            error={errors.password}
            label="Password"
