@@ -27,13 +27,19 @@ class NavigationBar extends React.Component {
     )
 
    return (
-     <nav className="navbar navbar-default">
+     <nav className="navbar navbar-default navbar-fixed-top" role="navigation">
        <div className="container-fluid">
          <div className="navbar-header">
+            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span className="sr-only">Toggle navigation</span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
+          </button>
            <Link to="/" className="navbar-brand">Arm The Pit</Link>
          </div>
 
-         <div className="collapse navbar-collapse">
+         <div className="navbar-collapse collapse">
             { isAuthenticated ? userLinks : guestLinks }
          </div>
        </div>

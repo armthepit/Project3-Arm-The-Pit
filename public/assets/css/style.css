@@ -111,6 +111,13 @@ a, .navbar-brand {
 	font-size: x-large;
 }
 
+@media screen and (max-width: 768px) {
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #e7e7e7;
+    float: right;
+    background-color: lightgray;
+	}
+}
 
 /*.navbar .navbar-default .navbar-fixed-bottom {
     float:left;*/
