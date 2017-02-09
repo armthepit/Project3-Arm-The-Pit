@@ -7,11 +7,12 @@
  import ArtistLoginPage from './components/login/ArtistLoginPage';
  import FanSignupPage from './components/signup/FanSignupPage';
  import FanLoginPage from './components/login/FanLoginPage';
- import ByArtistPage from './components/browse/ByArtistPage';
- import ByCountryPage from './components/browse/ByCountryPage';
- import ByGenrePage from './components/browse/ByGenrePage';
- import ByNamePage from './components/browse/ByNamePage';
- import ByStatePage from './components/browse/ByStatePage';
+ import ArtistPage from './components/artist/ArtistPage';
+ import ByArtistPage from './components/categoryBrowse/ByArtistPage';
+ import ByCountryPage from './components/categoryBrowse/ByCountryPage'; 
+ import ByGenrePage from './components/categoryBrowse/ByGenrePage';
+ import ByNamePage from './components/categoryBrowse/ByNamePage';
+ import ByStatePage from './components/categoryBrowse/ByStatePage';
 
  
  export default (
@@ -21,10 +22,14 @@
      <Route path="artistlogin" component={ArtistLoginPage} />
      <Route path="fansignup" component={FanSignupPage} />
      <Route path="fanlogin" component={FanLoginPage} />
-     <Route path="artist" component={ByArtistPage} />
-     <Route path="country" component={ByCountryPage} />
-     <Route path="genre" component={ByGenrePage} />
-     <Route path="name" component={ByNamePage} />
-     <Route path="state" component={ByStatePage} />
+     <Route path="artist" component={ArtistPage} />
+     <Route path="artist/:genre" component={ArtistPage} />
+     <Route path="browseartist" component={ByArtistPage} />
+     <Route path="browsecountry" component={ByCountryPage} />
+     <Route path="browsecountry/:country" component={ByCountryPage} />
+     <Route path="browsegenre" component={ByGenrePage} />
+     
+     <Route path="browsename" component={ByNamePage} />
+     <Route path="browsestate" component={ByStatePage} />
    </Route>
  )

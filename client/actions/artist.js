@@ -1,21 +1,21 @@
 import axios from 'axios';
 
-export const SET_ARTISTS = "SET_ARTISTS";
+export const SET_ARTIST = "SET_ARTIST";
 
-export function setArtists(artists) {
+export function setArtist(artist) {
 	return {
-		type: SET_ARTISTS,
-		artists
+		type: SET_ARTIST,
+		artist
 	}
 }
 
-export function showArtists() {
+export function showArtist() {
 	return dispatch => {
-		return axios.get('api/artist')
+		return axios.get('api/artist/')
 
 			.then(res =>  {
 				console.log(res);
-				dispatch(setArtists(res.data.Artist))		
+				dispatch(setArtist(res.data.Artist))		
 			});
 	}
 }
