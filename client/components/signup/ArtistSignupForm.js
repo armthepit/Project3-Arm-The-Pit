@@ -123,6 +123,15 @@
             <div className="col-md-4 ">
 
               <TextFieldGroup
+                 error={errors.text}
+                 label="Band Name"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.name}
+                 field="name"
+               />
+
+              <TextFieldGroup
                  error={errors.email}
                  label="Email"
                  onChange={this.onChange}
@@ -148,14 +157,7 @@
                  field="passwordConfirmation"
                  type="password"
                />
-               <TextFieldGroup
-                  error={errors.text}
-                  label="Band Name"
-                  onChange={this.onChange}
-                  checkExists={this.checkExists}
-                  value={this.state.name}
-                  field="name"
-                />
+
                 <TextFieldGroup
                    error={errors.text}
                    label="Hometown"
