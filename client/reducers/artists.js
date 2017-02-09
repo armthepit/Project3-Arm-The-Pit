@@ -1,4 +1,4 @@
-	import { SET_ARTISTS } from '../actions/artist';
+	import { SET_ARTISTS } from '../actions/browse';
 
    export default function artists(state = [], action = {}) {
     switch(action.type) {
