@@ -7,11 +7,10 @@ export default function CountryCard({ country }) {
 			<div className="panel panel-default">
 				<div className="panel-body">
 					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{country.title}" />				
-					<div className="content">
- 						<Link to={`/browsecountry/${country.link}`}>
-							{country.title}
+
+ 						<Link to={`country/${country.link}`}>
+							<h4>{country.title}</h4>
 						</Link>
-					</div>
 				</div>
 			</div>
 		</div>

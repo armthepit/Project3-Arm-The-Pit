@@ -23,13 +23,14 @@
      <Route path="fansignup" component={FanSignupPage} />
      <Route path="fanlogin" component={FanLoginPage} />
      <Route path="artist" component={ArtistPage} />
-     <Route path="artist/:genre" component={ArtistPage} />
      <Route path="browseartist" component={ByArtistPage} />
      <Route path="browsecountry" component={ByCountryPage} />
-     <Route path="browsecountry/:country" component={ByCountryPage} />
      <Route path="browsegenre" component={ByGenrePage} />
-     
      <Route path="browsename" component={ByNamePage} />
      <Route path="browsestate" component={ByStatePage} />
+     <Route path="country/:country" component={ByArtistPage} />
+     <Route path="genre/:genre" component={ByArtistPage} />
+     <Route path="name/:name" component={ByArtistPage} />
+     <Route path="usa/:usa" component={ByArtistPage} />     
    </Route>
  )
