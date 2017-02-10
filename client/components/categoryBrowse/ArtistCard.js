@@ -9,24 +9,24 @@ export default function ArtistCard({ artist }) {
 					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{artist.title}" />				
 					<div className="content">
 						<h4>{artist.name}</h4> 
-						<h7>member since: {artist.createdAt}
-						<h5>Genre: {artist.genre}</h3> 
-						<h5>Hometown: {artist.hometown}, {artist.state}, {artist.country}</h3>
+						<h7>member since: {artist.createdAt}</h7>
+						<h5>Genre: {artist.genre}</h5> 
+						<h5>Hometown: {artist.hometown}, {artist.state}, {artist.country}</h5>
 						<br />
-						<h5>Band Members: {artist.bandmembers}</h3>
-						<h5>Record Label: {artist.recordLabel}</h3>
+						<h5>Band Members: {artist.bandmembers}</h5>
+						<h5>Record Label: {artist.recordLabel}</h5>
 						<br />
 						<p>Bio:{artist.bio}</p>
-						<h5>email: {artist.email}</h3>
+						<h5>email: {artist.email}</h5>
 						<h3>website: {artist.artistWebsite}</h3>
 						<br />
-						<h5>Representative: {artist.representative}</h3>
-						<h5>Rep email: {artist.repEmail}</h3>
-						<h5>Rep phone: {artist.repPhone}</h3>
+						<h5>Representative: {artist.representative}</h5>
+						<h5>Rep email: {artist.repEmail}</h5>
+						<h5>Rep phone: {artist.repPhone}</h5>
 						<br />
-						<h5>songs: {artist.songs}</h3>
-						<h5>plays: {artist.plays}</h3>
-						<h5>views: {artist.views}</h3>
+						<h5>songs: {artist.songs}</h5>
+						<h5>plays: {artist.plays}</h5>
+						<h5>views: {artist.views}</h5>
 						<br />
 						<h4>Social Media</h4>
 						<table class="table table-condensed">
