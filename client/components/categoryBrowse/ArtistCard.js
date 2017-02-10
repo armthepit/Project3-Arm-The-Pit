@@ -3,7 +3,7 @@ import { link } from 'react-router';
 
 export default function ArtistCard({ artist }) {
 	return (
-		<div className="col-md-8 col-md-offset-2">
+		 <div className="col-md-8 col-md-offset-2"> 
 			<div className="panel panel-default">
 				<div className="panel-body">
 					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{artist.title}" />				
@@ -37,11 +37,8 @@ export default function ArtistCard({ artist }) {
 						        <tr>
 						        	<td>reverbnation {artist.reverbnation}</td>
 						            <td>other website: {artist.otherWebsite1}</td>
-						        </tr>
-						        <tr>
-						            <td>other website: {artist.otherWebsite2}</td>
-						        </tr>
-						    </tbody>
+						        </tr>	
+						       </tbody>
 						</table>
 					</div>
 				</div>
