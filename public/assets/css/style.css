@@ -5,16 +5,31 @@ body {
 	background-size: cover;
 	background-attachment: fixed;
 	color: #ff0000;
+	padding-top: 30px;
 }
 
 /*Arm the Pit Welcome Font*/
 h1, h2 {
 	font-family: 'New Rocker', cursive;
 	text-align: center;
+	padding-top: 30px;
 }
 
-h6 {
+h4, h6 {
 	text-align: center;
+	color: #ff0000;
+	font-weight: bold;
+	font-family: 'Lato', sans-serif;
+}
+
+h4 {
+	font-size: x-large;
+}
+
+.content > a {
+	color: #ff0000;
+
+
 }
 /*Font for navbar and forms*/
 a, .navbar-brand, .control-label {
@@ -44,9 +59,13 @@ a, .navbar-brand {
   color: #ff0000;
 }
 .row {
-	background: rgba(5, 4, 4, 0.31);
+	background: rgba(54, 54, 54, 0.1);
+	margin-top: 20px;
 }
 
+.col-md-12, .col-md-6 {
+	background: rgba(54, 54, 54, 0.1);
+}
 /*White textbox field in the artist signup form*/
 .rdw-editor-main {
 	background-color: white;
@@ -72,12 +91,13 @@ a, .navbar-brand {
 	background: rgba(200, 54, 54, 0.0);
 }
 /* button styling for "browse artist by" */
-.btn-info {
+.btn-info, .btn {
 	background-color: #ff0000;
 	border-color: #ff0000;
 	margin-left: 20px;
 	position: relative;
     left: 307px;
+
 }
 
 .btn-info:hover {
@@ -118,6 +138,12 @@ a, .navbar-brand {
     background-color: lightgray;
 	}
 }
+
+
+
+/*.form {
+	padding: 50px;
+}*/
 
 /*.navbar .navbar-default .navbar-fixed-bottom {
     float:left;*/
