@@ -8,10 +8,12 @@
     render() {
       return (
        <div className="container">
+
          <NavigationBar />
          <FlashMessagesList />
          {this.props.children}
          {/* <Footer /> */}
+         
        </div>
       );
     }
