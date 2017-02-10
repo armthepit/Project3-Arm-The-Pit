@@ -43,7 +43,12 @@ app.use(express.static(publicpath));
 const port = process.env.PORT || 3000;
 
 // Database
-require("./config/connection");
+// require("./config/connection");
+// mongoose.connect(MONGODB_URI, function(err) {
+mongoose.connect(MONGODB_URI, function(err) {
+	if(err) throw err;
+	console.log('database connected');
+});
 
 //Routes
 app.get('/*', (req, res) => {
