@@ -2,7 +2,7 @@
   "name": "armthepit",
   "version": "1.0.0",
   "description": "Arm The Pit - The Underground Music Network With A Social Conscience",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
