@@ -6,10 +6,10 @@ export default function ArtistCard({ artist }) {
 		 <div className="col-md-8 col-md-offset-2"> 
 			<div className="panel panel-default">
 				<div className="panel-body">
-					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{artist.title}" />				
+					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{artist.title}" />
 					<div className="content">
-						<h4>{artist.name}</h4> 
-						<h5>Genre: {artist.genre}</h5> 
+						<h4>{artist.name}</h4>
+						<h5>Genre: {artist.genre}</h5>
 						<h5>Hometown: {artist.hometown}, {artist.state}, {artist.country}</h5>
 						<br />
 						<h5>Band Members: {artist.bandMembers}</h5>
@@ -24,7 +24,7 @@ export default function ArtistCard({ artist }) {
 						<h5>views: {artist.views}</h5>
 						<br />
 						<h4>Social Media</h4>
-						<table class="table">
+						<table className="table">
 							<tbody>
 						        <tr>
 						            <td>facebook: {artist.facebook}</td>
