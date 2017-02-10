@@ -10,7 +10,7 @@ class ByArtistPage extends React.Component {
 
     render() {
         return ( < div >
-            < h1 > Browse By Artists < /h1>
+            < h1 > Artist < /h1>
 
             < ByArtistList artists = { this.props.artists }
             /> < /div>

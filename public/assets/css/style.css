@@ -139,9 +139,21 @@ a, .navbar-brand {
     background-color: lightgray;
 	}
 }
+/*artistcard*/
+.img-rounded, .img-responsive, #artistcard {
+	float:left;
+}
 
+.img-rounded, .img-responsive, #artistcard, .content, h4 {
+	text-align: left;
+	margin-right: 10px;
+	/*margin-bottom: 5px;*/
+}
 
-
+.table {
+	font-weight: bold;
+	font-size: 18px;
+}
 /*.form {
 	padding: 50px;
 }*/
