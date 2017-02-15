@@ -4,7 +4,7 @@ import NameCard from './NameCard';
  export default function ByNameList({ names }) {
   
    const namesList = (
-     <div className="col-md-12">
+     <div className="row">
         { names.map(name => <NameCard name={name} key={name._id} />)}
      </div>
    );

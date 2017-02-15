@@ -3,14 +3,14 @@ import { Link } from 'react-router';
 
 export default function NameCard({ name }) {
 	return (
-		<div className="col-md-4">
+		<div className="col-sm-12 col-md-3">
 			<div className="panel panel-default">
-				<div className="panel-body">
-					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{name.title}" />				
-					<div className="content">
- 						<Link to={`name/${name.title}`}>
-							{name.title}
-						</Link>
+				<div className="panel-body text-center">
+					<Link to={`name/${name.title}`}>
+						<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{name.title}" />				
+					</Link>
+					<div className="panel-footer text-center">
+ 						<Link to={`name/${name.title}`}><button type="button" className="btn btn-custom btn-block">{name.title}</button></Link>
 					</div>
 				</div>
 			</div>
