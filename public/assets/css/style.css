@@ -1,174 +1,275 @@
 body {
-	/*background-color: #000000;*/
-	background-image: url("../images/rock-wallpapers9.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
-	color: #ff0000;
-	padding-top: 30px;
+    /*background-color: #000000;*/
+    background-image: url("../images/rock-wallpapers9.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Lato', sans-serif;
+    color: #ff0000;
+    /*padding-top: 10px;*/
 }
+
 
 /*Arm the Pit Welcome Font*/
-h1, h2 {
-	font-family: 'New Rocker', cursive;
-	text-align: center;
-	padding-top: 30px;
+
+h1,
+h2 {
+    font-family: 'New Rocker', cursive;
+    font-size: 72px;
 }
 
-h4, h6 {
-	text-align: center;
-	color: #ff0000;
-	font-weight: bold;
-	font-family: 'Lato', sans-serif;
+h1 {
+    font-size: 72px;
+    padding: 50px 0 0 0;
+}
+
+h2 {
+    font-size: 48px;
+    padding: 0;
+}
+
+h4,
+h6 {
+    text-align: center;
+    color: #ff0000;
+    font-weight: bold;
 }
 
 h4 {
-	font-size: x-large;
+    font-size: x-large;
 }
 
 .content > a {
-	color: #ff0000;
-
-
+    color: #ff0000;
 }
+
+
 /*Font for navbar and forms*/
-a, .navbar-brand, .control-label {
-	font-family: 'Lato', sans-serif;
-}
+
+/*a,
+.navbar-brand,
+.control-label {
+    font-family: 'Lato', sans-serif;
+}*/
+
+
 /*Font weight for the navbar*/
-a, .navbar-brand {
-	font-weight: bolder;
-}
+
+/*a,
+.navbar-brand {
+    font-weight: bolder;
+}*/
+
 
 /*Color for the form*/
-.control-label, input {
-	color: white;
+
+.control-label,
+input {
+    color: white;
 }
 
+/* unvisited link */
+a:link {
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+	color: #ffffff;
+    text-decoration: none;
+}
+
+/* selected link */
+a:active {
+    text-decoration: none;
+}
+
+
 /*This makes the navbar, jumbo and footer */
-.jumbotron, .navbar, .navbar-default, .navbar-fixed-bottom, .navbar-header, .navbar-brand {
-   background: rgba(200, 54, 54, 0.0);
-	 border: 0;
+
+.jumbotron,
+.navbar,
+.navbar-default,
+.navbar-fixed-bottom,
+.navbar-header,
+.navbar-brand {
+    background: rgba(200, 54, 54, 0.0);
+    border: 0;
 }
 
 .navbar-default .navbar-brand {
-	color: #ff0000;
+	font-family: 'New Rocker', cursive;
+	font-size: 24px;
+    color: #ff0000;
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #ff0000;
-}
-.row {
-	background: rgba(54, 54, 54, 0.1);
-	margin-top: 20px;
+	font-family: 'New Rocker', cursive;
+	font-size: 18px;
+    color: #ff0000;
 }
 
-.col-md-12, .col-md-6 {
-	background: rgba(54, 54, 54, 0.1);
+.row {
+    background: rgba(200, 54, 54, 0.0);
+    margin-top: 20px;
 }
+
+.col-md-12,
+.col-md-6, 
+.col-md-3 {
+    background: rgba(200, 54, 54, 0.0);
+}
+
+
 /*White textbox field in the artist signup form*/
+
 .rdw-editor-main {
-	background-color: white;
+    background-color: white;
 }
+
+
 /*Black font in textbox field in the artist signup form*/
+
 .DraftEditor-editorContainer {
-	color: black;
+    color: black;
 }
+
 
 /*Alert Message*/
-.alert-success, .alert-danger, .alert {
-	margin-top: 30px;
-	font-family: 'New Rocker', sans-serif;
-	font-size: large;
-	text-align: center;
+
+.alert-success,
+.alert-danger,
+.alert {
+    margin-top: 30px;
+    font-family: 'New Rocker', sans-serif;
+    font-size: large;
+    text-align: center;
 }
+
 
 /*font, size alignment within State, artist, genre, country panel*/
+
 .content {
-	font-family: 'Lota', sans-serif;
-	font-size: x-large;
-	font-weight: bold;
-	text-align: center;
-	background: rgba(200, 54, 54, 0.0);
+    font-family: 'Lota', sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+    background: rgba(200, 54, 54, 0.0);
 }
+
+.panel,
+.panel-body,
+.panel-footer {
+    background: rgba(200, 54, 54, 0.0);
+    border: none;
+    padding: 0 10px 0 10px;
+    border-color: rgba(200, 54, 54, 0.0);
+}
+
 /* button styling for "browse artist by" */
-.btn-info, .btn {
-	background-color: #ff0000;
-	border-color: #ff0000;
-	margin-left: 5px;
-	position: relative;
-    left: 159px;
 
+.btn-custom {
+  background-color: #ff0000;
+  border-color: #ff0000;
+  color: #ffffff;
+  font-family: 'New Rocker', cursive;
+  font-size: 18px;
 }
 
-.btn-info:hover {
-    color: #ff0000;
-    background-color: #fff;
-    border-color: #fff;
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active,
+.btn-custom.active {
+  background-color: #e60000;
+  border-color: #e60000;
+  color: #ffffff;
+  font-family: 'New Rocker', cursive;
+  font-size: 18px;
 }
 
-.btn-info:active {
-    color: #ff0000;
-    background-color: #333;
-    border-color: #333;
+.btn-custom.disabled:hover,
+.btn-custom.disabled:focus,
+.btn-custom.disabled:active,
+.btn-custom.disabled.active,
+  background-color: #ff0000;
+  border-color: #ff0000;
+  color: #ffffff;
+  font-family: 'New Rocker', cursive;
+  font-size: 18px;
 }
 
-.btn-info:focus {
-    color: #ff0000;
-    background-color: #333;
-    border-color: #333;
-}
 
-/*logo girl panel set-up*/
-.panel-body, .panel, .panel-default {
-	background: rgba(200, 54, 54, 0.0);
-	border: none;
 
-}
+
 /*new font for the navbar...*/
-.navbar-brand, li > a {
-	font-family: 'Metal Mania', cursive;
-	font-weight: bolder;
-	font-size: x-large;
+
+.navbar-brand,
+li > a {
+    font-family: 'New Rocker', cursive;
+/*    font-weight: bolder;
+    font-size: x-large;*/
 }
 
 @media screen and (max-width: 768px) {
-	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    border-color: #e7e7e7;
-    float: right;
-    background-color: lightgray;
-	}
-}
-/*artistcard*/
-.img-rounded, .img-responsive, #artistcard {
-	float:left;
+    .navbar-default .navbar-collapse,
+    .navbar-default .navbar-form {
+        border-color: #e7e7e7;
+        float: right;
+        background-color: lightgray;
+    }
 }
 
-.img-rounded, .img-responsive, #artistcard, .content, h4 {
-	text-align: left;
-	margin-right: 10px;
-	/*margin-bottom: 5px;*/
+
+/*artistcard*/
+
+.img-rounded,
+.img-responsive,
+#artistcard {
+    float: left;
+}
+
+.img-rounded,
+/*.img-responsive,*/
+#artistcard,
+.content,
+h4 {
+    text-align: left;
+    margin-right: 10px;
+    /*margin-bottom: 5px;*/
 }
 
 .table {
-	font-weight: bold;
-	font-size: 18px;
+    font-weight: bold;
+    font-size: 18px;
 }
+
+
 /*.form {
 	padding: 50px;
 }*/
 
+
 /*.navbar .navbar-default .navbar-fixed-bottom {
     float:left;*/
-    /*background-color:#bdf;  /* TEST BG Only.  To Be Deleted */*/
+
+
+/*background-color:#bdf;  /* TEST BG Only.  To Be Deleted */
+
 /*}
 .navbar .navbar-default .navbar-fixed-bottom {
     display:none;
 }*/
 
+
 /*.navbar-fixed-bottom {
 	position: fixed;
 }*/
+
 
 /*.rdw-editor-main {
 	border-style: solid;

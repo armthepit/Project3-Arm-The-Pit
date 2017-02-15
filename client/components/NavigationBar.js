@@ -27,7 +27,7 @@ class NavigationBar extends React.Component {
     )
 
    return (
-     <nav className="navbar navbar-default navbar-fixed-top" role="navigation">
+     <nav className="navbar navbar-default" role="navigation">
        <div className="container-fluid">
          <div className="navbar-header">
             <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

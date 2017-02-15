@@ -45,7 +45,7 @@ const port = process.env.PORT || 3000;
 // Database
 // require("./config/connection");
 // mongoose.connect(MONGODB_URI, function(err) {
-mongoose.connect(MONGODB_URI, function(err) {
+ mongoose.connect("mongodb://heroku_50wwfh4l:8ir3h1ulv7nrl0m2i6ummdunn4@ds149059.mlab.com:49059/heroku_50wwfh4l", function(err) {
 	if(err) throw err;
 	console.log('database connected');
 });
