@@ -11,7 +11,7 @@ export default function GenreCard({ genre }) {
 					</Link>
 				</div>			
 				<div className="panel-footer text-center">
- 					<Link to={`genre/${genre.title}`}><button type="button" className="btn btn-custom btn-block">{genre.title}</button></Link>
+ 					<Link to={`genre/${genre.title}`}><button type="button" className="btn btn-custom btn-block">{genre.title} - <span className="badge">{genre.artist}</span></button></Link>
 				</div>
 			</div>
 		</div>

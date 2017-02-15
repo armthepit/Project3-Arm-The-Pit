@@ -9,11 +9,12 @@ class ByStatePage extends React.Component {
     }
 
     render() {
-        return ( < div >
-            < h1 > Browse By State < /h1>
-
-            < ByStateList states = { this.props.states }
-            /> < /div>
+        return ( 
+            <div>
+                <h1 className="text-center">Arm The Pit</h1>
+                <h2 className="text-center">Browse Artists By State< /h2>
+                < ByStateList states = { this.props.states } /> 
+            < /div>
         );
     }
 }

@@ -224,6 +224,10 @@ li > a {
     }
 }
 
+.badge {
+	background: #ffffff;
+	color: #ff0000;
+}
 
 /*artistcard*/
 
