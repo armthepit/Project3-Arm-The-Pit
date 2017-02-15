@@ -54,7 +54,8 @@ class FanLoginForm extends React.Component {
     const { errors } = this.state;
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>Fan Login</h1>
+        <h1 className="text-center">Arm The Pit</h1>
+        <h2 className="text-center">Fan Login</h2>
 
         <TextFieldGroup
            error={errors.email}
@@ -73,7 +74,7 @@ class FanLoginForm extends React.Component {
            type="password"
          />   
 
-       <div className="form-group"><button className="btn btn-danger btn-lg" disabled={this.state.isLoading}>Login</button></div>
+       <div className="form-group"><button className="btn btn-custom center-block" disabled={this.state.isLoading}>Login</button></div>
       </form>
     );
   }

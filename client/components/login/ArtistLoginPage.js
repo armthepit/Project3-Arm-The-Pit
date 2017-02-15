@@ -9,7 +9,7 @@ class ArtistLoginPage extends React.Component {
   	const{ artistLogin, addFlashMessage } = this.props;	
     return (
       <div className="row">
-        <div className="col-md-4 col-md-offset-4">
+        <div className="col-sm-4 col-md-6 col-md-offset-3">
           <ArtistLoginForm 
           	artistLogin = { artistLogin }
           	addFlashMessage={addFlashMessage}/>	
