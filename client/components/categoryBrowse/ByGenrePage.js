@@ -9,11 +9,12 @@ class ByGenrePage extends React.Component {
     }
 
     render() {
-        return ( < div >
-            < h1 > Browse By Genre < /h1>
-
-            < ByGenreList genres = { this.props.genres }
-            /> < /div>
+        return ( 
+            < div >
+                <h1 className="text-center">Arm The Pit</h1>
+                <h2 className="text-center">Browse Artist By Genre</h2>
+                < ByGenreList genres = { this.props.genres } /> 
+            < /div>
         );
     }
 }

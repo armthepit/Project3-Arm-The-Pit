@@ -4,7 +4,7 @@ import GenreCard from './GenreCard';
  export default function ByGenreList({ genres }) {
  
    const genresList = (
-     <div className="col-md-12">
+     <div className="row">
         { genres.map(genre => <GenreCard genre={genre} key={genre._id} />)}
      </div>
    );
