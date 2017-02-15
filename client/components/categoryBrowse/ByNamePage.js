@@ -9,11 +9,12 @@ class ByNamePage extends React.Component {
     }
 
     render() {
-        return ( < div >
-            < h1 > Browse By Name < /h1>
-
-            < ByNameList names = { this.props.names }
-            /> < /div>
+        return ( 
+            <div>
+                <h1 className="text-center">Arm The Pit</h1>
+                <h2 className="text-center">Browse Artists By Name</h2>
+                < ByNameList names = { this.props.names } /> 
+            < /div>
         );
     }
 }
