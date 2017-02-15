@@ -3,15 +3,15 @@ import { Link } from 'react-router';
 
 export default function GenreCard({ genre }) {
 	return (
-		<div className="col-md-4">
+		<div className="col-sm-12 col-md-3">
 			<div className="panel panel-default">
 				<div className="panel-body">
-					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{genre.title}" />				
-					<div className="content">
- 						<Link to={`genre/${genre.title}`}>
-							{genre.title}
-						</Link>
-					</div>
+					<Link to={`genre/${genre.title}`}>
+						<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{genre.title}" />	
+					</Link>
+				</div>			
+				<div className="panel-footer text-center">
+ 					<Link to={`genre/${genre.title}`}><button type="button" className="btn btn-custom btn-block">{genre.title}</button></Link>
 				</div>
 			</div>
 		</div>
