@@ -4,7 +4,7 @@ import CountryCard from './CountryCard';
  export default function ByCountryList({ countries }) {
 
    const countriesList = (
-     <div className="col-md-12">
+     <div className="row">
         { countries.map(country => <CountryCard country={country} key={country._id} />)}
      </div>
     );
