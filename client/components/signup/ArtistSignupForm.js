@@ -28,6 +28,7 @@
        genre: '',
        recordLabel:'',
        bio:'',
+       editorContents: [],
        bandMembers:'',
        artistWebsite:'',
        facebook:'',
@@ -49,6 +50,14 @@
      this.onSubmit = this.onSubmit.bind(this);
      this.checkExists = this.checkExists.bind(this);
    }
+   onEditorStateChange: Function = (index, editorContent) => {
+    let editorContents = this.state.editorContents;
+    editorContents[index] = editorContent;
+    editorContents = [...editorContents];
+    this.setState({
+      editorContents,
+    });
+  };
 
    onChange(e) {
      this.setState({ [e.target.name]: e.target.value });
@@ -104,9 +113,9 @@
   //
 
     render() {
-     const { errors } = this.state;
-       const { editorContents } = this.state;
-      const genreOptions = map(genre, (val, key) =>
+     const { errors, editorContents } = this.state;
+    //  const { editorContents } = this.state;
+     const genreOptions = map(genre, (val, key) =>
         <option key={val} value={val}>{key}</option>
       );
 
@@ -362,25 +371,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <div className="col-md-3 ">
                   <div className="form-group">
                     <label className="control-label">Add A Profile Pic</label>
@@ -412,6 +402,18 @@
 
               </textarea>
              {errors.bio && <span className="help-block">{errors.bio}</span>}
+            </div>
+
+            <div>
+              <Editor
+                editorState={editorContents[0]}
+                onEditorStateChange={this.onEditorStateChange.bind(this, 0)}
+              />
+              <textarea
+            disabled
+            className="demo-content no-focus"
+            value={editorContents[1] && JSON.stringify(convertToRaw(editorContents[1].getCurrentContent()), null, 4)}
+          />
             </div>
 
           <TextFieldGroup
