@@ -3,14 +3,19 @@ import { Link } from 'react-router';
 
 export default function CountryCard({ country }) {
 	return (
-		<div className="col-md-4">
+		<div className="col-sm-12 col-md-3">
 			<div className="panel panel-default">
 				<div className="panel-body">
-					<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{country.title}" />				
-
- 						<Link to={`country/${country.link}`}>
-							<h4>{country.title}</h4>
-						</Link>
+					<div className="panel panel-default">
+						<div className="panel-body text-center">
+							<Link to={`country/${country.link}`}>
+								<img src="assets/images/lilgirl.jpg" className="img-responsive center-block" alt="{country.title}" />				
+							</Link>	
+						</div>
+						<div className="panel-footer text-center">
+							<Link to={`country/${country.link}`}><button type="button" className="btn btn-custom btn-block">{country.title}</button></Link>
+						</div>			
+					</div>				
 				</div>
 			</div>
 		</div>

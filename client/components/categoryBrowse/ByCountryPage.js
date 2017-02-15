@@ -9,11 +9,14 @@ class ByCountryPage extends React.Component {
     }
 
     render() {
-        return ( < div >
-            < h1 > Browse By Country < /h1>
-
-            < ByCountryList countries = { this.props.countries }
-            /> < /div>
+        return ( 
+            < div >
+                <h1 className="text-center">Arm The Pit</h1>
+                <h2 className="text-center">Browse Artists By Country</h2>
+                <div>
+                    < ByCountryList countries = { this.props.countries } />
+                </div>     
+            < /div>
         );
     }
 }
