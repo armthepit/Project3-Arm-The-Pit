@@ -8,13 +8,13 @@
     render() {
       const { fanSignupRequest, addFlashMessage, isFanExists } = this.props;
       return (
-       <div className="row">
-         <div className="col-md-4 col-md-offset-4">
+       <div>
+
            <FanSignupForm 
               isFanExists={isFanExists}
               fanSignupRequest={fanSignupRequest} 
               addFlashMessage={addFlashMessage} />
-         </div>
+
        </div>
       );
     }
