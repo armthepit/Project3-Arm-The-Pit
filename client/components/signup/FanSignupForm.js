@@ -89,16 +89,23 @@
       );
       return (
         <form onSubmit={this.onSubmit}>
-          <h1>Fan Signup</h1>
-            <div className="row">
-              <div className="col-lg-6">
+        <h1 className="text-center">Arm The Pit</h1>
+        <h2 className="text-center">Fan Signup</h2>
+
+          <div className="row">
+            <div className="col-sm-4 col-md-6 col-md-offset-3">
                 <TextFieldGroup
                    error={errors.username}
-                   label="Username"
+                   label="Name"
                    onChange={this.onChange}
                    value={this.state.username}
                    field="username"
                  />
+            </div>
+          </div>       
+
+          <div className="row">
+            <div className="col-md-2 col-md-offset-3">
                 <TextFieldGroup
                    error={errors.email}
                    label="Email"
@@ -107,7 +114,9 @@
                    value={this.state.email}
                    field="email"
                  />
-              
+            </div>
+            
+            <div className="col-md-2 ">      
                 <TextFieldGroup
                    error={errors.password}
                    label="Password"
@@ -116,7 +125,10 @@
                    field="password"
                    type="password"
                  />
+            </div>
+                 
           
+            <div className="col-md-2 ">
                 <TextFieldGroup
                    error={errors.passwordConfirmation}
                    label="Password Confirmation"
@@ -125,8 +137,11 @@
                    field="passwordConfirmation"
                    type="password"
                  />
-                 </div>
-              <div className="col-lg-6">
+            </div>
+          </div>
+
+          <div className="row">  
+            <div className="col-md-2 col-md-offset-3">
                <TextFieldGroup
                  error={errors.hometown}
                  label="City"
@@ -134,6 +149,10 @@
                  value={this.state.hometown}
                  field="hometown"
                />
+            </div>  
+
+
+            <div className="col-md-2 "> 
                 <div className={classnames("form-group", { 'has-error': errors.usa })}>
                   <label className="control-label">State</label>
                   <select
@@ -147,7 +166,9 @@
                   </select>
                  {errors.usa && <span className="help-block">{errors.usa}</span>}
                 </div>
+            </div>    
          
+          <div className="col-md-2 ">
             <div className={classnames("form-group", { 'has-error': errors.country })}>
               <label className="control-label">Country</label>
               <select
@@ -161,6 +182,10 @@
               </select>
              {errors.country && <span className="help-block">{errors.country}</span>}
             </div>
+          </div>
+          
+          <div className="row">
+            <div className="col-md-6 col-md-offset-3">  
              <div className="form-group">
               <label className="control-label">Add A Profile Pic</label>
               <input 
@@ -170,10 +195,10 @@
                 />
               </div>
             </div>
-          <br />
+          </div>
           
           <div className="form-group">
-           <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-danger btn-lg">
+           <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-custom center-block">
               Sign up
             </button>
           </div>

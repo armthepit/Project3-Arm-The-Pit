@@ -8,13 +8,13 @@
     render() {
       const { artistSignupRequest, addFlashMessage, isArtistExists } = this.props;
       return (
-       <div className="row">
-         <div className="col-md-12">
+       <div>
+
            <ArtistSignupForm
               isArtistExists={isArtistExists}
               artistSignupRequest={artistSignupRequest}
               addFlashMessage={addFlashMessage}/>
-         </div>
+
        </div>
       );
     }
