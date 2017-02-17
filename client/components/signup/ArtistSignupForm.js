@@ -1,23 +1,21 @@
-  import React from 'react';
-  import { browserHistory } from 'react-router';
+ import React from 'react';
+ import { browserHistory } from 'react-router';
   import genre from '../../data/genres';
   import states from '../../data/states.js';
-  import country from '../../data/countries';
+ import country from '../../data/countries';
   import map from 'lodash/map';
-  import classnames from 'classnames';
+ import classnames from 'classnames';
   import validateInput from '../../../server/shared/validations/artistsignup';
   import draftjs from 'draft-js';
-  //import  { editorState } from 'draft-js';
-  import { Editor, } from 'react-draft-wysiwyg';
-  import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+  import { Editor } from 'react-draft-wysiwyg';
+  import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';  
   import TextFieldGroup from '../common/TextFieldGroup';
-  import {convertFromRaw, convertToRaw} from 'draft-js';
-
+  
   class ArtistSignupForm extends React.Component {
     constructor(props) {
      super(props);
      this.state = {
-
+       username: '',
        email: '',
        password: '',
        passwordConfirmation: '',
@@ -28,7 +26,6 @@
        genre: '',
        recordLabel:'',
        bio:'',
-       editorContents: [],
        bandMembers:'',
        artistWebsite:'',
        facebook:'',
@@ -45,20 +42,12 @@
        isLoading: false,
        invalid: false
       }
-
+  
       this.onChange = this.onChange.bind(this);
      this.onSubmit = this.onSubmit.bind(this);
      this.checkExists = this.checkExists.bind(this);
    }
-   onEditorStateChange: Function = (index, editorContent) => {
-    let editorContents = this.state.editorContents;
-    editorContents[index] = editorContent;
-    editorContents = [...editorContents];
-    this.setState({
-      editorContents,
-    });
-  };
-
+ 
    onChange(e) {
      this.setState({ [e.target.name]: e.target.value });
    }
@@ -91,10 +80,10 @@
        });
      }
    }
-
+    
    onSubmit(e) {
      e.preventDefault();
-
+ 
      if (this.isValid()) {
         this.setState({ errors: {}, isLoading: true });
         this.props.artistSignupRequest(this.state).then(
@@ -109,13 +98,11 @@
        );
      }
    }
-
-  //
-
+  
     render() {
-     const { errors, editorContents } = this.state;
-    //  const { editorContents } = this.state;
-     const genreOptions = map(genre, (val, key) =>
+     const { errors } = this.state;
+       const { editorContents } = this.state;
+      const genreOptions = map(genre, (val, key) =>
         <option key={val} value={val}>{key}</option>
       );
 
@@ -127,20 +114,23 @@
      );
       return (
         <form onSubmit={this.onSubmit}>
-          <h1>Artist Signup</h1>
+        <h1 className="text-center">Arm The Pit</h1>
+        <h2 className="text-center">Artist Signup</h2>
+
           <div className="row">
-            <div className="col-md-3 ">
+            <div className="col-sm-4 col-md-6 col-md-offset-3">
               <TextFieldGroup
                  error={errors.text}
-                 label="Band Name"
+                 label="Artist Name"
                  onChange={this.onChange}
-                 checkExists={this.checkExists}
                  value={this.state.name}
                  field="name"
                />
-
             </div>
-            <div className="col-md-3 ">
+          </div>  
+
+          <div className="row">
+            <div className="col-md-2 col-md-offset-3">
               <TextFieldGroup
                  error={errors.email}
                  label="Email"
@@ -149,9 +139,9 @@
                  value={this.state.email}
                  field="email"
                />
-
             </div>
-            <div className="col-md-3 ">
+
+            <div className="col-md-2 ">
               <TextFieldGroup
                  error={errors.password}
                  label="Password"
@@ -160,9 +150,9 @@
                  field="password"
                  type="password"
                />
-
             </div>
-            <div className="col-md-3 ">
+
+            <div className="col-md-2 ">
               <TextFieldGroup
                  error={errors.passwordConfirmation}
                  label="Password Confirmation"
@@ -171,9 +161,11 @@
                  field="passwordConfirmation"
                  type="password"
                />
-
             </div>
-            <div className="col-md-3 ">
+          </div>  
+
+          <div className="row">  
+            <div className="col-md-2 col-md-offset-3">
               <TextFieldGroup
                  error={errors.text}
                  label="Hometown"
@@ -182,9 +174,9 @@
                  value={this.state.hometown}
                  field="hometown"
                />
-
             </div>
-            <div className="col-md-3 ">
+
+            <div className="col-md-2 ">
               <div className={classnames("form-group", { 'has-error': errors.states })}>
                  <label className="control-label">State</label>
                  <select
@@ -193,14 +185,14 @@
                   onChange={this.onChange}
                   value={this.state.states}
                 >
-                   <option value="" disabled>What State are you from?</option>
+                   <option value="" disabled>Choose Your State</option>
                    {stateOptions}
                  </select>
                 {errors.states && <span className="help-block">{errors.states}</span>}
               </div>
             </div>
 
-              <div className="col-md-3 ">
+              <div className="col-md-2 ">
                 <div className={classnames("form-group", { 'has-error': errors.country })}>
                   <label className="control-label">Country</label>
                   <select
@@ -215,8 +207,11 @@
                  {errors.country && <span className="help-block">{errors.country}</span>}
                 </div>
               </div>
+            </div>
+   
 
-              <div className="col-md-3 ">
+           <div className="row">
+              <div className="col-md-2 col-md-offset-3">
                <div className={classnames("form-group", { 'has-error': errors.genre })}>
                   <label className="control-label">Genre</label>
                   <select
@@ -232,7 +227,7 @@
                 </div>
               </div>
 
-              <div className="col-md-3 ">
+              <div className="col-md-4 ">
                 <TextFieldGroup
                    error={errors.text}
                    label="Record Label"
@@ -241,9 +236,53 @@
                    value={this.state.recordLabel}
                    field="recordLabel"
                  />
-
               </div>
-              <div className="col-md-3 ">
+            </div> 
+
+          <div className="row">
+          <div className="col-md-6 col-md-offset-3">  
+           <TextFieldGroup
+              error={errors.text}
+              label="Band's Biography"
+              onChange={this.onChange}
+              checkExists={this.checkExists}
+              value={this.state.bio}
+              type = {<textarea></textarea>}
+              field="bio"
+            />
+          </div>
+          </div>  
+
+          <div className="row">
+          <div className="col-md-6 col-md-offset-3">  
+          <TextFieldGroup
+             error={errors.text}
+             label="Band Members"
+             onChange={this.onChange}
+             checkExists={this.checkExists}
+             value={this.state.bandMembers}
+             type = {<textarea></textarea>}
+             field="bandMembers"
+           />
+          </div>
+          </div>  
+                    
+          <div className="row">
+            <div className="col-md-6 col-md-offset-3">
+                <div className="form-group">
+                    <label className="control-label">Add A Profile Pic</label>
+                    <input
+                      type="file"
+                      name="file"
+                      ref="file"
+                      />
+                </div>
+            </div>
+          </div>   
+
+
+            <div className="row">
+              <div className="col-md-3 col-md-offset-3">
                 <TextFieldGroup
                    error={errors.text}
                    label="Your Website"
@@ -252,8 +291,8 @@
                    value={this.state.artistWebsite}
                    field="artistWebsite"
                  />
-
               </div>
+
               <div className="col-md-3 ">
                 <TextFieldGroup
                    error={errors.text}
@@ -263,9 +302,11 @@
                    value={this.state.facebook}
                    field="facebook"
                  />
-
               </div>
-              <div className="col-md-3 ">
+            </div>  
+
+            <div className="row">
+              <div className="col-md-3 col-md-offset-3">
                 <TextFieldGroup
                    error={errors.text}
                    label="ReverbNation"
@@ -274,8 +315,8 @@
                    value={this.state.reverbnation}
                    field="reverbnation"
                  />
-
               </div>
+
               <div className="col-md-3 ">
                 <TextFieldGroup
                    error={errors.text}
@@ -285,9 +326,11 @@
                    value={this.state.soundCloud}
                    field="soundCloud"
                  />
-
               </div>
-              <div className="col-md-3 ">
+            </div>  
+
+            <div className="row">
+              <div className="col-md-3 col-md-offset-3">
                 <TextFieldGroup
                    error={errors.text}
                    label="Twitter"
@@ -296,8 +339,8 @@
                    value={this.state.twitter}
                    field="twitter"
                  />
-
               </div>
+
               <div className="col-md-3 ">
                 <TextFieldGroup
                    error={errors.text}
@@ -307,9 +350,11 @@
                    value={this.state.youtubeChannel}
                    field="youtubeChannel"
                  />
-
               </div>
-              <div className="col-md-3 ">
+            </div>  
+
+            <div className="row">    
+              <div className="col-md-3 col-md-offset-3">
                 <TextFieldGroup
                    error={errors.text}
                    label="Additional Website"
@@ -329,9 +374,11 @@
                      value={this.state.otherWebsite2}
                      field="otherWebsite2"
                    />
-
                 </div>
-                <div className="col-md-3 ">
+              </div>  
+
+              <div className="row">
+                <div className="col-md-2 col-md-offset-3">
                   <TextFieldGroup
                      error={errors.text}
                      label="Representative"
@@ -340,9 +387,9 @@
                      value={this.state.representative}
                      field="representative"
                    />
-
                 </div>
-                <div className="col-md-3 ">
+
+                <div className="col-md-2 ">
                   <TextFieldGroup
                      error={errors.text}
                      label="Representative's Email"
@@ -351,9 +398,9 @@
                      value={this.state.repEmail}
                      field="repEmail"
                    />
-
                 </div>
-                <div className="col-md-3 ">
+
+                <div className="col-md-2 ">
                   <TextFieldGroup
                      error={errors.text}
                      label="Representative's Phone"
@@ -362,75 +409,15 @@
                      value={this.state.repPhone}
                      field="repPhone"
                    />
-
                 </div>
-
-            </div>
-
+              </div>  
 
 
 
-
-            <div className="col-md-3 ">
-                  <div className="form-group">
-                    <label className="control-label">Add A Profile Pic</label>
-                    <input
-                      type="file"
-                      name="file"
-                      ref="file"
-                      />
-                  </div>
-            </div>
-
-           {/* <TextFieldGroup
-              error={errors.text}
-              label="Band's Biography"
-              onChange={this.onChange}
-              checkExists={this.checkExists}
-              value={this.state.bio}
-              type = {<textarea></textarea>}
-              field="bio"
-            /> */}
-           <div className={classnames("form-group", { 'has-error': errors.bio })}>
-              <label className="control-label">Band's Biography</label>
-              <textarea
-              className="form-control"
-               name="bio"
-               onChange={this.onChange}
-               value={this.state.bio}
-             >
-
-              </textarea>
-             {errors.bio && <span className="help-block">{errors.bio}</span>}
-            </div>
-
-            <div>
-              <Editor
-                editorState={editorContents[0]}
-                onEditorStateChange={this.onEditorStateChange.bind(this, 0)}
-              />
-              <textarea
-            disabled
-            className="demo-content no-focus"
-            value={editorContents[1] && JSON.stringify(convertToRaw(editorContents[1].getCurrentContent()), null, 4)}
-          />
-            </div>
-
-          <TextFieldGroup
-             error={errors.text}
-             label="Band Members"
-             onChange={this.onChange}
-             checkExists={this.checkExists}
-             value={this.state.bandMembers}
-             field="bandMembers"
-           />
-
-
-
-
+       
 
           <div className="form-group">
-           <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-danger btn-lg">
+           <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-custom center-block">
               Sign up
             </button>
           </div>
@@ -438,7 +425,7 @@
      );
    }
  }
-
+ 
  ArtistSignupForm.propTypes = {
    artistSignupRequest: React.PropTypes.func.isRequired,
    addFlashMessage: React.PropTypes.func.isRequired,
@@ -448,5 +435,5 @@
   ArtistSignupForm.contextTypes = {
   router: React.PropTypes.object.isRequired
  }
-
+ 
  export default ArtistSignupForm;

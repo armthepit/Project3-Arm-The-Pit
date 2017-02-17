@@ -13,13 +13,13 @@ class ArtistLoginForm extends React.Component {
       isLoading: false
     };
 
-    this.onChange = this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this);    
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-  }
+  }  
 
   isValid() {
     const { errors, isValid } = validateInput(this.state);
@@ -46,7 +46,7 @@ class ArtistLoginForm extends React.Component {
           ({ data }) => this.setState({ errors: data, isLoading: false })
        );
      }
-   }
+   } 
 
 
 
