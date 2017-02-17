@@ -79,6 +79,11 @@ select:active, select:hover {
   outline: none !important;
 }
 
+.alert-success {
+    background: #ff0000;
+    color: #ffffff;
+}
+
 /*.control-label,
 input {
     color: white;
