@@ -1,4 +1,4 @@
-			body {
+body {
     /*background-color: #000000;*/
     background-image: url("../images/rock-wallpapers9.jpg");
     background-repeat: no-repeat;
@@ -190,6 +190,11 @@ a:active {
     border: none;
     padding: 0 10px 0 10px;
     border-color: rgba(200, 54, 54, 0.0);
+}
+
+.badge {
+    background: #ffffff;
+    color: #ff0000;
 }
 
 /* button styling for "browse artist by" */

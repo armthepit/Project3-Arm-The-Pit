@@ -5,7 +5,7 @@ let bycountrySchema = new mongoose.Schema({
 		type: String, 
 		unique : true
 	},
-	artist: {
+	numberArtists: {
 		type: Number, 
 	},	
 	createdAt: {

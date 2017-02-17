@@ -6,6 +6,11 @@
  const isEmpty = require('lodash/isEmpty')
 
  let Artist = require('../models/artists');
+ let CountryModel = require('../models/country');
+ let GenreModel = require ('../models/genre');
+ let NameModel = require('../models/name');
+ let StateModel = require('../models/state');
+
  let router = express.Router();
 
  mongoose.Promise = Promise;
@@ -38,7 +43,7 @@ router.get('/:artist', function(req, res){
  router.post('/', (req, res) => {
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {
-             const { email, password, genre, name, hometown, state,country, recordLabel, bio, bandMembers, artistWebsite, facebook, reverbnation, soundCloud, twitter, youtubeChannel, otherWebsite1, otherWebsite2, representative, repEmail, repPhone } = req.body;
+             let { email, password, genre, name, hometown, state,country, recordLabel, bio, bandMembers, artistWebsite, facebook, reverbnation, soundCloud, twitter, youtubeChannel, otherWebsite1, otherWebsite2, representative, repEmail, repPhone } = req.body;
              const password_encrypt = bcrypt.hashSync(password, 10);
              const newArtist = new Artist({
                  email: email,
@@ -64,13 +69,63 @@ router.get('/:artist', function(req, res){
                  repPhone: repPhone
              });
 
+             if ( country != "United States") {
+                state = "";
+             };
+
+             let nameIndex = name.charAt(0);
+             console.log(nameIndex);
+
              newArtist.save()
-                 .then(newArtist => res.json({ success: true }))
+                 .then(
+                    console.log('Artist Saved')
+                    // newArtist => res.json({ success: true })
+                 )
                  .catch(err => res.status(500).json({ error: err }));
+
+              GenreModel.findOneAndUpdate({ "title": genre }, {$inc:{"numberArtists":1}}, function(error, found) {
+                if (error) {
+                  console.log(error);
+                }
+                else {
+                  console.log('Genre Found '+ found);
+                }
+              });
+
+              NameModel.findOneAndUpdate({ "title": nameIndex }, {$inc:{"numberArtists":1}}, function(error, found) {
+                if (error) {
+                  console.log(error);
+                }
+                else {
+                  console.log('Name Found '+ found);
+                }
+              });
+
+              if(country == "United States") {
+                  StateModel.findOneAndUpdate({ "title": state }, {$inc:{"numberArtists":1}}, function(error, found) {
+                    if (error) {
+                      console.log(error);
+                    }
+                    else {
+                      console.log('State Found '+ found);
+                    }
+                  });                
+              } else {
+                  CountryModel.findOneAndUpdate({ "title": country }, {$inc:{"numberArtists":1}}, {upsert:true}, function(error, found) {
+                    if (error) {
+                      console.log(error);
+                    }
+                    else {
+                      console.log('Country Found '+ found);
+                    }
+                  });                
+              }
+
+            res.json({ success: true })
          } else {
              res.status(400).json(errors);
          }
-     })﻿
+     })
  });
 
  module.exports = router;

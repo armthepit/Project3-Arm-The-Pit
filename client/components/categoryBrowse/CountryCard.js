@@ -11,7 +11,7 @@ export default function CountryCard({ country }) {
 					</Link>	
 				</div>
 				<div className="panel-footer text-center">
-					<Link to={`country/${country.link}`}><button type="button" className="btn btn-custom btn-block">{country.title} - <span className="badge">{country.artist}</span></button></Link>
+					<Link to={`country/${country.link}`}><button type="button" className="btn btn-custom btn-block">{country.title} - <span className="badge">{country.numberArtists}</span></button></Link>
 				</div>			
 			</div>
 		</div>
