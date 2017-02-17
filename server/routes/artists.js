@@ -43,7 +43,25 @@ router.get('/:artist', function(req, res){
              const newArtist = new Artist({
                  email: email,
                  password_encrypt: password_encrypt,
-                 genre: genre
+                 genre: genre,
+                 name: name,
+                 hometown:hometown,
+                 state: state,
+                 country: country,
+                 recordLabel:recordLabel,
+                 bio:bio,
+                 bandMembers:bandMembers,
+                 artistWebsite: artistWebsite,
+                 facebook: facebook,
+                 reverbnation: reverbnation,
+                 soundCloud: soundCloud,
+                 twitter: twitter,
+                 youtubeChannel: youtubeChannel,
+                 otherWebsite1: otherWebsite1,
+                 otherWebsite2: otherWebsite2,
+                 representative: representative,
+                 repEmail: repEmail,
+                 repPhone: repPhone
              });
 
              newArtist.save()
