@@ -15,7 +15,7 @@
     constructor(props) {
      super(props);
      this.state = {
-       username: '',
+       name: '',
        email: '',
        password: '',
        passwordConfirmation: '',
@@ -114,13 +114,13 @@
      );
       return (
         <form onSubmit={this.onSubmit}>
-        <h1 className="text-center">Arm The Pit</h1>
-        <h2 className="text-center">Artist Signup</h2>
+          <h1 className="text-center">Arm The Pit</h1>
+          <h2 className="text-center">Artist Signup</h2>
 
           <div className="row">
             <div className="col-sm-4 col-md-6 col-md-offset-3">
               <TextFieldGroup
-                 error={errors.text}
+                 error={errors.name}
                  label="Artist Name"
                  onChange={this.onChange}
                  value={this.state.name}
@@ -162,12 +162,12 @@
                  type="password"
                />
             </div>
-          </div>  
+          </div> 
 
           <div className="row">  
             <div className="col-md-2 col-md-offset-3">
               <TextFieldGroup
-                 error={errors.text}
+                 error={errors.hometown}
                  label="Hometown"
                  onChange={this.onChange}
                  checkExists={this.checkExists}
@@ -192,23 +192,22 @@
               </div>
             </div>
 
-              <div className="col-md-2 ">
-                <div className={classnames("form-group", { 'has-error': errors.country })}>
-                  <label className="control-label">Country</label>
-                  <select
-                    className="form-control"
-                   name="country"
-                   onChange={this.onChange}
-                   value={this.state.country}
-                 >
-                    <option value="" disabled>Choose Your Country</option>
-                    {countryOptions}
-                  </select>
-                 {errors.country && <span className="help-block">{errors.country}</span>}
-                </div>
+            <div className="col-md-2 ">
+              <div className={classnames("form-group", { 'has-error': errors.country })}>
+                <label className="control-label">Country</label>
+                <select
+                  className="form-control"
+                 name="country"
+                 onChange={this.onChange}
+                 value={this.state.country}
+               >
+                  <option value="" disabled>Choose Your Country</option>
+                  {countryOptions}
+                </select>
+               {errors.country && <span className="help-block">{errors.country}</span>}
               </div>
             </div>
-   
+          </div>
 
            <div className="row">
               <div className="col-md-2 col-md-offset-3">
@@ -237,34 +236,32 @@
                    field="recordLabel"
                  />
               </div>
-            </div> 
-
+            </div>    
+            
           <div className="row">
-          <div className="col-md-6 col-md-offset-3">  
+            <div className="col-md-6 col-md-offset-3">  
            <TextFieldGroup
               error={errors.text}
               label="Band's Biography"
               onChange={this.onChange}
               checkExists={this.checkExists}
               value={this.state.bio}
-              type = {<textarea></textarea>}
               field="bio"
             />
+            </div>
           </div>
-          </div>  
 
           <div className="row">
-          <div className="col-md-6 col-md-offset-3">  
-          <TextFieldGroup
-             error={errors.text}
-             label="Band Members"
-             onChange={this.onChange}
-             checkExists={this.checkExists}
-             value={this.state.bandMembers}
-             type = {<textarea></textarea>}
-             field="bandMembers"
-           />
-          </div>
+            <div className="col-md-6 col-md-offset-3">  
+            <TextFieldGroup
+               error={errors.bandMembers}
+               label="Band Members"
+               onChange={this.onChange}
+               checkExists={this.checkExists}
+               value={this.state.bandMembers}
+               field="bandMembers"
+             />
+            </div>
           </div>  
                     
           <div className="row">
@@ -281,147 +278,149 @@
           </div>   
 
 
-            <div className="row">
-              <div className="col-md-3 col-md-offset-3">
-                <TextFieldGroup
-                   error={errors.text}
-                   label="Your Website"
-                   onChange={this.onChange}
-                   checkExists={this.checkExists}
-                   value={this.state.artistWebsite}
-                   field="artistWebsite"
-                 />
-              </div>
+          <div className="row">
+            <div className="col-md-3 col-md-offset-3">
+              <TextFieldGroup
+                 error={errors.artistWebsite}
+                 label="Your Website"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.artistWebsite}
+                 field="artistWebsite"
+               />
+            </div>
 
-              <div className="col-md-3 ">
-                <TextFieldGroup
-                   error={errors.text}
-                   label="Facebook"
-                   onChange={this.onChange}
-                   checkExists={this.checkExists}
-                   value={this.state.facebook}
-                   field="facebook"
-                 />
-              </div>
-            </div>  
+            <div className="col-md-3 ">
+              <TextFieldGroup
+                 error={errors.text}
+                 label="Facebook"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.facebook}
+                 field="facebook"
+               />
+            </div>
+          </div>  
 
-            <div className="row">
-              <div className="col-md-3 col-md-offset-3">
-                <TextFieldGroup
-                   error={errors.text}
-                   label="ReverbNation"
-                   onChange={this.onChange}
-                   checkExists={this.checkExists}
-                   value={this.state.reverbnation}
-                   field="reverbnation"
-                 />
-              </div>
+          <div className="row">
+            <div className="col-md-3 col-md-offset-3">
+              <TextFieldGroup
+                 error={errors.text}
+                 label="ReverbNation"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.reverbnation}
+                 field="reverbnation"
+               />
+            </div>
 
-              <div className="col-md-3 ">
-                <TextFieldGroup
-                   error={errors.text}
-                   label="SoundCloud"
-                   onChange={this.onChange}
-                   checkExists={this.checkExists}
-                   value={this.state.soundCloud}
-                   field="soundCloud"
-                 />
-              </div>
-            </div>  
+            <div className="col-md-3 ">
+              <TextFieldGroup
+                 error={errors.text}
+                 label="SoundCloud"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.soundCloud}
+                 field="soundCloud"
+               />
+            </div>
+          </div>  
 
-            <div className="row">
-              <div className="col-md-3 col-md-offset-3">
-                <TextFieldGroup
-                   error={errors.text}
-                   label="Twitter"
-                   onChange={this.onChange}
-                   checkExists={this.checkExists}
-                   value={this.state.twitter}
-                   field="twitter"
-                 />
-              </div>
+          <div className="row">
+            <div className="col-md-3 col-md-offset-3">
+              <TextFieldGroup
+                 error={errors.text}
+                 label="Twitter"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.twitter}
+                 field="twitter"
+               />
+            </div>
 
-              <div className="col-md-3 ">
-                <TextFieldGroup
-                   error={errors.text}
-                   label="YouTube Channel"
-                   onChange={this.onChange}
-                   checkExists={this.checkExists}
-                   value={this.state.youtubeChannel}
-                   field="youtubeChannel"
-                 />
-              </div>
-            </div>  
+            <div className="col-md-3 ">
+              <TextFieldGroup
+                 error={errors.text}
+                 label="YouTube Channel"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.youtubeChannel}
+                 field="youtubeChannel"
+               />
+            </div>
+          </div>  
 
-            <div className="row">    
-              <div className="col-md-3 col-md-offset-3">
-                <TextFieldGroup
-                   error={errors.text}
-                   label="Additional Website"
-                   onChange={this.onChange}
-                   checkExists={this.checkExists}
-                   value={this.state.otherWebsite1}
-                   field="otherWebsite1"
-                 />
-              </div>
+          <div className="row">    
+            <div className="col-md-3 col-md-offset-3">
+              <TextFieldGroup
+                 error={errors.text}
+                 label="Additional Website"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.otherWebsite1}
+                 field="otherWebsite1"
+               />
+            </div>
 
-                <div className="col-md-3 ">
-                  <TextFieldGroup
-                     error={errors.text}
-                     label="Additional Website"
-                     onChange={this.onChange}
-                     checkExists={this.checkExists}
-                     value={this.state.otherWebsite2}
-                     field="otherWebsite2"
-                   />
-                </div>
-              </div>  
+            <div className="col-md-3 ">
+              <TextFieldGroup
+                 error={errors.text}
+                 label="Additional Website"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.otherWebsite2}
+                 field="otherWebsite2"
+               />
+            </div>
+          </div>  
 
-              <div className="row">
-                <div className="col-md-2 col-md-offset-3">
-                  <TextFieldGroup
-                     error={errors.text}
-                     label="Representative"
-                     onChange={this.onChange}
-                     checkExists={this.checkExists}
-                     value={this.state.representative}
-                     field="representative"
-                   />
-                </div>
+          <div className="row">
+            <div className="col-md-2 col-md-offset-3">
+              <TextFieldGroup
+                 error={errors.text}
+                 label="Representative"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.representative}
+                 field="representative"
+               />
+            </div>
 
-                <div className="col-md-2 ">
-                  <TextFieldGroup
-                     error={errors.text}
-                     label="Representative's Email"
-                     onChange={this.onChange}
-                     checkExists={this.checkExists}
-                     value={this.state.repEmail}
-                     field="repEmail"
-                   />
-                </div>
+            <div className="col-md-2 ">
+              <TextFieldGroup
+                 error={errors.text}
+                 label="Representative's Email"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.repEmail}
+                 field="repEmail"
+               />
+            </div>
 
-                <div className="col-md-2 ">
-                  <TextFieldGroup
-                     error={errors.text}
-                     label="Representative's Phone"
-                     onChange={this.onChange}
-                     checkExists={this.checkExists}
-                     value={this.state.repPhone}
-                     field="repPhone"
-                   />
-                </div>
-              </div>  
+            <div className="col-md-2 ">
+              <TextFieldGroup
+                 error={errors.text}
+                 label="Representative's Phone"
+                 onChange={this.onChange}
+                 checkExists={this.checkExists}
+                 value={this.state.repPhone}
+                 field="repPhone"
+               />
+            </div>
+          </div>          
+
+                                       
 
 
 
-       
+         
 
           <div className="form-group">
            <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-custom center-block">
               Sign up
             </button>
           </div>
-       </form>
+        </form>
      );
    }
  }

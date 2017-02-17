@@ -174,7 +174,6 @@
                  error={errors.text}
                  label="Hometown"
                  onChange={this.onChange}
-                 checkExists={this.checkExists}
                  value={this.state.hometown}
                  field="hometown"
                />
@@ -236,7 +235,6 @@
                    error={errors.text}
                    label="Record Label"
                    onChange={this.onChange}
-                   checkExists={this.checkExists}
                    value={this.state.recordLabel}
                    field="recordLabel"
                  />
@@ -249,7 +247,6 @@
               error={errors.text}
               label="Band's Biography"
               onChange={this.onChange}
-              checkExists={this.checkExists}
               value={this.state.bio}
               type = {<textarea></textarea>}
               field="bio"
@@ -263,7 +260,6 @@
              error={errors.text}
              label="Band Members"
              onChange={this.onChange}
-             checkExists={this.checkExists}
              value={this.state.bandMembers}
              type = {<textarea></textarea>}
              field="bandMembers"
@@ -291,7 +287,6 @@
                    error={errors.text}
                    label="Your Website"
                    onChange={this.onChange}
-                   checkExists={this.checkExists}
                    value={this.state.artistWebsite}
                    field="artistWebsite"
                  />
@@ -302,7 +297,6 @@
                    error={errors.text}
                    label="Facebook"
                    onChange={this.onChange}
-                   checkExists={this.checkExists}
                    value={this.state.facebook}
                    field="facebook"
                  />
@@ -315,7 +309,6 @@
                    error={errors.text}
                    label="ReverbNation"
                    onChange={this.onChange}
-                   checkExists={this.checkExists}
                    value={this.state.reverbnation}
                    field="reverbnation"
                  />
@@ -326,7 +319,6 @@
                    error={errors.text}
                    label="SoundCloud"
                    onChange={this.onChange}
-                   checkExists={this.checkExists}
                    value={this.state.soundCloud}
                    field="soundCloud"
                  />
@@ -339,7 +331,6 @@
                    error={errors.text}
                    label="Twitter"
                    onChange={this.onChange}
-                   checkExists={this.checkExists}
                    value={this.state.twitter}
                    field="twitter"
                  />
@@ -350,7 +341,6 @@
                    error={errors.text}
                    label="YouTube Channel"
                    onChange={this.onChange}
-                   checkExists={this.checkExists}
                    value={this.state.youtubeChannel}
                    field="youtubeChannel"
                  />
@@ -363,7 +353,6 @@
                    error={errors.text}
                    label="Additional Website"
                    onChange={this.onChange}
-                   checkExists={this.checkExists}
                    value={this.state.otherWebsite1}
                    field="otherWebsite1"
                  />
@@ -374,7 +363,6 @@
                      error={errors.text}
                      label="Additional Website"
                      onChange={this.onChange}
-                     checkExists={this.checkExists}
                      value={this.state.otherWebsite2}
                      field="otherWebsite2"
                    />
@@ -387,7 +375,6 @@
                      error={errors.text}
                      label="Representative"
                      onChange={this.onChange}
-                     checkExists={this.checkExists}
                      value={this.state.representative}
                      field="representative"
                    />
@@ -398,7 +385,6 @@
                      error={errors.text}
                      label="Representative's Email"
                      onChange={this.onChange}
-                     checkExists={this.checkExists}
                      value={this.state.repEmail}
                      field="repEmail"
                    />
@@ -409,7 +395,6 @@
                      error={errors.text}
                      label="Representative's Phone"
                      onChange={this.onChange}
-                     checkExists={this.checkExists}
                      value={this.state.repPhone}
                      field="repPhone"
                    />
