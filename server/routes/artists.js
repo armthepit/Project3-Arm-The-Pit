@@ -3,7 +3,8 @@
  const mongoose = require('mongoose');
  const Promise = require('bluebird');
  const bcrypt = require('bcryptjs');
- const isEmpty = require('lodash/isEmpty')
+ const isEmpty = require('lodash/isEmpty');
+ const lowerCase = require('lodash/lowercase');
 
  let Artist = require('../models/artists');
  let CountryModel = require('../models/country');
@@ -44,12 +45,16 @@ router.get('/:artist', function(req, res){
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {
              let { email, password, genre, name, hometown, state,country, recordLabel, bio, bandMembers, artistWebsite, facebook, reverbnation, soundCloud, twitter, youtubeChannel, otherWebsite1, otherWebsite2, representative, repEmail, repPhone } = req.body;
+             let sortName = lowerCase(name.charAt(0)); 
+             let artistUrl = lowerCase(name.replace(/\s+/g, ''));
              const password_encrypt = bcrypt.hashSync(password, 10);
              const newArtist = new Artist({
                  email: email,
                  password_encrypt: password_encrypt,
                  genre: genre,
                  name: name,
+                 sortName: sortName,
+                 artistUrl: artistUrl,
                  hometown:hometown,
                  state: state,
                  country: country,
@@ -73,9 +78,6 @@ router.get('/:artist', function(req, res){
                 state = "";
              };
 
-             let nameIndex = name.charAt(0);
-             console.log(nameIndex);
-
              newArtist.save()
                  .then(
                     console.log('Artist Saved')
@@ -92,7 +94,7 @@ router.get('/:artist', function(req, res){
                 }
               });
 
-              NameModel.findOneAndUpdate({ "title": nameIndex }, {$inc:{"numberArtists":1}}, function(error, found) {
+              NameModel.findOneAndUpdate({ "nameUrl": sortName }, {$inc:{"numberArtists":1}}, function(error, found) {
                 if (error) {
                   console.log(error);
                 }
@@ -111,7 +113,7 @@ router.get('/:artist', function(req, res){
                     }
                   });                
               } else {
-                  CountryModel.findOneAndUpdate({ "title": country }, {$inc:{"numberArtists":1}}, {upsert:true}, function(error, found) {
+                  CountryModel.findOneAndUpdate({ "title": country }, {$inc:{"numberArtists":1}}, function(error, found) {
                     if (error) {
                       console.log(error);
                     }

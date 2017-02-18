@@ -9,7 +9,7 @@
 
  router.get('/', function(req, res){
  	console.log('server');
-    Country.find({})
+    Country.find({'numberArtists': {$gt: 0}})
         .then(Country => {
             console.log({ Country });
             res.json( { Country } );

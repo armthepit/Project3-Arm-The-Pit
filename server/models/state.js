@@ -5,6 +5,10 @@ let bystateSchema = new mongoose.Schema({
 		type: String, 
 		unique : true
 	},
+	stateUrl: {
+		type: String, 
+		unique : true
+	},	
 	numberArtists: {
 		type: Number, 
 	},	

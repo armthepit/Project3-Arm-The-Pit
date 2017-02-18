@@ -5,6 +5,10 @@ let bygenreSchema = new mongoose.Schema({
 		type: String, 
 		unique : true
 	},
+	genreUrl: {
+		type: String, 
+		unique : true
+	},	
 	numberArtists: {
 		type: Number, 
 	},	
