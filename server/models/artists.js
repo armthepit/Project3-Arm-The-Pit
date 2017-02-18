@@ -13,6 +13,9 @@ let artistsSchema = new mongoose.Schema({
 	sortName: {
 		type: String, 
 	},	
+	artistUrl: {
+		type: String, 
+	},		
 	hometown: {
 		type: String, 
 	},	
