@@ -33,7 +33,10 @@ let artistsSchema = new mongoose.Schema({
 	},
 	bio: {
 		type: String, 
-	},	
+	},
+	editorContents:{
+		type:Array,
+	},		
 	bandMembers: {
 		type: Array, 
 	},	
