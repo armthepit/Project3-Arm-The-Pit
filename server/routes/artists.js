@@ -44,7 +44,7 @@ router.get('/:artist', function(req, res){
  router.post('/', (req, res) => {
      validateInput(req.body, commonValidations).then(({ errors, isValid }) => {
          if (isValid) {
-             let { email, password, genre, name, hometown, state,country, recordLabel, bio, bandMembers, artistWebsite, facebook, reverbnation, soundCloud, twitter, youtubeChannel, otherWebsite1, otherWebsite2, representative, repEmail, repPhone } = req.body;
+             let { email, password, genre, name, hometown, state,country, recordLabel, bio, editorContents, bandMembers, artistWebsite, facebook, reverbnation, soundCloud, twitter, youtubeChannel, otherWebsite1, otherWebsite2, representative, repEmail, repPhone } = req.body;
              let sortName = lowerCase(name.charAt(0)); 
              let artistUrl = lowerCase(name.replace(/\s+/g, ''));
              const password_encrypt = bcrypt.hashSync(password, 10);
@@ -60,6 +60,7 @@ router.get('/:artist', function(req, res){
                  country: country,
                  recordLabel:recordLabel,
                  bio:bio,
+                 editorContents:editorContents,                 
                  bandMembers:bandMembers,
                  artistWebsite: artistWebsite,
                  facebook: facebook,
@@ -90,7 +91,7 @@ router.get('/:artist', function(req, res){
                   console.log(error);
                 }
                 else {
-                  console.log('Genre Found '+ found);
+                  console.log('Genre Updated');
                 }
               });
 
@@ -99,7 +100,7 @@ router.get('/:artist', function(req, res){
                   console.log(error);
                 }
                 else {
-                  console.log('Name Found '+ found);
+                  console.log('Name Updated');
                 }
               });
 
@@ -109,7 +110,7 @@ router.get('/:artist', function(req, res){
                       console.log(error);
                     }
                     else {
-                      console.log('State Found '+ found);
+                      console.log('State Update');
                     }
                   });                
               } else {
@@ -118,7 +119,7 @@ router.get('/:artist', function(req, res){
                       console.log(error);
                     }
                     else {
-                      console.log('Country Found '+ found);
+                      console.log('Country Update');
                     }
                   });                
               }

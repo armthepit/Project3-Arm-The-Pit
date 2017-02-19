@@ -1,4 +1,4 @@
- import React from 'react';
+   import React from 'react';
  import { browserHistory } from 'react-router';
   import genre from '../../data/genres';
   import states from '../../data/states.js';
@@ -8,9 +8,10 @@
   import validateInput from '../../../server/shared/validations/artistsignup';
   import draftjs from 'draft-js';
   import { Editor } from 'react-draft-wysiwyg';
-  import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';  
+  import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+  import {convertToRaw, convertFromRaw} from 'draft-js';
   import TextFieldGroup from '../common/TextFieldGroup';
-  
+
   class ArtistSignupForm extends React.Component {
     constructor(props) {
      super(props);
@@ -25,7 +26,8 @@
        state:'',
        genre: '',
        recordLabel:'',
-       bio:'',
+       bio:[],
+       editorContents:[],
        bandMembers:'',
        artistWebsite:'',
        facebook:'',
@@ -42,12 +44,12 @@
        isLoading: false,
        invalid: false
       }
-  
+
       this.onChange = this.onChange.bind(this);
      this.onSubmit = this.onSubmit.bind(this);
      this.checkExists = this.checkExists.bind(this);
    }
- 
+
    onChange(e) {
      this.setState({ [e.target.name]: e.target.value });
    }
@@ -80,10 +82,10 @@
        });
      }
    }
-    
+
    onSubmit(e) {
      e.preventDefault();
- 
+
      if (this.isValid()) {
         this.setState({ errors: {}, isLoading: true });
         this.props.artistSignupRequest(this.state).then(
@@ -98,10 +100,23 @@
        );
      }
    }
-  
+   onEditorStateChange: Function = (index, editorContent) => {
+     let editorContents = this.state.editorContents;
+     editorContents[index] = editorContent;
+     editorContents = [...editorContents];
+     this.setState({
+       editorContents,
+     });
+     let bio=(convertToRaw(editorContents[0].getCurrentContent()))
+   };
+
+  //  let bio = JSON.stringify(convertToRaw(editorContents[0]));
+
     render() {
-     const { errors } = this.state;
-       const { editorContents } = this.state;
+     const { errors,editorContents, bio } = this.state;
+
+
+      //  const { editorContents } = this.state;
       const genreOptions = map(genre, (val, key) =>
         <option key={val} value={val}>{key}</option>
       );
@@ -127,7 +142,7 @@
                  field="name"
                />
             </div>
-          </div>  
+          </div>
 
           <div className="row">
             <div className="col-md-2 col-md-offset-3">
@@ -162,9 +177,9 @@
                  type="password"
                />
             </div>
-          </div> 
+          </div>
 
-          <div className="row">  
+          <div className="row">
             <div className="col-md-2 col-md-offset-3">
               <TextFieldGroup
                  error={errors.hometown}
@@ -236,10 +251,10 @@
                    field="recordLabel"
                  />
               </div>
-            </div>    
-            
+            </div>
+
           <div className="row">
-            <div className="col-md-6 col-md-offset-3">  
+            <div className="col-md-6 col-md-offset-3">
            <TextFieldGroup
               error={errors.text}
               label="Band's Biography"
@@ -252,7 +267,41 @@
           </div>
 
           <div className="row">
-            <div className="col-md-6 col-md-offset-3">  
+            <div className="col-md-6 col-md-offset-3">
+            <Editor
+              editorState={editorContents[0]}
+              toolbarClassName="artistBio-toolbar"
+              
+              // wrapperClassName="demo-wrapper"
+              // editorClassName="demo-editor"
+              onEditorStateChange={this.onEditorStateChange.bind(this, 0)}
+              toolbar={{
+              options: ['inline', 'blockType', 'fontSize'],
+              inline: {
+                options: ['bold', 'italic', 'underline', 'strikethrough', 'monospace'],
+                bold: { className: 'bordered-option-classname' },
+                italic: { className: 'bordered-option-classname' },
+                underline: { className: 'bordered-option-classname' },
+                strikethrough: { className: 'bordered-option-classname' },
+
+              },
+              blockType: {
+                className: 'bordered-option-classname',
+              },
+              fontSize: {
+                className: 'bordered-option-classname',
+              },
+
+            }}
+
+            />
+
+            </div>
+
+          </div>
+
+          <div className="row">
+            <div className="col-md-6 col-md-offset-3">
             <TextFieldGroup
                error={errors.bandMembers}
                label="Band Members"
@@ -262,8 +311,8 @@
                field="bandMembers"
              />
             </div>
-          </div>  
-                    
+          </div>
+
           <div className="row">
             <div className="col-md-6 col-md-offset-3">
                 <div className="form-group">
@@ -275,7 +324,7 @@
                       />
                 </div>
             </div>
-          </div>   
+          </div>
 
 
           <div className="row">
@@ -300,7 +349,7 @@
                  field="facebook"
                />
             </div>
-          </div>  
+          </div>
 
           <div className="row">
             <div className="col-md-3 col-md-offset-3">
@@ -324,7 +373,7 @@
                  field="soundCloud"
                />
             </div>
-          </div>  
+          </div>
 
           <div className="row">
             <div className="col-md-3 col-md-offset-3">
@@ -348,9 +397,9 @@
                  field="youtubeChannel"
                />
             </div>
-          </div>  
+          </div>
 
-          <div className="row">    
+          <div className="row">
             <div className="col-md-3 col-md-offset-3">
               <TextFieldGroup
                  error={errors.text}
@@ -372,7 +421,7 @@
                  field="otherWebsite2"
                />
             </div>
-          </div>  
+          </div>
 
           <div className="row">
             <div className="col-md-2 col-md-offset-3">
@@ -407,13 +456,13 @@
                  field="repPhone"
                />
             </div>
-          </div>          
-
-                                       
+          </div>
 
 
 
-         
+
+
+
 
           <div className="form-group">
            <button disabled={this.state.isLoading || this.state.invalid} className="btn btn-custom center-block">
@@ -424,7 +473,7 @@
      );
    }
  }
- 
+
  ArtistSignupForm.propTypes = {
    artistSignupRequest: React.PropTypes.func.isRequired,
    addFlashMessage: React.PropTypes.func.isRequired,
@@ -434,5 +483,5 @@
   ArtistSignupForm.contextTypes = {
   router: React.PropTypes.object.isRequired
  }
- 
+
  export default ArtistSignupForm;
