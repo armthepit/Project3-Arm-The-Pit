@@ -8,7 +8,12 @@ class ByGenrePage extends React.Component {
         this.props.showGenres();
     }
 
+    componentDidUpdate(prevProps) {
+        prevProps.browseBy !== this.props.browseBy && this.showGenres()        
+    }    
+
     render() {
+        const browseBy = "genre";
         return ( 
             < div >
                 <h1 className="text-center">Arm The Pit</h1>
@@ -26,7 +31,8 @@ ByGenrePage.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        genres: state.genres
+        genres: state.genres,
+        browseBy: state.browseBy
     }
 }
 

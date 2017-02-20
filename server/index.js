@@ -29,7 +29,9 @@ app.use('/api/auth/artists', artistsAuth);
 app.use('/api/fans', fans);
 app.use('/api/auth/fans', fansAuth);
 app.use('api/artist/', artist);
-app.use('/api/browse/byartist', byArtist);
+// app.use('/api/browse/byartist', byArtist);
+// api/browse/byartist/${browseId}/${searchId}
+app.use('api/browse/byartist/browseId/searchId', byArtist);
 app.use('/api/browse/bycountry', byCountry);
 app.use('/api/browse/bygenre', byGenre);
 app.use('/api/browse/byname', byName);

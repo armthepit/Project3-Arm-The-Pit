@@ -1,8 +1,8 @@
-	import { SET_ARTIST } from '../actions/artist';
+	import { VIEW_ARTIST } from '../actions/artist';
 
    export default function artist(state = [], action = {}) {
     switch(action.type) {
-      case SET_ARTIST: 
+      case VIEW_ARTIST: 
       	return action.artist !== undefined ? action.artist : null;;
       default: return state;
     }

@@ -8,7 +8,7 @@
  mongoose.Promise = Promise;
 
  router.get('/', function(req, res){
- 	console.log('server');
+ 	console.log(req.params.id.browseId+' '+req.params.id.searchId);
     Artist.find({})
         .then(Artist => {
             console.log({ Artist });

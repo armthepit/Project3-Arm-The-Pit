@@ -12,7 +12,7 @@
          <NavigationBar />
          <FlashMessagesList />
          {this.props.children}
-         {/* <Footer /> */}
+         <Footer />
          
        </div>
       );

@@ -1,8 +1,8 @@
-	import { SET_NAMES } from '../actions/browse';
+	import { BROWSE_NAMES } from '../actions/browse';
 
    export default function names(state = [], action = {}) {
     switch(action.type) {
-      case SET_NAMES: 
+      case BROWSE_NAMES: 
       	return action.names;
       default: return state;
     }

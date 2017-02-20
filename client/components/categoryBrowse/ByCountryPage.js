@@ -8,7 +8,12 @@ class ByCountryPage extends React.Component {
         this.props.showCountries();
     }
 
+    componentDidUpdate() {
+        
+    }
+
     render() {
+        const browseBy = "country";        
         return ( 
             < div >
                 <h1 className="text-center">Arm The Pit</h1>
@@ -28,7 +33,7 @@ ByCountryPage.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        countries: state.countries
+        countries: state.countries,
     }
 }
 

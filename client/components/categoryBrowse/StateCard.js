@@ -6,11 +6,11 @@ export default function StateCard({ usa }) {
 		<div className="col-sm-12 col-md-3">
 			<div className="panel panel-default">
 				<div className="panel-body text-center">
-					<Link to={`usa/${usa.title}`}>
+					<Link to={`usa/${usa.stateUrl}`}>
 						<img src="assets/images/lilgirl.jpg" className="img-rounded img-responsive center-block" alt="{usa.title}" />				
 					</Link>
 					<div className="panel-footer text-center">
- 						<Link to={`usa/${usa.title}`}><button type="button" className="btn btn-custom btn-block">{usa.title} - <span className="badge">{usa.numberArtists}</span></button></Link>
+ 						<Link to={`usa/${usa.stateUrl}`}><button type="button" className="btn btn-custom btn-block">{usa.title} - <span className="badge">{usa.numberArtists}</span></button></Link>
 					</div>
 				</div>
 			</div>
