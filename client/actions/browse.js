@@ -1,17 +1,17 @@
 import axios from 'axios';
 
-export const SET_ARTISTS = "SET_ARTISTS";
+export const BROWSE_ARTISTS = "SET_ARTISTS";
 
 export function setArtists(artists) {
 	return {
-		type: SET_ARTISTS,
+		type: BROWSE_ARTISTS,
 		artists
 	}
 }
 
 export function showArtists() {
 	return dispatch => {
-		return axios.get('api/browse/byartist')
+		return axios.get('api/browse/byartist/${browseId}/${searchId}')
 
 			.then(res =>  {
 				console.log(res);
@@ -20,11 +20,11 @@ export function showArtists() {
 	}
 }
 
-export const SET_COUNTRIES = "SET_COUNTRIES";
+export const BROWSE_COUNTRIES = "BROWSE_COUNTRIES";
 
 export function setCountries(countries) {
 	return {
-		type: SET_COUNTRIES,
+		type: BROWSE_COUNTRIES,
 		countries
 	}
 }
@@ -40,11 +40,11 @@ export function showCountries() {
 	}
 }
 
-export const SET_GENRES = "SET_GENRES";
+export const BROWSE_GENRES = "SET_GENRES";
 
 export function setGenres(genres) {
 	return {
-		type: SET_GENRES,
+		type: BROWSE_GENRES,
 		genres
 	}
 }
@@ -60,11 +60,11 @@ export function showGenres() {
 	}
 }
 
-export const SET_NAMES = "SET_NAMES";
+export const BROWSE_NAMES = "SET_NAMES";
 
 export function setNames(names) {
 	return {
-		type: SET_NAMES,
+		type: BROWSE_NAMES,
 		names
 	}
 }
@@ -80,11 +80,11 @@ export function showNames() {
 	}
 }
 
-export const SET_STATES = "SET_STATES";
+export const BROWSE_STATES = "SET_STATES";
 
 export function setStates(states) {
 	return {
-		type: SET_STATES,
+		type: BROWSE_STATES,
 		states
 	}
 }

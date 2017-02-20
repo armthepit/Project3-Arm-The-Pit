@@ -8,7 +8,7 @@
  import FanSignupPage from './components/signup/FanSignupPage';
  import FanLoginPage from './components/login/FanLoginPage';
  import ArtistPage from './components/artist/ArtistPage';
- import ByArtistPage from './components/categoryBrowse/ByArtistPage';
+ import Artist from './components/categoryBrowse/ByArtistPage';
  import ByCountryPage from './components/categoryBrowse/ByCountryPage'; 
  import ByGenrePage from './components/categoryBrowse/ByGenrePage';
  import ByNamePage from './components/categoryBrowse/ByNamePage';
@@ -22,15 +22,14 @@
      <Route path="artistlogin" component={ArtistLoginPage} />
      <Route path="fansignup" component={FanSignupPage} />
      <Route path="fanlogin" component={FanLoginPage} />
-     <Route path="artist" component={ArtistPage} />
-     <Route path="browseartist" component={ByArtistPage} />
+     <Route path="artist" component={Artist} />
      <Route path="browsecountry" component={ByCountryPage} />
      <Route path="browsegenre" component={ByGenrePage} />
      <Route path="browsename" component={ByNamePage} />
      <Route path="browsestate" component={ByStatePage} />
-     <Route path="country/:country" component={ByArtistPage} />
-     <Route path="genre/:genre" component={ByArtistPage} />
-     <Route path="name/:name" component={ByArtistPage} />
-     <Route path="usa/:usa" component={ByArtistPage} />     
+     <Route path=":browseId/:searchId" component={Artist} />
+     <Route path="genre/:browseId" component={Artist} />
+     <Route path="name/:browseId" component={Artist} />
+     <Route path="usa/:browseId" component={Artist} />     
    </Route>
  )

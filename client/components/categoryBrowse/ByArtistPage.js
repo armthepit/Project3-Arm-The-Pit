@@ -2,6 +2,7 @@ import React from 'react';
 import ByArtistList from './ByArtistList';
 import { connect } from 'react-redux';
 import { showArtists } from '../../actions/browse';
+import startCase from 'lodash/startCase';
 
 class ByArtistPage extends React.Component {
     componentDidMount() {
@@ -9,11 +10,16 @@ class ByArtistPage extends React.Component {
     }
 
     render() {
-        return ( < div >
-            < h1 > Artist < /h1>
-
-            < ByArtistList artists = { this.props.artists }
-            /> < /div>
+        const browse = this.props.params.browseId;
+        const search = startCase(this.props.params.searchId);
+        return ( 
+            < div >
+                <h1 className="text-center">Arm The Pit</h1>
+                <h2 className="text-center"> { search }</h2>
+                <div>
+                    < ByArtistList artists = { this.props.artists } />
+                </div>     
+            < /div>
         );
     }
 }

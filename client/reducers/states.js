@@ -1,8 +1,8 @@
-	import { SET_STATES } from '../actions/browse';
+	import { BROWSE_STATES } from '../actions/browse';
 
    export default function states(state = [], action = {}) {
     switch(action.type) {
-      case SET_STATES: 
+      case BROWSE_STATES: 
       	return action.states;
       default: return state;
     }

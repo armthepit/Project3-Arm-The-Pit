@@ -5,7 +5,7 @@ import ArtistDetail from './ArtistDetail';
  
    const artistList = (
      <div className="col-md-12">
-        { artist.map(artist => <ArtistDetail artist={artist} key={artist._id} />)}
+        { artist.map(artist => <ArtistDetail artist={artist} key={artist.artistUrl} />)}
      </div>
    );
    return (
